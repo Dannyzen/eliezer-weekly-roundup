@@ -13,6 +13,19 @@ Why it matters in the agentic stack:
 - Tool orchestration becomes easier to audit.
 - Prompt templates start to look more like control surfaces than one-shot instructions.
 
+Implementable now:
+- LangGraph for explicit nodes, edges, and state transitions.
+- DSPy for modular prompt programs and optimization.
+- Pydantic, Outlines, or Guidance for structured intermediate outputs.
+- lightweight eval suites that compare decomposed prompts against baseline prompts.
+
+Methodologies to use:
+- prompt decomposition
+- schema-first outputs
+- task-by-task evaluation instead of one giant benchmark score
+
+Implementability score: 0.82
+
 Complexity to implement:
 - Low to medium if you already have templated prompts.
 - Higher if your orchestration layer assumes free-form model output and lacks explicit step boundaries.
@@ -31,6 +44,20 @@ Why it matters in the agentic stack:
 - Tool permissions need explicit gates.
 - Long-running workflows need observability, not just outputs.
 
+Implementable now:
+- OpenTelemetry or LangSmith for traces.
+- pytest with golden traces or scenario fixtures.
+- Temporal or Prefect for durable workflow execution.
+- Open Policy Agent for authorization checks and policy-as-code.
+
+Methodologies to use:
+- trace replay before deployment
+- scoped tool permissions
+- approval checkpoints for destructive actions
+- regression suites for critical workflows
+
+Implementability score: 0.58
+
 Complexity to implement:
 - Medium to high.
 - Requires trace capture, replay harnesses, and explicit policy layers around tool access.
@@ -48,6 +75,19 @@ Why it matters in the agentic stack:
 - Multi-agent systems can increase throughput and specialization.
 - They can also magnify debugging difficulty if state is not shared clearly.
 - The best versions look like structured orchestration, not a committee of chatbots.
+
+Implementable now:
+- LangGraph subgraphs for role-based orchestration.
+- AutoGen or CrewAI for experimentation.
+- SQLite, Postgres, or Redis as shared state instead of natural-language-only handoffs.
+- explicit retry and owner-of-record rules for each role.
+
+Methodologies to use:
+- shared state over pure chat passing
+- bounded responsibilities per agent
+- review loops only where error cost justifies them
+
+Implementability score: 0.49
 
 Complexity to implement:
 - Medium to high depending on state sharing and failure handling.

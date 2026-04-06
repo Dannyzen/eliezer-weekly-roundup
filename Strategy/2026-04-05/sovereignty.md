@@ -10,6 +10,19 @@ Why it matters:
 - Memory and retrieval become owned assets.
 - Product behavior becomes less dependent on one upstream provider.
 
+Implementable now:
+- vLLM for self-hosted API-compatible inference.
+- llama.cpp for smaller local orchestration models.
+- SQLite, Postgres, or pgvector for owned memory.
+- LiteLLM or custom routing to keep provider switching under your control.
+
+Methodologies to use:
+- retrieval-first architecture
+- local memory before remote context stuffing
+- provider abstraction instead of provider lock-in
+
+Implementability score: 0.74
+
 Complexity to implement:
 - Medium. The architecture is straightforward conceptually, but difficult operationally because it touches infra, storage, permissions, and model routing.
 
@@ -25,6 +38,20 @@ Why it matters:
 - Guardrails can be turned into product features.
 - Architecture review becomes a strategic consulting opportunity.
 
+Implementable now:
+- Open Policy Agent for policy enforcement.
+- Temporal for durable workflows and audit trails.
+- OpenTelemetry for distributed traces.
+- signed approvals, scoped credentials, and immutable logs.
+
+Methodologies to use:
+- policy-as-code
+- approval gates for irreversible actions
+- trace review before rollout
+- least-privilege tool and credential design
+
+Implementability score: 0.61
+
 Complexity to implement:
 - Medium to high because it requires policy design, observability, and replayable workflows.
 
@@ -39,6 +66,19 @@ Why it matters:
 - Better reasoning is not free.
 - Long traces create operational drag.
 - Good architecture reserves expensive reasoning for high-ambiguity decisions.
+
+Implementable now:
+- task-based model routing
+- summarization and trace compression
+- response caching and retrieval reuse
+- smaller orchestration models with larger models reserved for escalation
+
+Methodologies to use:
+- route by ambiguity, not habit
+- distill repeated workflows into lighter chains
+- measure latency and token cost as first-class metrics
+
+Implementability score: 0.77
 
 Complexity to implement:
 - Medium. The challenge is less conceptual than operational: where to cache, where to summarize, and where to switch to lighter-weight flows.
