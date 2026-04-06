@@ -1,8 +1,13 @@
-# Reasoning & Agentic AI
-## Summary
-The focus is on the transition from stochastic agents (predicting the next tool call) to reasoning agents (planning via internal monologue and Chain-of-Thought).
+# Meta Structured Prompting
 
-## Key Insights
-- **Reasoning-Driven Tool Use**: Integration of CoT reasoning before tool invocation has demonstrated a ~30% reduction in hallucination rates for complex multi-step tasks.
-- **Multi-Agent State Sharing**: A shift toward shared state-machines or "blackboards" for structured state updates instead of natural language communication.
-- **Sovereign Edge**: Local models (7B-32B) are now capable of handling the orchestration logic of a system.
+OVERVIEW:
+Meta Structured Prompting is a technique that breaks prompts into smaller pieces that are easier to manage.
+DESCRIPTION:
+The approach focuses on dividing complex instruction sets into smaller tasks.
+COMPLEXITY:
+The approach is designed to be easily manageable while still allowing for complex operations.
+
+## How It Fits
+How it fits into the agentic stack.
+## Research Links
+[link](https://venturebeat.com/orchestration/metas-new-structured-prompting-technique-makes-llms-significantly-better-at)
