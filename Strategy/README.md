@@ -1,45 +1,65 @@
 # Strategy
 
-This index focuses on the most recent week with actual structured content in the repository. Each finding includes a short summary, a core source, a link into the relevant analysis, suggested tools or methodologies to explore, and an implementability score from 0 to 1.
+This index tracks the most recent week with structured content. Each finding includes a short summary, a link into the detailed analysis, a core source, practical ways to explore it now, and an implementability score from 0 to 1.
 
 ## Most Recent Week: 2026-04-05
 
-### 1. Sovereign stack and local-first AI
-Summary: The core strategic conclusion is that value is shifting away from model access alone and toward implementation quality: memory architecture, deployment locality, data ownership, and control surfaces. Local-first is becoming a product and governance advantage, not just a privacy preference.
+### Runtime governance is becoming the real control plane
+Summary: Microsoft's Agent Governance Toolkit frames agent governance as an execution-layer problem with policy interception, identity, execution rings, and circuit breakers.
 
-Analysis: [Sovereignty analysis](2026-04-05/sovereignty.md#sovereign-stack-and-local-first-ai)
-Core source: [Weekly synthesis note](../roundups/2026-04-05.md#actionable-insights-for-danny)
+Analysis: [sovereignty analysis](2026-04-05/sovereignty.md#runtime-governance-is-becoming-the-real-control-plane)
+Core source: [Microsoft Open Source Blog, April 2, 2026](https://opensource.microsoft.com/blog/2026/04/02/introducing-the-agent-governance-toolkit-open-source-runtime-security-for-ai-agents/)
 Implementable now:
-- vLLM or llama.cpp for controllable local or self-hosted inference
-- SQLite or Postgres plus pgvector for owned memory and retrieval
-- LiteLLM as a routing layer if kept behind internal controls
-- retrieval-first architectures that keep domain memory local
-Implementability score: 0.74
+- Put a policy layer between agents and tools
+- Treat agents as services with identity and scopes
+- Add kill switches and circuit breakers before broad rollout
+- Map workflows against OWASP agentic AI risks
+Implementability score: 0.86
 
-### 2. Governance as a product requirement
-Summary: Enterprise adoption is increasingly blocked by governance, not model quality. Teams want agents that can prove what they did, show why they had permission to do it, and survive audits after model or workflow updates.
+### Sovereign-hybrid infrastructure is turning into the default enterprise ask
+Summary: Microsoft's new Japan investment is not just capex news. It is a blueprint for local infrastructure, domestic operators, and consistent cloud governance semantics.
 
-Analysis: [Sovereignty analysis](2026-04-05/sovereignty.md#governance-and-enterprise-adoption)
-Core source: [Weekly synthesis note](../roundups/2026-04-05.md#2-architectural-patterns-production-grade-autonomy)
+Analysis: [sovereignty analysis](2026-04-05/sovereignty.md#sovereign-hybrid-infrastructure-is-becoming-the-default-enterprise-ask)
+Core source: [Microsoft Source Asia, April 3, 2026](https://news.microsoft.com/source/asia/2026/04/03/microsoft-deepens-its-commitment-to-japan-with-10-billion-investment-in-ai-infrastructure-cybersecurity-workforce/)
 Implementable now:
-- Open Policy Agent for policy enforcement
-- Temporal for stateful workflow execution and auditability
-- OpenTelemetry for end-to-end traces
-- approval gates, scoped credentials, and change logs as default methodology
-Implementability score: 0.61
+- Design for cloud, sovereign regional, and disconnected tiers
+- Separate control-plane consistency from data-plane locality
+- Add residency matrices to architecture reviews
+- Keep logs, vectors, and package sources inside policy scope
+Implementability score: 0.78
 
-### 3. Reasoning tax and implementation tradeoffs
-Summary: Better reasoning improves outcomes, but it raises latency, token cost, and systems complexity. The practical strategy is to spend reasoning on high-ambiguity tasks, then compress or distill repeatable parts of the workflow.
+### Context engineering is hardening into an enterprise architecture discipline
+Summary: TDWI's latest governance report ties AI impact to governance maturity and explicitly elevates context engineering and unified governance architectures.
 
-Analysis: [Sovereignty analysis](2026-04-05/sovereignty.md#reasoning-tax-and-implementation-tradeoffs)
-Core source: [Hugging Face paper 2604.01658](https://huggingface.co/papers/2604.01658)
+Analysis: [sovereignty analysis](2026-04-05/sovereignty.md#context-engineering-is-hardening-into-an-enterprise-architecture-discipline)
+Core source: [TDWI report, March 31, 2026](https://tdwi.org/research/2026/03/adv-all-top-trends-ai-governance-in-2026.aspx)
 Implementable now:
-- model routing by task difficulty
-- caching, summarization, and trace compression
-- DSPy or eval-driven prompt optimization to reduce unnecessary long reasoning
-- smaller local models for orchestration, larger models only for hard decisions
-Implementability score: 0.77
+- Treat retrieval, metadata, and authority boundaries as architecture work
+- Require every workflow to declare context sources and fallback rules
+- Measure governance maturity like platform maturity
+- Consolidate fragmented AI controls into one operating model
+Implementability score: 0.83
 
-## Last 6 Weeks View
-- 2026-04-05: structured notes available in this folder.
-- Prior 5 weeks: no committed structured Strategy weekly notes yet.
+### The brownfield trap is still the fastest way to waste an AI budget
+Summary: SAP CEO Christian Klein's core point is blunt: agentic AI fails when companies try to paste it onto broken processes without redesigning the business workflow or clarifying data context.
+
+Analysis: [sovereignty analysis](2026-04-05/sovereignty.md#the-brownfield-trap-is-still-the-fastest-way-to-waste-an-ai-budget)
+Core source: [diginomica, April 1, 2026](https://diginomica.com/ai-adoption-real-so-change-required-lessons-asug-talks-podcast-sap-ceo-christian-klein)
+Implementable now:
+- Require a process-redesign owner for autonomous workflows
+- Separate copilot projects from autonomous process projects
+- Refuse to automate workflows with undefined exceptions or authority
+- Audit where business context is missing before choosing a model
+Implementability score: 0.91
+
+### The pilot-to-production gap is now a strategic liability
+Summary: BBN Times may be opinionated, but the framing is useful: most enterprises can claim agent adoption, far fewer can run agents in production. That gap is where the real consulting and platform work now lives.
+
+Analysis: [sovereignty analysis](2026-04-05/sovereignty.md#the-pilot-to-production-gap-is-now-a-strategic-liability)
+Core source: [BBN Times, April 4, 2026](https://www.bbntimes.com/companies/agentic-ai-in-the-enterprise-why-2026-is-the-year-the-pilot-phase-has-to-end)
+Implementable now:
+- Classify initiatives as demo, pilot, or production
+- Add a production-readiness checklist to every pilot
+- Forecast inference cost and tool integration load early
+- Kill pilots that cannot show workflow-level ROI
+Implementability score: 0.88

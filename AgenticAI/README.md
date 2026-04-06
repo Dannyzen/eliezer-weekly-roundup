@@ -1,45 +1,65 @@
 # AgenticAI
 
-This index focuses on the most recent week with actual structured content in the repository. Each finding includes a short summary, a core source, a link into the relevant analysis, suggested tools or methodologies to explore, and an implementability score from 0 to 1.
+This index tracks the most recent week with structured content. Each finding includes a short summary, a link into the detailed analysis, a core source, practical ways to explore it now, and an implementability score from 0 to 1.
 
 ## Most Recent Week: 2026-04-05
 
-### 1. Meta structured prompting
-Summary: Meta's structured prompting work matters because it makes planning and execution boundaries clearer. The real value is not just prompt quality. It is better decomposition, more reliable intermediate state, and more inspectable orchestration.
+### PydanticAI turns structured prompting into cheaper runtime behavior
+Summary: PydanticAI's new smart instruction caching and thread execution support show a practical path to lower-cost agent loops without rebuilding the whole stack.
 
-Analysis: [Reasoning analysis](2026-04-05/reasoning.md#meta-structured-prompting)
-Core source: [VentureBeat coverage](https://venturebeat.com/orchestration/metas-new-structured-prompting-technique-makes-llms-significantly-better-at)
+Analysis: [reasoning analysis](2026-04-05/reasoning.md#pydanticai-smart-instruction-caching-and-thread-execution)
+Core source: [PydanticAI v1.77.0 release](https://github.com/pydantic/pydantic-ai/releases/tag/v1.77.0)
 Implementable now:
-- LangGraph for explicit graph-shaped task decomposition
-- DSPy for structured prompt modules and optimization
-- Pydantic or Outlines for typed intermediate outputs
-- prompt templates plus eval harnesses for repeatable orchestration
-Implementability score: 0.82
+- Split prompts into stable policy and dynamic task state
+- Use cache-aware model calls for repeated agent loops
+- Use thread executors for parallel tool-heavy steps
+- Keep schemas typed with Pydantic models end to end
+Implementability score: 0.93
 
-### 2. Deterministic agent testing and control planes
-Summary: The strongest signal this week is the move from vibe-coded autonomy toward governed, replayable agents. Deterministic testing, permission boundaries, and observability are becoming required infrastructure.
+### Langfuse is making agent evals tool-aware instead of answer-only
+Summary: Langfuse added judge filters for tool names and tool-call count. That is a real shift from generic LLM scoring toward agent-specific evaluation.
 
-Analysis: [Reasoning analysis](2026-04-05/reasoning.md#deterministic-agent-testing-and-control-planes)
-Core source: [Weekly synthesis note](../roundups/2026-04-05.md#2-architectural-patterns-production-grade-autonomy)
+Analysis: [reasoning analysis](2026-04-05/reasoning.md#langfuse-tool-aware-agent-evals)
+Core source: [Langfuse v3.163.0 release](https://github.com/langfuse/langfuse/releases/tag/v3.163.0)
 Implementable now:
-- LangSmith or OpenTelemetry traces for agent trajectory visibility
-- pytest plus golden traces for replay and regression testing
-- Temporal or Prefect for workflow state and retries
-- Open Policy Agent for authorization and policy checks
-Implementability score: 0.58
+- Add pass-fail checks for tool ordering and tool count
+- Compare variants on answer quality and trajectory quality
+- Use judge outputs as CI gates for critical workflows
+- Track tool misuse as a first-class regression category
+Implementability score: 0.94
 
-### 3. Hyperagents and orchestration complexity
-Summary: Multi-agent systems are useful when they separate roles cleanly and reduce operator burden. They become harmful when they add hidden prompt loops, cost, and debugging complexity without adding control.
+### TensorZero is collapsing gateway, routing, and observability into one surface
+Summary: TensorZero's new MCP gateway endpoint plus prompt cache and eval usage metrics point toward a tighter control plane for model routing and agent operations.
 
-Analysis: [Hyperagents analysis](Hyperagents/hyperagents.md#overview)
-Core source: [Weekly synthesis note](../roundups/2026-04-05.md#signals-emerging-trends)
+Analysis: [reasoning analysis](2026-04-05/reasoning.md#tensorzero-mcp-gateway-and-ops-metrics)
+Core source: [TensorZero 2026.4.0 release](https://github.com/tensorzero/tensorzero/releases/tag/2026.4.0)
 Implementable now:
-- LangGraph subgraphs for planner-worker-reviewer patterns
-- AutoGen or CrewAI for role-based collaboration experiments
-- shared state in SQLite, Postgres, or Redis instead of pure chat handoff
-- explicit failure ownership and retry rules before adding more agents
-Implementability score: 0.49
+- Put TensorZero in front of one agent workflow
+- Export token, latency, and cache stats into Prometheus and Grafana
+- Compare cheap-router versus expensive-fallback policies with eval telemetry
+- Use MCP exposure to standardize tool access patterns
+Implementability score: 0.89
 
-## Last 6 Weeks View
-- 2026-04-05: structured notes available in this folder.
-- Prior 5 weeks: no committed structured AgenticAI weekly notes yet.
+### CrewAI is getting more serious about replayable runtime state
+Summary: Unified runtime state serialization and telemetry spans for memory and skill events are exactly the kind of primitives needed for debugging and auditability.
+
+Analysis: [reasoning analysis](2026-04-05/reasoning.md#crewai-runtime-state-and-memory-telemetry)
+Core source: [CrewAI 1.13.0 release](https://github.com/crewAIInc/crewAI/releases/tag/1.13.0)
+Implementable now:
+- Persist runtime state per step for replay and debugging
+- Instrument memory and skill events even outside CrewAI
+- Attribute token usage at event boundaries
+- Define owner-of-record for each subagent step
+Implementability score: 0.88
+
+### LangGraph is reinforcing the move from graphs that run to graphs you can inspect
+Summary: Enhanced runtime execution information and remote deploy support show where serious orchestration is heading: inspectable state, standard deploy paths, and better debugging hooks.
+
+Analysis: [reasoning analysis](2026-04-05/reasoning.md#langgraph-runtime-introspection-and-remote-builds)
+Core source: [LangGraph v1.1.5 release](https://github.com/langchain-ai/langgraph/releases/tag/1.1.5)
+Implementable now:
+- Persist execution metadata alongside outputs
+- Assert on state transitions in integration tests
+- Standardize remote build environments for agent runs
+- Treat runtime traces as part of the product, not just debugging exhaust
+Implementability score: 0.86
