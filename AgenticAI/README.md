@@ -2,28 +2,29 @@
 
 This index tracks the most recent week with structured content. Each finding includes a short summary, a link into the detailed analysis, a core source, practical ways to explore it now, and an implementability score from 0 to 1.
 
-## Most Recent Week: 2026-04-06
+## Most Recent Week: 2026-04-07
 
-### Holo3 turns computer use progress into a synthetic environment strategy
-Summary: Holo3 matters less as a leaderboard win and more as a playbook for training computer-use agents: synthetic enterprise environments, verifiable tasks, out-of-domain augmentation, and curated RL.
+### MemMachine argues that agent memory should preserve episodes, not summarize them away
+Summary: The useful claim is not that agents need more memory. It is that they need less premature compression. Whole episodes plus contextual retrieval are a better default than aggressively distilled fact stores.
 
-Analysis: [reasoning analysis](2026-04-06/reasoning.md#holo3-turns-computer-use-progress-into-a-synthetic-environment-strategy)
-Core source: [Holo3: Breaking the Computer Use Frontier](https://huggingface.co/blog/Hcompany/holo3)
+Analysis: [reasoning analysis](2026-04-07/reasoning.md#memmachine-argues-that-agent-memory-should-preserve-episodes-not-summarize-them-away)
+Durable topic: [Memory Systems](memory-systems/memory-systems.md)
+Core source: [MemMachine: A Ground-Truth-Preserving Memory System for Personalized AI Agents](https://arxiv.org/abs/2604.04853)
 Implementable now:
-- Build internal UI task suites with verification scripts instead of relying on generic browser benchmarks
-- Separate single-app from multi-app workflows when evaluating agents
-- Generate synthetic environments to create more realistic training and eval data
-- Treat environment design as a first-class performance lever
-Implementability score: 0.69
+- Preserve raw conversational episodes and index them instead of only storing extracted summaries
+- Expand retrieval around the matched turn so surrounding evidence survives into context
+- Route memory queries differently for direct lookup versus decomposition or multi-hop recall
+- Measure continuity and token efficiency together
+Implementability score: 0.84
 
-### CrewAI 1.13.0 shows what production-minded agent frameworks are finally optimizing for
-Summary: RuntimeState serialization, telemetry spans for skill and memory events, token usage events, and lower framework overhead all point in the right direction: better state hygiene and better observability.
+### SandMLE shows how to make RL for engineering agents cheap enough to actually use
+Summary: SandMLE's real contribution is environmental. It preserves the structure of ML engineering tasks while shrinking dataset cost enough to make on-policy RL loops feasible.
 
-Analysis: [reasoning analysis](2026-04-06/reasoning.md#crewai-1130-shows-what-production-minded-agent-frameworks-are-finally-optimizing-for)
-Core source: [CrewAI 1.13.0 release](https://github.com/crewAIInc/crewAI/releases/tag/1.13.0)
+Analysis: [reasoning analysis](2026-04-07/reasoning.md#sandmle-shows-how-to-make-rl-for-engineering-agents-cheap-enough-to-actually-use)
+Core source: [Synthetic Sandbox for Training Machine Learning Engineering Agents](https://arxiv.org/abs/2604.04872)
 Implementable now:
-- Capture agent state snapshots in a typed serializable format
-- Attach token usage, memory operations, and skill spans to every run
-- Replay failing flows from saved state instead of debugging from logs alone
-- Push runtime spans into Langfuse or OpenTelemetry
-Implementability score: 0.9
+- Build micro-scale but verifiable internal engineering tasks instead of replaying full production pipelines
+- Pair each synthetic environment with automatic metric checks
+- Treat task generation as reusable infrastructure for RL and evals
+- Test transfer across different agent scaffolds instead of one framework only
+Implementability score: 0.71

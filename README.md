@@ -3,12 +3,12 @@
 A category-first research repo for tracking what matters in agentic AI and strategy each week.
 
 ## Latest week
-- Week of 2026-04-06: [full synthesis](roundups/2026-04-06.md)
+- Week of 2026-04-07: [full synthesis](roundups/2026-04-07.md)
 
 ## Current signal
-- Local-first multimodal agents are becoming plausible default architecture for privacy-sensitive workloads.
-- Runtime quality is increasingly about explicit state, telemetry, and replayability rather than clever prompting alone.
-- Security risk still jumps the moment agents gain tools and persistent context; deployment posture matters as much as model quality.
+- Memory quality is emerging as an architectural question about evidence preservation, not just retrieval speed.
+- Synthetic, verifiable micro-environments are becoming the practical path to training and testing engineering agents.
+- Sovereign agent design now depends on auditable persistence and local control over behavioral traces, not just local model inference.
 
 ## Browse by category
 - [AgenticAI](AgenticAI/README.md)

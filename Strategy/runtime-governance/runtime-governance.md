@@ -93,6 +93,16 @@ Avoid these traps:
 - Microsoft Agent Governance Toolkit: https://opensource.microsoft.com/blog/2026/04/02/introducing-the-agent-governance-toolkit-open-source-runtime-security-for-ai-agents/
 - OWASP Top 10 for Agentic Applications for 2026: referenced in the Microsoft post above
 - eTAMP memory poisoning paper: https://arxiv.org/abs/2604.02623
+- Springdrift auditable runtime report: https://arxiv.org/abs/2604.04660
+- OpenClaw real-world safety analysis: https://arxiv.org/abs/2604.04759
+
+## New April 2026 additions
+
+### Auditable persistence is part of governance, not just ops
+Springdrift sharpens an important point: if an agent is long-lived, governance has to include append-only evidence, recoverable state, and deterministic policy gates. Runtime governance is not complete if the system cannot reconstruct what happened after the fact.
+
+### Capability, identity, and knowledge should be governed separately
+The OpenClaw real-world safety analysis introduces a useful framing: capability, identity, and knowledge are distinct attack surfaces. That suggests governance should separate tool authority, principal identity, and durable memory instead of treating "agent state" as one blob.
 
 ## Working conclusion
 
