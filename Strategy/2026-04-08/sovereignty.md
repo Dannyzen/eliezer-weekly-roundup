@@ -3,31 +3,48 @@
 Today's strategic signal is that the market is starting to converge on a real agent control plane. One thread is offensive: tool-using agents can leak data in ways prompt-only safety cannot stop. The other is constructive: the serious frameworks are shipping checkpoints, graph orchestration, observability, and developer surfaces as defaults instead of optional add-ons.
 
 ## Microsoft Agent Framework 1.0 shows framework competition moving toward governed workflow substrates
-Source date: 2026-04-08  
-Core source: https://github.com/microsoft/agent-framework
+Source date: 2026-04-02  
+Core source: https://github.com/microsoft/agent-framework  
+Release source: https://github.com/microsoft/agent-framework/releases/tag/python-1.0.0  
+Docs overview: https://learn.microsoft.com/en-us/agent-framework/overview/agent-framework-overview  
+Durable deep dive: [Governed Workflow Substrates](../governed-workflow-substrates/governed-workflow-substrates.md)
 
-Microsoft Agent Framework is strategically relevant because it packages the things enterprise teams actually need once they move past toy agents: graph-based workflows, checkpointing, time travel, human-in-the-loop hooks, OpenTelemetry-based observability, middleware, and migration paths from Semantic Kernel and AutoGen. The important point is not that Microsoft launched another framework. It is that a major platform vendor is standardizing around agent workflows as inspectable, replayable systems rather than raw chat loops.
+Microsoft Agent Framework won the week because it is the strongest convergence signal, not merely the fanciest launch. Claw-Eval tells you how to measure agents better. Gym-Anything tells you how to generate richer worlds for them. Microsoft Agent Framework tells you what the production substrate is hardening into right now: graph workflows, checkpoints, replay, middleware, typed routing, and observability that platform teams can actually own. That is the more durable strategic update.
 
 Why it matters:
 - Framework competition is shifting from prompt ergonomics to runtime control surfaces.
-- Checkpointing, tracing, and graph orchestration are becoming default expectations, not advanced features.
-- Migration guides from prior agent stacks suggest consolidation is happening around more governed workflow models.
+- Checkpointing, tracing, graph orchestration, and human-in-the-loop hooks are becoming default expectations, not advanced features.
+- Migration guides from both AutoGen and Semantic Kernel show consolidation pressure toward more governed workflow models.
+- Stable 1.0 packages mean this is no longer just a roadmap story. Teams can start adopting it now.
 
-How it fits into the stack or strategy:
-- Runtime layer: graph workflows with checkpoints and replay make long-lived systems easier to debug and govern.
-- Observability layer: OpenTelemetry support makes agent traces legible to existing platform teams.
-- Operating model: enterprises want agents that fit into software delivery and reliability disciplines they already understand.
+How it fits into the strategic layer:
+- Runtime layer: graph workflows with checkpoints and replay make long-lived systems easier to debug, govern, and resume.
+- Observability layer: OpenTelemetry support makes agent traces legible to existing platform and SRE teams.
+- Operating model: enterprises want agents that slot into engineering systems they already understand, not special-purpose magic boxes.
+- Market structure: the category leader is likely to be the framework that turns agents into inspectable systems of record.
+
+What is implementable now:
+- replace one brittle chat loop with an explicit workflow graph
+- capture traces and checkpoints for every important branch in a multi-step flow
+- insert middleware for policy checks, approvals, and exception handling before side effects
+- run a migration spike from an existing AutoGen or Semantic Kernel workflow into the newer substrate
+
+What remains conceptual:
+- organization-wide standards for cross-agent identity, policy, and portability are still immature
+- durable execution across heterogeneous runtimes is not settled across the ecosystem
+- most teams still lack a clean way to compare framework-level observability against framework-level eval evidence
 
 Practical tools, repos, and methodologies worth exploring:
-- Microsoft Agent Framework itself for graph orchestration, checkpointing, and DevUI-based debugging
+- Microsoft Agent Framework itself for graph orchestration, checkpointing, DevUI debugging, and workflow composition
 - OpenTelemetry-backed tracing for agent runs, tool calls, and workflow branches
-- Middleware layers for policy injection, exception handling, and approval hooks
-- Migration exercises that compare existing AutoGen or Semantic Kernel flows against more explicit workflow graphs
+- migration exercises that compare existing AutoGen or Semantic Kernel flows against more explicit workflow graphs
+- policy middleware patterns that can later be connected to approval systems and runtime governance
 
 Opinionated take:
 This is less interesting as a product launch than as a market tell. The winner category is not "best chatbot SDK." It is the framework that makes agent behavior observable enough for a normal engineering organization to own.
 
-Implementability score: 0.93
+Implementation complexity: Medium  
+Implementability score: 0.94
 
 ## Back-Reveal shows why memory and retrieval tools cannot share a trust boundary with the agent brain
 Source date: 2026-04-07  

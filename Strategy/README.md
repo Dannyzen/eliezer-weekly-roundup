@@ -8,13 +8,19 @@ This index tracks the most recent week with structured content. Each finding inc
 Summary: The signal is not just another SDK launch. A major vendor is treating checkpoints, graph orchestration, observability, and migration paths as baseline requirements for real agent systems.
 
 Analysis: [sovereignty analysis](2026-04-08/sovereignty.md#microsoft-agent-framework-10-shows-framework-competition-moving-toward-governed-workflow-substrates)
+Durable topic: [Governed Workflow Substrates](governed-workflow-substrates/governed-workflow-substrates.md)
 Core source: [microsoft/agent-framework](https://github.com/microsoft/agent-framework)
 Implementable now:
 - adopt graph workflows with checkpoints instead of opaque chat loops
 - wire agent traces into OpenTelemetry so platform teams can inspect them with normal tooling
 - add middleware layers for approvals, policy injection, and exception handling
-- compare existing AutoGen or Semantic Kernel flows against more explicit workflow graphs
-Implementability score: 0.93
+- run a migration spike from AutoGen or Semantic Kernel into a more explicit workflow substrate
+Tools, repos, and methodologies worth exploring:
+- [Microsoft Agent Framework docs](https://learn.microsoft.com/en-us/agent-framework/overview/agent-framework-overview)
+- [python-1.0.0 release notes](https://github.com/microsoft/agent-framework/releases/tag/python-1.0.0)
+- OpenTelemetry for workflow tracing
+- workflow-graph migration exercises for existing agent loops
+Implementability score: 0.94
 
 ### Back-Reveal shows why memory and retrieval tools cannot share a trust boundary with the agent brain
 Summary: Tool access is now a security boundary. If the same agent loop can read durable memory and make outbound calls, one backdoor can turn memory into an exfiltration channel.

@@ -4,6 +4,7 @@ A category-first research repo for tracking what matters in agentic AI and strat
 
 ## Latest week
 - Week of 2026-04-08: [full synthesis](roundups/2026-04-08.md)
+- Deep Dive Wednesday winner: [Governed Workflow Substrates](Strategy/governed-workflow-substrates/governed-workflow-substrates.md)
 
 ## Current signal
 - Trajectory-aware evaluation is becoming the minimum serious standard for agent benchmarking.
