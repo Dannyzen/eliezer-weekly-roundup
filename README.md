@@ -3,12 +3,13 @@
 A category-first research repo for tracking what matters in agentic AI and strategy each week.
 
 ## Latest week
-- Week of 2026-04-07: [full synthesis](roundups/2026-04-07.md)
+- Week of 2026-04-08: [full synthesis](roundups/2026-04-08.md)
 
 ## Current signal
-- Memory quality is emerging as an architectural question about evidence preservation, not just retrieval speed.
-- Synthetic, verifiable micro-environments are becoming the practical path to training and testing engineering agents.
-- Sovereign agent design now depends on auditable persistence and local control over behavioral traces, not just local model inference.
+- Trajectory-aware evaluation is becoming the minimum serious standard for agent benchmarking.
+- Environment factories are emerging as the scaling primitive for long-horizon computer-use agents.
+- Agent framework competition is shifting toward checkpoints, observability, and governed workflow graphs.
+- Durable memory is now clearly a security boundary, not just a convenience feature.
 
 ## Browse by category
 - [AgenticAI](AgenticAI/README.md)

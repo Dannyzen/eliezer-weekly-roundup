@@ -2,29 +2,29 @@
 
 This index tracks the most recent week with structured content. Each finding includes a short summary, a link into the detailed analysis, a core source, practical ways to explore it now, and an implementability score from 0 to 1.
 
-## Most Recent Week: 2026-04-07
+## Most Recent Week: 2026-04-08
 
-### MemMachine argues that agent memory should preserve episodes, not summarize them away
-Summary: The useful claim is not that agents need more memory. It is that they need less premature compression. Whole episodes plus contextual retrieval are a better default than aggressively distilled fact stores.
+### Claw-Eval makes trajectory-aware grading the new minimum bar for serious agent evaluation
+Summary: The useful claim is simple: you cannot trust an agent benchmark that only checks the ending. Execution traces, audit logs, and environment snapshots need to become standard eval inputs.
 
-Analysis: [reasoning analysis](2026-04-07/reasoning.md#memmachine-argues-that-agent-memory-should-preserve-episodes-not-summarize-them-away)
-Durable topic: [Memory Systems](memory-systems/memory-systems.md)
-Core source: [MemMachine: A Ground-Truth-Preserving Memory System for Personalized AI Agents](https://arxiv.org/abs/2604.04853)
+Analysis: [reasoning analysis](2026-04-08/reasoning.md#claw-eval-makes-trajectory-aware-grading-the-new-minimum-bar-for-serious-agent-evaluation)
+Durable topic: [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md)
+Core source: [Claw-Eval: Toward Trustworthy Evaluation of Autonomous Agents](https://arxiv.org/abs/2604.06132)
 Implementable now:
-- Preserve raw conversational episodes and index them instead of only storing extracted summaries
-- Expand retrieval around the matched turn so surrounding evidence survives into context
-- Route memory queries differently for direct lookup versus decomposition or multi-hop recall
-- Measure continuity and token efficiency together
-Implementability score: 0.84
+- capture replayable traces, audit logs, and environment snapshots for every benchmark run
+- score completion, safety, and robustness separately
+- use repeated-trial consistency metrics instead of trusting one lucky pass
+- treat evidence artifacts as evaluation infrastructure, not debug leftovers
+Implementability score: 0.88
 
-### SandMLE shows how to make RL for engineering agents cheap enough to actually use
-Summary: SandMLE's real contribution is environmental. It preserves the structure of ML engineering tasks while shrinking dataset cost enough to make on-policy RL loops feasible.
+### Gym-Anything turns environment creation into reusable agent infrastructure
+Summary: The hard problem is not only training agents inside software. It is generating realistic, auditable software environments cheaply enough that training and benchmarking can scale.
 
-Analysis: [reasoning analysis](2026-04-07/reasoning.md#sandmle-shows-how-to-make-rl-for-engineering-agents-cheap-enough-to-actually-use)
-Core source: [Synthetic Sandbox for Training Machine Learning Engineering Agents](https://arxiv.org/abs/2604.04872)
+Analysis: [reasoning analysis](2026-04-08/reasoning.md#gym-anything-turns-environment-creation-into-reusable-agent-infrastructure)
+Core source: [Gym-Anything: Turn any Software into an Agent Environment](https://arxiv.org/abs/2604.06126)
 Implementable now:
-- Build micro-scale but verifiable internal engineering tasks instead of replaying full production pipelines
-- Pair each synthetic environment with automatic metric checks
-- Treat task generation as reusable infrastructure for RL and evals
-- Test transfer across different agent scaffolds instead of one framework only
-Implementability score: 0.71
+- generate software setup scripts instead of hand-building every benchmark environment
+- require evidence of correct setup and independent audit before promoting a task world
+- create train/test splits for environments, not just prompts
+- invest in long-horizon tasks tied to real software domains
+Implementability score: 0.76
