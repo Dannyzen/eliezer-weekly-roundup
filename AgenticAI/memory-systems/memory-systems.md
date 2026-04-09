@@ -2,19 +2,22 @@
 
 Memory is becoming the real architecture question for long-lived agents.
 
-The durable pattern across recent work is simple: agents become more useful when memory preserves ground truth, retrieves broader context than a single chunk, and distinguishes between what should stay local, what should become durable profile data, and what should remain ephemeral.
+The durable pattern across recent work is simple: agents become more useful when memory preserves ground truth, retrieves broader context than a single chunk, and distinguishes between what should stay local, what should become durable profile data, and what should remain ephemeral. The new wrinkle is that the best systems are no longer treating memory as transcript storage. They are turning experience into portable guidance.
 
 ## Why this topic now
 
-The April 2026 wave of memory work is pushing three ideas into focus:
+The April 2026 wave of memory work is pushing four ideas into focus:
 - **MemMachine** argues that episodic memory should preserve full conversational evidence rather than summarize too aggressively.
 - **FileGram** argues that personalization should be grounded in behavioral traces from local file activity, not just dialogue.
 - **Springdrift** argues that persistent memory must be embedded in an auditable runtime with explicit recovery and policy controls.
+- **ALTK-Evolve** argues that the real goal is not replaying transcripts but extracting reusable guidelines, policies, and SOPs from trajectories.
 
 Core sources:
 - MemMachine: https://arxiv.org/abs/2604.04853
 - FileGram: https://arxiv.org/abs/2604.04901
 - Springdrift: https://arxiv.org/abs/2604.04660
+- ALTK-Evolve article: https://huggingface.co/blog/ibm-research/altk-evolve
+- ALTK-Evolve paper: https://arxiv.org/abs/2603.10600
 
 ## Core thesis
 
@@ -23,6 +26,7 @@ The wrong question is "how do we give the agent more memory?"
 The right questions are:
 - what evidence should be preserved verbatim?
 - what can be compressed safely?
+- what should become a reusable guideline?
 - what should remain local?
 - how should retrieval adapt to the query?
 - what policy should govern writes, reads, and profile formation?
@@ -52,6 +56,7 @@ This is how the system remembers how to act: routines, playbooks, policies, and 
 Current lesson:
 - some of the most important memory is operational, not conversational
 - if the runtime cannot recover, replay, and justify decisions, the memory system is incomplete
+- the most useful promoted memories often look like guidelines, not transcripts
 
 ## What to build now
 
@@ -72,6 +77,9 @@ Use at least three tiers:
 ### Put policy on memory writes
 Treat memory writes as consequential actions. Some memories change future behavior and should pass policy checks or confidence thresholds before becoming durable.
 
+### Distill guidelines, not just summaries
+Run offline passes that convert repeated trajectory patterns into concise guidelines, policies, and SOPs. Retrieval should surface those distilled lessons when they matter instead of dragging whole transcripts back into the prompt.
+
 ### Measure memory by continuity, not vibes
 Useful metrics include:
 - factual continuity across sessions
@@ -79,6 +87,7 @@ Useful metrics include:
 - retrieval precision under noisy histories
 - token efficiency for grounded recall
 - reversibility and auditability of memory changes
+- transfer gain from retrieved guidelines on unseen tasks
 
 ## What to avoid
 
@@ -88,7 +97,16 @@ Avoid these traps:
 - mixing user profile, task scratchpad, and governance history into one blob
 - letting behavioral traces flow into permanent memory without clear consent or scope
 - assuming bigger context windows remove the need for memory design
+- confusing transcript replay with actual learning
+
+## New April 2026 additions
+
+### Guidelines beat transcripts when the goal is transfer
+ALTK-Evolve sharpens the practical memory lesson of the month: the agent should not keep relearning from raw logs every time. Good memory systems preserve the episode, then promote the parts that proved reusable. That makes memory smaller, more auditable, and more transferable.
+
+### Memory quality loops belong off the critical path
+The most robust pattern is a two-loop design: the online loop acts, while a background consolidation loop scores, merges, and prunes learned guidance. That keeps the action path lean without giving up long-term improvement.
 
 ## Working conclusion
 
-The next generation of agents will be differentiated less by how eloquently they speak and more by how faithfully they remember. The winning systems will preserve evidence, retrieve context adaptively, and keep the most sensitive memory close to the user and under policy control.
+The next generation of agents will be differentiated less by how eloquently they speak and more by how faithfully they remember. The winning systems will preserve evidence, retrieve context adaptively, promote only the right lessons into durable guidance, and keep the most sensitive memory close to the user and under policy control.

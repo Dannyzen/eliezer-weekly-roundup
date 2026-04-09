@@ -2,29 +2,37 @@
 
 This index tracks the most recent week with structured content. Each finding includes a short summary, a link into the detailed analysis, a core source, practical ways to explore it now, and an implementability score from 0 to 1.
 
-## Most Recent Week: 2026-04-08
+## Most Recent Week: 2026-04-09
 
-### Claw-Eval makes trajectory-aware grading the new minimum bar for serious agent evaluation
-Summary: The useful claim is simple: you cannot trust an agent benchmark that only checks the ending. Execution traces, audit logs, and environment snapshots need to become standard eval inputs.
+### PydanticAI v1.78.0 makes tool contracts more explicit and more observable
+Summary: The useful shift is not cosmetic. Tool definitions are getting richer enough to become durable runtime contracts instead of loose prompt conventions, while OpenTelemetry coverage keeps the orchestration layer inspectable.
 
-Analysis: [reasoning analysis](2026-04-08/reasoning.md#claw-eval-makes-trajectory-aware-grading-the-new-minimum-bar-for-serious-agent-evaluation)
-Durable topic: [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md)
-Core source: [Claw-Eval: Toward Trustworthy Evaluation of Autonomous Agents](https://arxiv.org/abs/2604.06132)
+Analysis: [reasoning analysis](2026-04-09/reasoning.md#pydanticai-v1780-makes-tool-contracts-more-explicit-and-more-observable)
+Core source: [pydantic/pydantic-ai v1.78.0 release](https://github.com/pydantic/pydantic-ai/releases/tag/v1.78.0)
 Implementable now:
-- capture replayable traces, audit logs, and environment snapshots for every benchmark run
-- score completion, safety, and robustness separately
-- use repeated-trial consistency metrics instead of trusting one lucky pass
-- treat evidence artifacts as evaluation infrastructure, not debug leftovers
-Implementability score: 0.88
+- expose `return_schema` and `function_signature` in tool metadata instead of relying on prose descriptions alone
+- attach per-tool metadata so downstream policy, logging, and UI layers can reason about tools as typed objects
+- emit cached-token span attributes so agent cost and cache behavior show up in existing observability stacks
+- treat tool definitions as versioned contracts that can be diffed and tested
+Tools, repos, and methodologies worth exploring:
+- [PydanticAI](https://github.com/pydantic/pydantic-ai)
+- OpenTelemetry tracing for agent runs
+- schema-diff checks for tool registries
+Implementability score: 0.95
 
-### Gym-Anything turns environment creation into reusable agent infrastructure
-Summary: The hard problem is not only training agents inside software. It is generating realistic, auditable software environments cheaply enough that training and benchmarking can scale.
+### ALTK-Evolve shows the right memory pattern: learn guidelines, not transcript sludge
+Summary: The strongest memory lesson today is that replaying old transcripts into the prompt is a dead end. Better agents distill reusable operating guidance from traces and retrieve only what matters at action time.
 
-Analysis: [reasoning analysis](2026-04-08/reasoning.md#gym-anything-turns-environment-creation-into-reusable-agent-infrastructure)
-Core source: [Gym-Anything: Turn any Software into an Agent Environment](https://arxiv.org/abs/2604.06126)
+Analysis: [reasoning analysis](2026-04-09/reasoning.md#altk-evolve-shows-the-right-memory-pattern-learn-guidelines-not-transcript-sludge)
+Durable topic: [Memory Systems](memory-systems/memory-systems.md)
+Core source: [ALTK-Evolve: On-the-Job Learning for AI Agents](https://huggingface.co/blog/ibm-research/altk-evolve)
 Implementable now:
-- generate software setup scripts instead of hand-building every benchmark environment
-- require evidence of correct setup and independent audit before promoting a task world
-- create train/test splits for environments, not just prompts
-- invest in long-horizon tasks tied to real software domains
-Implementability score: 0.76
+- capture trajectories in an observability layer instead of throwing them away after a run
+- extract candidate guidelines from traces and score them before promoting them to durable memory
+- retrieve a small set of relevant rules at action time instead of pasting whole transcripts into context
+- keep memory quality loops separate from the online action loop
+Tools, repos, and methodologies worth exploring:
+- [ALTK-Evolve article](https://huggingface.co/blog/ibm-research/altk-evolve)
+- Langfuse or another OpenTelemetry-based trace layer
+- offline consolidation jobs for memory pruning and scoring
+Implementability score: 0.82

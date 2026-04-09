@@ -2,34 +2,37 @@
 
 This index tracks the most recent week with structured content. Each finding includes a short summary, a link into the detailed analysis, a core source, practical ways to explore it now, and an implementability score from 0 to 1.
 
-## Most Recent Week: 2026-04-08
+## Most Recent Week: 2026-04-09
 
-### Microsoft Agent Framework 1.0 shows framework competition moving toward governed workflow substrates
-Summary: The signal is not just another SDK launch. A major vendor is treating checkpoints, graph orchestration, observability, and migration paths as baseline requirements for real agent systems.
+### TraceSafe shows that agent safety has to be tested inside the trajectory, not just at the output boundary
+Summary: The important result is not that another guardrail benchmark exists. It is that mid-trajectory risk detection depends heavily on structured-trace competence, which means most current safety rhetoric is aimed at the wrong surface.
 
-Analysis: [sovereignty analysis](2026-04-08/sovereignty.md#microsoft-agent-framework-10-shows-framework-competition-moving-toward-governed-workflow-substrates)
-Durable topic: [Governed Workflow Substrates](governed-workflow-substrates/governed-workflow-substrates.md)
-Core source: [microsoft/agent-framework](https://github.com/microsoft/agent-framework)
+Analysis: [sovereignty analysis](2026-04-09/sovereignty.md#tracesafe-shows-that-agent-safety-has-to-be-tested-inside-the-trajectory-not-just-at-the-output-boundary)
+Durable topic: [Runtime Governance](runtime-governance/runtime-governance.md)
+Core source: [TraceSafe: A Systematic Assessment of LLM Guardrails on Multi-Step Tool-Calling Trajectories](https://arxiv.org/abs/2604.07223)
 Implementable now:
-- adopt graph workflows with checkpoints instead of opaque chat loops
-- wire agent traces into OpenTelemetry so platform teams can inspect them with normal tooling
-- add middleware layers for approvals, policy injection, and exception handling
-- run a migration spike from AutoGen or Semantic Kernel into a more explicit workflow substrate
+- benchmark guardrails against full tool-call traces, not just final model responses
+- validate structured parsing and trace understanding before assuming a safety model can govern agents
+- instrument policy checks at each tool step instead of only pre-prompt and post-response
+- store evidence artifacts that explain why a guardrail flagged or allowed a step
 Tools, repos, and methodologies worth exploring:
-- [Microsoft Agent Framework docs](https://learn.microsoft.com/en-us/agent-framework/overview/agent-framework-overview)
-- [python-1.0.0 release notes](https://github.com/microsoft/agent-framework/releases/tag/python-1.0.0)
-- OpenTelemetry for workflow tracing
-- workflow-graph migration exercises for existing agent loops
-Implementability score: 0.94
+- [TraceSafe paper](https://arxiv.org/abs/2604.07223)
+- trace-linked policy engines and approval middleware
+- JSON- and schema-focused robustness tests for guardrails
+Implementability score: 0.74
 
-### Back-Reveal shows why memory and retrieval tools cannot share a trust boundary with the agent brain
-Summary: Tool access is now a security boundary. If the same agent loop can read durable memory and make outbound calls, one backdoor can turn memory into an exfiltration channel.
+### AgentCity is a useful strategic provocation about multi-principal accountability, not a deployment recipe
+Summary: The paper matters less as a blockchain pitch than as a forcing function. Once agents transact across principals, somebody has to own the chain from policy to action to adjudication.
 
-Analysis: [sovereignty analysis](2026-04-08/sovereignty.md#back-reveal-shows-why-memory-and-retrieval-tools-cannot-share-a-trust-boundary-with-the-agent-brain)
-Core source: [Your LLM Agent Can Leak Your Data: Data Exfiltration via Backdoored Tool Use](https://arxiv.org/abs/2604.05432)
+Analysis: [sovereignty analysis](2026-04-09/sovereignty.md#agentcity-is-a-useful-strategic-provocation-about-multi-principal-accountability-not-a-deployment-recipe)
+Core source: [AgentCity: Constitutional Governance for Autonomous Agent Economies via Separation of Power](https://arxiv.org/abs/2604.07007)
 Implementable now:
-- separate read-memory permissions from outbound retrieval or network permissions
-- inspect tool-call arguments before execution
-- keep durable memory behind narrow interfaces instead of broad tool access
-- alert on suspicious memory-read plus outbound-call patterns across a session
-Implementability score: 0.67
+- model agent accountability chains explicitly even if you never touch a blockchain
+- separate policy authorship, action execution, and human adjudication into different operational roles
+- require every autonomous agent to resolve to a responsible principal
+- test governance for cross-organization delegation before scale forces the issue
+Tools, repos, and methodologies worth exploring:
+- explicit principal binding for agent identities
+- approval and arbitration workflows for inter-agent transactions
+- policy-as-code plus event-sourced audit logs
+Implementability score: 0.24

@@ -95,6 +95,8 @@ Avoid these traps:
 - eTAMP memory poisoning paper: https://arxiv.org/abs/2604.02623
 - Springdrift auditable runtime report: https://arxiv.org/abs/2604.04660
 - OpenClaw real-world safety analysis: https://arxiv.org/abs/2604.04759
+- TraceSafe: https://arxiv.org/abs/2604.07223
+- AgentCity: https://arxiv.org/abs/2604.07007
 
 ## New April 2026 additions
 
@@ -103,6 +105,12 @@ Springdrift sharpens an important point: if an agent is long-lived, governance h
 
 ### Capability, identity, and knowledge should be governed separately
 The OpenClaw real-world safety analysis introduces a useful framing: capability, identity, and knowledge are distinct attack surfaces. That suggests governance should separate tool authority, principal identity, and durable memory instead of treating "agent state" as one blob.
+
+### Trace understanding is now a first-class safety requirement
+TraceSafe adds a blunt lesson: a guardrail that cannot parse and reason over tool trajectories is not a serious runtime control. Safety for agents depends on structured-trace competence as much as on refusal behavior or jailbreak resistance.
+
+### Accountability chains matter once agents cross principals
+AgentCity is still highly conceptual, but it surfaces a durable governance question: who authored the rule, who executed the action, and who is accountable when agents transact across organizational boundaries? Runtime governance will eventually need an answer to that, even outside blockchain-heavy designs.
 
 ## Working conclusion
 
