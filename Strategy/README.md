@@ -4,38 +4,78 @@ This index tracks the most recent week with structured content. Each finding inc
 
 ## Most Recent Week: 2026-04-10
 
-### PIArena turns prompt injection defense into a real comparative evaluation problem
-Summary: The important result is not that prompt injection is dangerous. We knew that. The useful result is that cross-benchmark and adaptive-attack evaluation now makes weak defenses much harder to hide behind marketing.
+### Governed workflow substrates are becoming the enterprise default
+Summary: The strategic winner this week was the governed runtime substrate: checkpoints, approvals, traces, and policy hooks are becoming the actual enterprise product surface for agents.
 
-Analysis: [sovereignty analysis](2026-04-10/sovereignty.md#piarena-turns-prompt-injection-defense-into-a-real-comparative-evaluation-problem)
+Analysis: [sovereignty analysis](2026-04-10/sovereignty.md#governed-workflow-substrates-are-becoming-the-enterprise-default)
+Durable topic: [Governed Workflow Substrates](governed-workflow-substrates/governed-workflow-substrates.md)
+Core source: [microsoft/agent-framework](https://github.com/microsoft/agent-framework)
+Implementable now:
+- make checkpoints, approvals, and audit logs default architecture
+- compare frameworks on policy hooks and replayability, not prompt ergonomics
+- require intervention paths for critical workflows
+- attach policy engines to runtime events
+Tools, repos, and methodologies worth exploring:
+- [Microsoft Agent Framework](https://github.com/microsoft/agent-framework)
+- Agent Governance Toolkit
+- workflow replay logs
+- approval middleware
+- runtime policy engines
+Implementability score: 0.94
+
+### Security evaluation is moving inside the trajectory and across adaptive attacks
+Summary: The market still wants to sell answer-boundary safety, but the better work now measures multi-step behavior, memory risk, and adaptive prompt-injection failure.
+
+Analysis: [sovereignty analysis](2026-04-10/sovereignty.md#security-evaluation-is-moving-inside-the-trajectory-and-across-adaptive-attacks)
 Durable topic: [Runtime Governance](runtime-governance/runtime-governance.md)
 Core source: [PIArena paper](https://arxiv.org/abs/2604.08499v1)
 Implementable now:
-- test injection defenses across multiple task families and content channels
-- include adaptive attacks that react to defense behavior
-- combine prompt-layer defenses with tool scoping and policy mediation
-- separate defense generalization scores from single-benchmark win rates
+- test safety at the step and trajectory level
+- run adaptive prompt-injection evaluations across multiple tasks
+- separate trust boundaries between memory, retrieval, planning, and tools
+- add policy mediation and retrieval isolation
 Tools, repos, and methodologies worth exploring:
-- attack/defense benchmark matrices
-- retrieval isolation for untrusted content
-- runtime policy mediation in front of tools
-- adaptive prompt-injection red-teaming
-Implementability score: 0.76
+- adaptive red-teaming harnesses
+- tool-scoped sandboxes
+- trajectory-aware safety review
+- retrieval isolation
+- provenance and audit logging
+Implementability score: 0.74
 
-### PSI argues that shared state is the missing sovereignty layer for personal agents
-Summary: Local-first branding is not enough. The strategic shift comes when the user owns a durable shared state layer that tools and chat can both operate on without collapsing into transcript soup.
+### Local-first agent infrastructure is finally credible
+Summary: Gemma 4 plus LiteRT-LM made local-first multimodal agent systems feel like a real engineering option instead of a sacrifice narrative.
 
-Analysis: [sovereignty analysis](2026-04-10/sovereignty.md#psi-argues-that-shared-state-is-the-missing-sovereignty-layer-for-personal-agents)
+Analysis: [sovereignty analysis](2026-04-10/sovereignty.md#local-first-agent-infrastructure-is-finally-credible)
+Durable topic: [Local-First Agents](local-first-agents/local-first-agents.md)
+Core source: [Google Developers Blog: Gemma 4 on the edge](https://developers.googleblog.com/bring-state-of-the-art-agentic-skills-to-the-edge-with-gemma-4/)
+Implementable now:
+- prototype local-first copilots around bounded sensitive workflows
+- route specialized overflow to cloud models only when needed
+- benchmark privacy, latency, and capability tradeoffs directly
+- pair local inference with owned local state storage
+Tools, repos, and methodologies worth exploring:
+- Gemma 4
+- LiteRT-LM
+- local SQLite or event-log state stores
+- hybrid model routing policies
+- device-local eval suites
+Implementability score: 0.88
+
+### Shared state is the missing sovereignty layer for personal agents
+Summary: The user does not really own the agent stack if state is fragmented across chat history, generated apps, and opaque logs; shared artifacts plus governed write-back are the more durable model.
+
+Analysis: [sovereignty analysis](2026-04-10/sovereignty.md#shared-state-is-the-missing-sovereignty-layer-for-personal-agents)
 Durable topic: [Shared-State Agents](shared-state-agents/shared-state-agents.md)
 Core source: [PSI paper](https://arxiv.org/abs/2604.08529v1)
 Implementable now:
-- introduce a local state bus for generated tools and assistants
 - model shared artifacts with typed schemas and ownership metadata
 - expose write-back as governed capabilities
-- treat chat as a view over shared state rather than the state store itself
+- keep audit logs for changes across interfaces
+- start with a local state bus for a small set of tools
 Tools, repos, and methodologies worth exploring:
-- local SQLite or event-log-backed state stores
-- pub/sub patterns for personal tool coordination
+- local SQLite or append-only event logs
 - typed artifact registries
-- audit logs for write-back actions across interfaces
+- pub/sub patterns for personal tool coordination
+- policy checks around state mutation
+- provenance logging
 Implementability score: 0.57

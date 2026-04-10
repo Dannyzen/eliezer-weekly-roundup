@@ -1,83 +1,163 @@
 # Strategy analysis: 2026-04-10
 
-Today's strategic signal is that sovereignty is not just about where the model runs. It is about whether the system can resist hostile instruction channels and whether its internal state belongs to the user or to a pile of disconnected apps. The strongest findings today sharpen those two questions.
+This is the Friday synthesis for the last 7 days of Strategy research in the repo. The strategic picture got clearer this week: sovereignty is no longer just a hosting question. It is about whether the stack has governed execution surfaces, whether safety is evaluated inside the trajectory, whether local-first deployment is operationally credible, and whether the user owns the shared state substrate.
 
-## PIArena turns prompt injection defense into a real comparative evaluation problem
-Source date: 2026-04-09  
+## Governed workflow substrates are becoming the enterprise default
+Source window: 2026-04-05 to 2026-04-08  
+Core source: https://github.com/microsoft/agent-framework  
+Supporting sources:
+- https://opensource.microsoft.com/blog/2026/04/02/introducing-the-agent-governance-toolkit-open-source-runtime-security-for-ai-agents/
+
+The strongest strategic signal this week was that governance is becoming part of the runtime substrate, not a slide deck attached afterward. Microsoft Agent Framework 1.0 made checkpointing, tracing, graph orchestration, and human-in-the-loop control look like default product features. The Agent Governance Toolkit sharpened the message from the security side: runtime control points are becoming a real product category. The market is moving toward governed workflow substrates.
+
+Why it matters:
+- Enterprises will buy execution surfaces they can inspect and interrupt, not just smarter prompts.
+- Framework competition is shifting toward traceability, approvals, policy hooks, and migration paths.
+- The control plane is where budget, risk, and compliance conversations converge.
+
+How it fits into strategy:
+- Governance layer: approvals, checkpointing, and trace visibility become mandatory surfaces.
+- Procurement layer: the question becomes which stack exposes the cleanest control plane.
+- Platform layer: owning runtime semantics is strategically stronger than owning a demo UX.
+
+What is implementable now:
+- treat approval gates, checkpoints, and audit trails as default architecture, not enterprise add-ons
+- compare frameworks on runtime semantics and policy hooks rather than prompt ergonomics alone
+- require trace IDs and replayability for critical workflows
+- design workflows so intervention and rollback are explicit product features
+
+Practical tools, repos, and methodologies worth exploring:
+- Microsoft Agent Framework
+- Agent Governance Toolkit
+- workflow checkpoints and replay logs
+- approval middleware around tool execution
+- policy engines attached to runtime events
+
+Opinionated take:
+The real enterprise agent product is increasingly the governed workflow substrate, not the chat window.
+
+Implementability score: 0.94
+
+## Security evaluation is moving inside the trajectory and across adaptive attacks
+Source window: 2026-04-05 to 2026-04-10  
 Core source: https://arxiv.org/abs/2604.08499v1  
-Durable deep dive: [Runtime Governance](../runtime-governance/runtime-governance.md)
+Supporting sources:
+- https://arxiv.org/abs/2604.07223
+- https://arxiv.org/abs/2604.05432
+- https://arxiv.org/abs/2604.03131
+- https://arxiv.org/abs/2604.02623
 
-PIArena matters because it attacks a problem the field keeps hand-waving. Prompt injection defense claims are usually benchmark-fragile, attack-fragile, or both. This paper introduces a unified and extensible evaluation platform that can integrate attacks and defenses across multiple benchmarks, and it adds a dynamic strategy-based attack that adapts based on defense feedback. The headline is ugly but useful: many defenses that look good in narrow settings generalize poorly across tasks and break under adaptive attacks.
+This week kept making the same uncomfortable point from different angles. Persistent memory is an attack surface. Tool boundaries are security boundaries. Output-only safety grading misses too much. And prompt-injection defenses often collapse under broader or adaptive evaluation. OpenClaw, Back-Reveal, TraceSafe, and PIArena all point the same way: safety is a systems property that has to be evaluated inside execution, across time, and under adaptive pressure.
 
 Why it matters:
-- Security claims without cross-benchmark evaluation are marketing, not governance.
-- Adaptive attackers are the realistic case once agents touch tools, memory, browsing, or external content.
-- Injection resilience is now a platform property. It depends on routing, tool mediation, parsing discipline, and context isolation as much as on the model itself.
+- A guardrail that looks fine on final outputs can still miss dangerous mid-trajectory behavior.
+- Memory and retrieval widen blast radius when the same planning loop can read, steer, and exfiltrate.
+- Security claims without cross-benchmark and adaptive testing are mostly branding.
 
 How it fits into strategy:
-- Governance layer: defenses need to be evaluated as runtime systems, not as isolated prompts.
-- Security layer: adaptive attacks make static prompt hardening look weaker than many teams assume.
-- Procurement layer: platform buyers should ask how a stack behaves under varied tasks and adaptive attack feedback, not just on one curated benchmark.
+- Security layer: runtime mediation matters as much as prompt hardening.
+- Governance layer: policy needs per-step evidence, not only outcome review.
+- Risk layer: long-lived context and tool access amplify failures over time.
 
 What is implementable now:
-- run prompt injection tests across multiple task families instead of one internal demo set
-- include adaptive attacks that mutate based on model or defense behavior
-- measure defense generalization separately from headline attack-block rates
-- combine prompt-layer defenses with tool scoping, retrieval isolation, and policy mediation
+- evaluate safety at the step and trajectory level, not just the response boundary
+- run prompt-injection tests across multiple task families and adaptive attack strategies
+- split trust boundaries between memory, retrieval, planning, and high-risk tools
+- add policy mediation and retrieval isolation instead of relying on prompt defenses alone
 
 What remains conceptual:
-- there is still no standard evaluation suite shared across major agent frameworks
-- many defenses remain too task-specific to transfer cleanly
+- there is still no widely adopted standard benchmark suite shared across major agent stacks
+- most teams still lack the telemetry discipline to make trajectory-aware policy practical
 
 Practical tools, repos, and methodologies worth exploring:
-- benchmark harnesses that pair attacks, defenses, and task families in one matrix
-- tool-scoped execution sandboxes
-- retrieval isolation for untrusted content channels
-- runtime policy engines that can reject or rewrite risky actions even after an injection lands
+- adaptive red-teaming harnesses
+- tool-scoped sandboxes and policy gates
+- trajectory-aware safety review pipelines
+- retrieval isolation for untrusted content
+- memory provenance and audit logging
 
 Opinionated take:
-Prompt injection is not a solved model problem. It is an unsolved systems problem, and PIArena is useful because it makes that failure measurable.
+If a vendor can only show safety at the answer boundary, assume the dangerous behavior is hiding in the path.
 
-Implementability score: 0.76
+Implementability score: 0.74
 
-## PSI argues that shared state is the missing sovereignty layer for personal agents
-Source date: 2026-04-09  
+## Local-first agent infrastructure is finally credible
+Source window: 2026-04-06  
+Core source: https://developers.googleblog.com/bring-state-of-the-art-agentic-skills-to-the-edge-with-gemma-4/  
+Supporting sources:
+- https://github.com/google-ai-edge/LiteRT-LM
+
+Gemma 4 plus LiteRT-LM was the most practical sovereignty signal of the week. It did not solve the whole problem, but it made a specific design path credible: multimodal, on-device, local-first agent systems that keep sensitive context close to the user. That matters because sovereign deployment used to mean accepting a dramatic capability drop. That tradeoff is starting to weaken.
+
+Why it matters:
+- Private context can stay on-device more often by default.
+- Teams can choose lower-latency and more inspectable inference paths without abandoning useful capability.
+- Local-first is moving from ideology to engineering option.
+
+How it fits into strategy:
+- Deployment layer: where the model runs is becoming a real product choice again.
+- Data layer: sensitive multimodal context can remain closer to the source.
+- Stack design: hybrid local-plus-cloud routing becomes a practical default.
+
+What is implementable now:
+- prototype local-first copilots around bounded workflows with sensitive context
+- route only overflow or specialized tasks to cloud models
+- benchmark privacy, latency, and capability tradeoffs instead of assuming cloud-first
+- pair local inference with explicit local state storage and audit trails
+
+Practical tools, repos, and methodologies worth exploring:
+- Gemma 4
+- LiteRT-LM
+- local SQLite or event-log state stores
+- hybrid model routing policies
+- device-local eval suites for bounded agent tasks
+
+Opinionated take:
+Local-first no longer sounds like a purity test. It sounds like a deployment strategy.
+
+Implementability score: 0.88
+
+## Shared state is the missing sovereignty layer for personal agents
+Source window: 2026-04-07 to 2026-04-10  
 Core source: https://arxiv.org/abs/2604.08529v1  
-Durable deep dive: [Shared-State Agents](../shared-state-agents/shared-state-agents.md)
+Supporting sources:
+- https://arxiv.org/abs/2604.04660
+- https://arxiv.org/abs/2604.04901
 
-PSI is the most interesting sovereignty paper today because it reframes the problem correctly. Personal AI tools generated from natural language are not very useful if they stay isolated. PSI proposes a shared-state architecture where generated modules publish current state and write-back affordances to a personal-context bus, letting GUI tools and a generic chat agent operate on the same persistent artifacts. That is a much better frame than treating chat as the whole interface.
+The most conceptually important personal-agent result this week came from PSI, with Springdrift and FileGram reinforcing different parts of the same picture. The user does not really own an agent system if the durable state is fragmented across transcript history, generated mini-apps, and opaque runtime logs. PSI argued for a personal-context bus with shared artifacts and governed write-back. Springdrift made the case for auditable persistence. FileGram showed that local behavioral traces are a real substrate, not just side-channel noise. Together they suggest that sovereignty depends on owning state, not just model weights.
 
 Why it matters:
-- Sovereignty depends on owning the state layer, not just swapping in a local model.
-- Shared state lets later-generated tools integrate into an existing environment instead of creating another silo.
-- A personal context bus is a cleaner foundation for local-first agents than stuffing more context into one giant prompt window.
+- Shared state lets tools and chat operate over the same artifacts instead of producing disconnected silos.
+- Auditable persistence is necessary if long-lived agents are going to hold delegated authority.
+- Behavioral traces can enable powerful personalization, but only if ownership, access, and audit are designed in from the start.
 
 How it fits into strategy:
-- Local-first layer: user state should live in a durable substrate the user controls.
-- Operating-system layer: chat becomes one interface over personal state, not the container for all state.
-- Memory layer: durable artifacts, write-back affordances, and scoped shared context are more governable than transcript-centric memory.
+- State layer: chat should become a view over shared state, not the state container itself.
+- Governance layer: write-back rights need policy, provenance, and conflict handling.
+- Personal OS layer: local-first agents need a bus or substrate that new tools can join.
 
 What is implementable now:
-- introduce a local event or state bus that tools can publish to and subscribe from
 - model shared artifacts explicitly with typed schemas and ownership metadata
-- expose write-back operations as governed capabilities instead of free-form chat side effects
-- treat chat as a view over shared state, not as the state store itself
+- expose write-back as governed capabilities rather than free-form chat side effects
+- keep an audit log for changes across chat and GUI surfaces
+- start with a local state bus or event-log-backed substrate for a small set of tools
 
 What remains conceptual:
-- the paper is based on a limited autobiographical deployment, not broad production evidence
 - interoperability standards for personal context buses are still immature
-- shared state increases the need for policy, provenance, and conflict resolution around writes
+- broad production evidence is thinner here than the conceptual architecture deserves
+- shared state creates conflict-resolution and policy problems that most current assistants do not handle well
 
 Practical tools, repos, and methodologies worth exploring:
-- local SQLite or event-log-backed state stores
-- pub/sub or event-bus patterns for personal tools
-- typed artifact registries with explicit ownership and scope
-- audit logs for write-back actions across chat and GUI surfaces
+- local SQLite or append-only event logs
+- typed artifact registries
+- pub/sub patterns for personal tool coordination
+- policy checks around state mutation
+- provenance logs for cross-interface writes
 
 Opinionated take:
-Most personal agents are not failing because the model is too weak. They are failing because there is no coherent state substrate for the rest of the system to stand on.
+Most personal agents are weak less because the model is bad and more because the state substrate is nonexistent.
 
 Implementability score: 0.57
 
 ## Strategic take
-The sovereignty story is getting sharper. Defensive posture has to be tested against adaptive injection, and local-first ambition has to include ownership of the shared state layer. Otherwise the system is either easy to subvert or too fragmented to matter.
+The strategic stack is getting more legible. Governed runtimes and local-first deployment are implementable now. Trajectory-aware security is implementable with discipline. Shared-state personal agents are promising but still architecture-heavy. That is exactly the distinction the market keeps blurring and builders need to stop blurring.
