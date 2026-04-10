@@ -2,37 +2,40 @@
 
 This index tracks the most recent week with structured content. Each finding includes a short summary, a link into the detailed analysis, a core source, practical ways to explore it now, and an implementability score from 0 to 1.
 
-## Most Recent Week: 2026-04-09
+## Most Recent Week: 2026-04-10
 
-### TraceSafe shows that agent safety has to be tested inside the trajectory, not just at the output boundary
-Summary: The important result is not that another guardrail benchmark exists. It is that mid-trajectory risk detection depends heavily on structured-trace competence, which means most current safety rhetoric is aimed at the wrong surface.
+### PIArena turns prompt injection defense into a real comparative evaluation problem
+Summary: The important result is not that prompt injection is dangerous. We knew that. The useful result is that cross-benchmark and adaptive-attack evaluation now makes weak defenses much harder to hide behind marketing.
 
-Analysis: [sovereignty analysis](2026-04-09/sovereignty.md#tracesafe-shows-that-agent-safety-has-to-be-tested-inside-the-trajectory-not-just-at-the-output-boundary)
+Analysis: [sovereignty analysis](2026-04-10/sovereignty.md#piarena-turns-prompt-injection-defense-into-a-real-comparative-evaluation-problem)
 Durable topic: [Runtime Governance](runtime-governance/runtime-governance.md)
-Core source: [TraceSafe: A Systematic Assessment of LLM Guardrails on Multi-Step Tool-Calling Trajectories](https://arxiv.org/abs/2604.07223)
+Core source: [PIArena paper](https://arxiv.org/abs/2604.08499v1)
 Implementable now:
-- benchmark guardrails against full tool-call traces, not just final model responses
-- validate structured parsing and trace understanding before assuming a safety model can govern agents
-- instrument policy checks at each tool step instead of only pre-prompt and post-response
-- store evidence artifacts that explain why a guardrail flagged or allowed a step
+- test injection defenses across multiple task families and content channels
+- include adaptive attacks that react to defense behavior
+- combine prompt-layer defenses with tool scoping and policy mediation
+- separate defense generalization scores from single-benchmark win rates
 Tools, repos, and methodologies worth exploring:
-- [TraceSafe paper](https://arxiv.org/abs/2604.07223)
-- trace-linked policy engines and approval middleware
-- JSON- and schema-focused robustness tests for guardrails
-Implementability score: 0.74
+- attack/defense benchmark matrices
+- retrieval isolation for untrusted content
+- runtime policy mediation in front of tools
+- adaptive prompt-injection red-teaming
+Implementability score: 0.76
 
-### AgentCity is a useful strategic provocation about multi-principal accountability, not a deployment recipe
-Summary: The paper matters less as a blockchain pitch than as a forcing function. Once agents transact across principals, somebody has to own the chain from policy to action to adjudication.
+### PSI argues that shared state is the missing sovereignty layer for personal agents
+Summary: Local-first branding is not enough. The strategic shift comes when the user owns a durable shared state layer that tools and chat can both operate on without collapsing into transcript soup.
 
-Analysis: [sovereignty analysis](2026-04-09/sovereignty.md#agentcity-is-a-useful-strategic-provocation-about-multi-principal-accountability-not-a-deployment-recipe)
-Core source: [AgentCity: Constitutional Governance for Autonomous Agent Economies via Separation of Power](https://arxiv.org/abs/2604.07007)
+Analysis: [sovereignty analysis](2026-04-10/sovereignty.md#psi-argues-that-shared-state-is-the-missing-sovereignty-layer-for-personal-agents)
+Durable topic: [Shared-State Agents](shared-state-agents/shared-state-agents.md)
+Core source: [PSI paper](https://arxiv.org/abs/2604.08529v1)
 Implementable now:
-- model agent accountability chains explicitly even if you never touch a blockchain
-- separate policy authorship, action execution, and human adjudication into different operational roles
-- require every autonomous agent to resolve to a responsible principal
-- test governance for cross-organization delegation before scale forces the issue
+- introduce a local state bus for generated tools and assistants
+- model shared artifacts with typed schemas and ownership metadata
+- expose write-back as governed capabilities
+- treat chat as a view over shared state rather than the state store itself
 Tools, repos, and methodologies worth exploring:
-- explicit principal binding for agent identities
-- approval and arbitration workflows for inter-agent transactions
-- policy-as-code plus event-sourced audit logs
-Implementability score: 0.24
+- local SQLite or event-log-backed state stores
+- pub/sub patterns for personal tool coordination
+- typed artifact registries
+- audit logs for write-back actions across interfaces
+Implementability score: 0.57

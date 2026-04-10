@@ -3,14 +3,15 @@
 A category-first research repo for tracking what matters in agentic AI and strategy each week.
 
 ## Latest week
-- Week of 2026-04-09: [full synthesis](roundups/2026-04-09.md)
+- Week of 2026-04-10: [full synthesis](roundups/2026-04-10.md)
 - Deep Dive Wednesday winner: [Governed Workflow Substrates](Strategy/governed-workflow-substrates/governed-workflow-substrates.md)
+- New durable topic this week: [Shared-State Agents](Strategy/shared-state-agents/shared-state-agents.md)
 
 ## Current signal
-- Tool definitions are getting richer and more observable, which makes agent orchestration less hand-wavy and easier to govern.
-- Long-term memory is moving away from transcript stuffing toward learned guideline loops that can actually transfer skill.
-- Agent safety evaluation is finally shifting into the trajectory itself instead of pretending the final answer is the whole story.
-- Constitutional governance for open agent economies is still early, but it clarifies how accountability breaks once agents cross organizational boundaries.
+- Runtime and UI contracts are becoming more explicit, which is what makes orchestration testable instead of magical.
+- Honest agent evaluation is moving onto live sites with safe side-effect interception instead of toy browser sandboxes.
+- Prompt injection defense still collapses under broader and more adaptive evaluation than most vendors advertise.
+- Sovereign personal agents need owned shared state, not just a local model and a chat box.
 
 ## Browse by category
 - [AgenticAI](AgenticAI/README.md)

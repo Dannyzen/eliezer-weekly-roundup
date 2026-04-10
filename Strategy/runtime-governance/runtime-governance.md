@@ -96,6 +96,7 @@ Avoid these traps:
 - Springdrift auditable runtime report: https://arxiv.org/abs/2604.04660
 - OpenClaw real-world safety analysis: https://arxiv.org/abs/2604.04759
 - TraceSafe: https://arxiv.org/abs/2604.07223
+- PIArena: https://arxiv.org/abs/2604.08499v1
 - AgentCity: https://arxiv.org/abs/2604.07007
 
 ## New April 2026 additions
@@ -108,6 +109,9 @@ The OpenClaw real-world safety analysis introduces a useful framing: capability,
 
 ### Trace understanding is now a first-class safety requirement
 TraceSafe adds a blunt lesson: a guardrail that cannot parse and reason over tool trajectories is not a serious runtime control. Safety for agents depends on structured-trace competence as much as on refusal behavior or jailbreak resistance.
+
+### Prompt injection has to be tested as a systems problem
+PIArena adds a needed correction. Prompt injection defense is not serious if it only survives one benchmark and one attack style. Runtime governance has to assume adaptive attackers, cross-task transfer, and interaction with tool scopes, retrieval paths, and policy mediation.
 
 ### Accountability chains matter once agents cross principals
 AgentCity is still highly conceptual, but it surfaces a durable governance question: who authored the rule, who executed the action, and who is accountable when agents transact across organizational boundaries? Runtime governance will eventually need an answer to that, even outside blockchain-heavy designs.
