@@ -2,73 +2,57 @@
 
 This index tracks the most recent week with structured content. Each finding includes a short summary, a link into the detailed analysis, a core source, practical ways to explore it now, and an implementability score from 0 to 1.
 
-## Most Recent Week: 2026-04-10
+## Most Recent Week: 2026-04-11
 
-### Runtime contracts are becoming the real agent substrate
-Summary: The biggest implementation story this week was not a new planner. It was frameworks converging on explicit runtime contracts for tools, traces, capabilities, checkpoints, and UI events.
+### Runtime composition is becoming explicit engineering, not framework folklore
+Summary: The strongest implementation signal today was frameworks turning wrapper order, lifecycle hooks, and compaction into explicit runtime controls instead of leaving them as incidental framework behavior.
 
-Analysis: [reasoning analysis](2026-04-10/reasoning.md#runtime-contracts-are-becoming-the-real-agent-substrate)
-Core source: [pydantic/pydantic-ai v1.79.0 release](https://github.com/pydantic/pydantic-ai/releases/tag/v1.79.0)
+Analysis: [reasoning analysis](2026-04-11/reasoning.md#runtime-composition-is-becoming-explicit-engineering-not-framework-folklore)
+Core source: [pydantic/pydantic-ai v1.80.0 release](https://github.com/pydantic/pydantic-ai/releases/tag/v1.80.0)
 Implementable now:
-- standardize tool and runtime event schemas
-- make checkpoints, trace IDs, and approvals part of the default execution path
-- regression-test tool contracts and event consumers across upgrades
-- manage provider clients with explicit lifecycle control
+- make middleware and wrapper order explicit in runtime contracts
+- regression-test safety, tracing, caching, and approval behavior under reordered execution
+- expose lifecycle hooks for policy and telemetry attachment
+- treat compaction as a configurable runtime feature with behavioral tests
 Tools, repos, and methodologies worth exploring:
-- [Microsoft Agent Framework](https://github.com/microsoft/agent-framework)
 - [PydanticAI](https://github.com/pydantic/pydantic-ai)
+- [LangGraph](https://github.com/langchain-ai/langgraph)
+- ordered middleware or capability graphs
+- OpenTelemetry lifecycle spans
+- compaction regression tests
+Implementability score: 0.95
+
+### Replayable agent operations are becoming operator-facing, not hidden internals
+Summary: Checkpoints are maturing from buried implementation detail into an operator surface with branching, lineage, editable replays, and better token accounting.
+
+Analysis: [reasoning analysis](2026-04-11/reasoning.md#replayable-agent-operations-are-becoming-operator-facing-not-hidden-internals)
+Core source: [crewAI 1.14.2a2 release](https://github.com/crewAIInc/crewAI/releases/tag/1.14.2a2)
+Implementable now:
+- store checkpoints in formats you can migrate, diff, and branch safely
+- build lineage views for resumed and repaired runs
+- let operators edit replay inputs instead of forcing cold restarts
+- track reasoning-token and cache effects alongside standard token counts
+Tools, repos, and methodologies worth exploring:
 - [CrewAI](https://github.com/crewAIInc/crewAI)
-- AG-UI-style event contracts
-- OpenTelemetry-backed trace and contract testing
-Implementability score: 0.94
+- [Microsoft Agent Framework](https://github.com/microsoft/agent-framework)
+- [LangGraph](https://github.com/langchain-ai/langgraph)
+- checkpoint diff viewers
+- replay and postmortem runbooks
+Implementability score: 0.90
 
-### Evaluation is finally moving from demo theater to trajectory- and live-site reality
-Summary: Serious evaluation is moving away from polished sandbox demos and toward trace-aware grading plus live-site testing with side-effect interception.
+### Personal-agent evaluation is finally testing preference inference and intervention timing
+Summary: Better benchmarks are exposing the gap between interface competence and trustworthy assistance by testing hidden preferences, proactive intervention, consent negotiation, and restraint.
 
-Analysis: [reasoning analysis](2026-04-10/reasoning.md#evaluation-is-finally-moving-from-demo-theater-to-trajectory--and-live-site-reality)
-Core source: [ClawBench paper](https://arxiv.org/abs/2604.08523v1)
+Analysis: [reasoning analysis](2026-04-11/reasoning.md#personal-agent-evaluation-is-finally-testing-preference-inference-and-intervention-timing)
+Core source: [KnowU-Bench paper](https://arxiv.org/abs/2604.08455v1)
 Implementable now:
-- attach step-level traces to every run
-- grade trajectories for safety and recovery, not just final outputs
-- build live-site or live-like evals with final-action interception
-- create release gates that distinguish sandbox competence from real-world readiness
+- add missing-preference and vague-instruction scenarios to evals
+- test whether agents clarify before acting under ambiguity
+- score proactive systems on post-rejection restraint
+- separate GUI competence from trustworthy assistance in product metrics
 Tools, repos, and methodologies worth exploring:
-- Playwright interception harnesses
-- OpenTelemetry or Langfuse-style tracing
-- trajectory-aware grading rubrics
-- consistency metrics such as pass^k
-Implementability score: 0.86
-
-### Memory is getting more selective and more useful
-Summary: The best memory work this week rejected transcript hoarding and moved toward episodic retrieval plus distilled behavioral guidelines.
-
-Analysis: [reasoning analysis](2026-04-10/reasoning.md#memory-is-getting-more-selective-and-more-useful)
-Core source: [ALTK-Evolve](https://huggingface.co/blog/ibm-research/altk-evolve)
-Implementable now:
-- separate online execution memory from offline consolidation
-- distill reviewed traces into reusable guidelines
-- store episodic artifacts with richer metadata
-- measure transfer and correction quality instead of retrieval hit rate alone
-Tools, repos, and methodologies worth exploring:
-- Langfuse or OpenTelemetry-backed trace stores
-- vector-plus-metadata retrieval
-- rule extraction from reviewed trajectories
-- transfer-oriented memory evaluations
-Implementability score: 0.82
-
-### Synthetic environments and cheaper RL are becoming practical leverage
-Summary: Better agent systems increasingly depend on reusable, verifiable task environments, not just more prompt tweaking.
-
-Analysis: [reasoning analysis](2026-04-10/reasoning.md#synthetic-environments-and-cheaper-rl-are-becoming-practical-leverage)
-Core source: [Gym-Anything paper](https://arxiv.org/abs/2604.06126)
-Implementable now:
-- build narrow synthetic environments around real workflows
-- version environment setup and reset scripts
-- connect environment traces to eval and policy review
-- use synthetic tasks for recovery training, not only happy paths
-Tools, repos, and methodologies worth exploring:
-- containerized task environments
-- Playwright-seeded workflows
-- reproducible reset scripts
-- narrow RL loops with verifiable checks
-Implementability score: 0.72
+- Android emulator eval harnesses
+- hidden-profile benchmarks
+- trajectory judges for consent and restraint
+- intervention-calibration metrics
+Implementability score: 0.79

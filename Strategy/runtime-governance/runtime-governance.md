@@ -113,6 +113,9 @@ TraceSafe adds a blunt lesson: a guardrail that cannot parse and reason over too
 ### Prompt injection has to be tested as a systems problem
 PIArena adds a needed correction. Prompt injection defense is not serious if it only survives one benchmark and one attack style. Runtime governance has to assume adaptive attackers, cross-task transfer, and interaction with tool scopes, retrieval paths, and policy mediation.
 
+### Checkpoint restore paths are part of the governance surface
+Microsoft Agent Framework's Python 1.0.1 release added restricted checkpoint deserialization by default for `FileCheckpointStorage`. That is not a minor patch note. It is a reminder that persisted workflow state is a privileged trust boundary. If a runtime can restore opaque objects from disk, governance has to cover deserialization policy, custom type allowlists, migration, and replay evidence just as seriously as it covers tool permissions.
+
 ### Accountability chains matter once agents cross principals
 AgentCity is still highly conceptual, but it surfaces a durable governance question: who authored the rule, who executed the action, and who is accountable when agents transact across organizational boundaries? Runtime governance will eventually need an answer to that, even outside blockchain-heavy designs.
 
