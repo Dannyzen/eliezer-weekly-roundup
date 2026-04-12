@@ -2,57 +2,40 @@
 
 This index tracks the most recent week with structured content. Each finding includes a short summary, a link into the detailed analysis, a core source, practical ways to explore it now, and an implementability score from 0 to 1.
 
-## Most Recent Week: 2026-04-11
+## Most Recent Week: 2026-04-12
 
-### Runtime composition is becoming explicit engineering, not framework folklore
-Summary: The strongest implementation signal today was frameworks turning wrapper order, lifecycle hooks, and compaction into explicit runtime controls instead of leaving them as incidental framework behavior.
+### Workflow-defined AI coding is becoming a real product category
+Summary: The strongest implementation signal today was not a new model trick. It was open-source tooling pushing teams to encode planning, validation, and delivery as explicit agent workflows instead of trusting one-shot prompting.
 
-Analysis: [reasoning analysis](2026-04-11/reasoning.md#runtime-composition-is-becoming-explicit-engineering-not-framework-folklore)
-Core source: [pydantic/pydantic-ai v1.80.0 release](https://github.com/pydantic/pydantic-ai/releases/tag/v1.80.0)
+Analysis: [reasoning analysis](2026-04-12/reasoning.md#workflow-defined-ai-coding-is-becoming-a-real-product-category)
+Core source: [Archon](https://github.com/coleam00/Archon)
 Implementable now:
-- make middleware and wrapper order explicit in runtime contracts
-- regression-test safety, tracing, caching, and approval behavior under reordered execution
-- expose lifecycle hooks for policy and telemetry attachment
-- treat compaction as a configurable runtime feature with behavioral tests
+- encode planning, implementation, testing, and review as explicit workflow phases
+- require plans, test outputs, and diff summaries as gating artifacts
+- version reusable agent instructions as skills or workflow steps
+- standardize one narrow coding lane before expanding to more autonomy
 Tools, repos, and methodologies worth exploring:
-- [PydanticAI](https://github.com/pydantic/pydantic-ai)
-- [LangGraph](https://github.com/langchain-ai/langgraph)
-- ordered middleware or capability graphs
-- OpenTelemetry lifecycle spans
-- compaction regression tests
-Implementability score: 0.95
+- [Archon](https://github.com/coleam00/Archon)
+- [Multica](https://github.com/multica-ai/multica)
+- YAML-defined agent workflows
+- gated coding pipelines
+- reusable skill libraries
+Implementability score: 0.94
 
-### Replayable agent operations are becoming operator-facing, not hidden internals
-Summary: Checkpoints are maturing from buried implementation detail into an operator surface with branching, lineage, editable replays, and better token accounting.
+### Live-web evaluation is finally measuring what general-purpose assistants actually face
+Summary: Better agent evaluation is shifting from toy sandboxes to live websites with side-effect blocking and multi-layer telemetry, which is much closer to what real assistants will actually fail on.
 
-Analysis: [reasoning analysis](2026-04-11/reasoning.md#replayable-agent-operations-are-becoming-operator-facing-not-hidden-internals)
-Core source: [crewAI 1.14.2a2 release](https://github.com/crewAIInc/crewAI/releases/tag/1.14.2a2)
+Analysis: [reasoning analysis](2026-04-12/reasoning.md#live-web-evaluation-is-finally-measuring-what-general-purpose-assistants-actually-face)
+Core source: [ClawBench paper](https://arxiv.org/abs/2604.08523v1)
 Implementable now:
-- store checkpoints in formats you can migrate, diff, and branch safely
-- build lineage views for resumed and repaired runs
-- let operators edit replay inputs instead of forcing cold restarts
-- track reasoning-token and cache effects alongside standard token counts
+- add final-action interception to evals that touch real services
+- capture browser actions, screenshots, network traces, and model trajectories together
+- score step quality separately from final completion
+- build eval suites from routine but messy real user workflows
 Tools, repos, and methodologies worth exploring:
-- [CrewAI](https://github.com/crewAIInc/crewAI)
-- [Microsoft Agent Framework](https://github.com/microsoft/agent-framework)
-- [LangGraph](https://github.com/langchain-ai/langgraph)
-- checkpoint diff viewers
-- replay and postmortem runbooks
-Implementability score: 0.90
-
-### Personal-agent evaluation is finally testing preference inference and intervention timing
-Summary: Better benchmarks are exposing the gap between interface competence and trustworthy assistance by testing hidden preferences, proactive intervention, consent negotiation, and restraint.
-
-Analysis: [reasoning analysis](2026-04-11/reasoning.md#personal-agent-evaluation-is-finally-testing-preference-inference-and-intervention-timing)
-Core source: [KnowU-Bench paper](https://arxiv.org/abs/2604.08455v1)
-Implementable now:
-- add missing-preference and vague-instruction scenarios to evals
-- test whether agents clarify before acting under ambiguity
-- score proactive systems on post-rejection restraint
-- separate GUI competence from trustworthy assistance in product metrics
-Tools, repos, and methodologies worth exploring:
-- Android emulator eval harnesses
-- hidden-profile benchmarks
-- trajectory judges for consent and restraint
-- intervention-calibration metrics
-Implementability score: 0.79
+- [ClawBench](https://claw-bench.com)
+- [Hugging Face paper page](https://huggingface.co/papers/2604.08523)
+- Playwright-based eval harnesses
+- trace-linked screenshot and HTTP logging
+- failure taxonomies for browsing agents
+Implementability score: 0.86

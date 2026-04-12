@@ -3,17 +3,17 @@
 A category-first research repo for tracking what matters in agentic AI and strategy each week.
 
 ## Latest week
-- Week of 2026-04-11: [Saturday daily scan](roundups/2026-04-11.md)
+- Week of 2026-04-12: [Sunday daily scan](roundups/2026-04-12.md)
 - AgenticAI index: [current implementation signal](AgenticAI/README.md)
 - Strategy index: [current sovereignty and governance signal](Strategy/README.md)
-- Deep Dive Wednesday winner: [Governed Workflow Substrates](Strategy/governed-workflow-substrates/governed-workflow-substrates.md)
+- Deep dive to revisit: [Agent Sandboxing](Strategy/agent-sandboxing/agent-sandboxing.md)
 - Durable governance topic to revisit: [Runtime Governance](Strategy/runtime-governance/runtime-governance.md)
 
 ## Current signal
-- Runtime composition is getting explicit enough to test instead of merely trusting framework defaults.
-- Checkpoint lineage and replay are becoming operator features instead of buried internals.
-- Persisted agent state is now obviously part of the security boundary.
-- Personal assistants still fail more on consent timing and preference uncertainty than on raw GUI mechanics.
+- AI coding is becoming workflow-defined instead of prompt-defined.
+- Live-web agent evaluation is getting realistic enough to expose the actual gap to reliable assistance.
+- Prompt injection defense is maturing into a standing platform-evaluation problem.
+- Coding-agent sandboxing is becoming baseline operations hygiene, not a niche hardening extra.
 
 ## Browse by category
 - [AgenticAI](AgenticAI/README.md)

@@ -2,39 +2,41 @@
 
 This index tracks the most recent week with structured content. Each finding includes a short summary, a link into the detailed analysis, a core source, practical ways to explore it now, and an implementability score from 0 to 1.
 
-## Most Recent Week: 2026-04-11
+## Most Recent Week: 2026-04-12
 
-### Checkpoint persistence is now a security boundary
-Summary: The most useful governance signal today was not a new safety paper. It was runtime frameworks treating checkpoint restore paths as part of the trust model.
+### Prompt injection defense is becoming an evaluation platform problem, not a single-paper claim
+Summary: The most useful governance signal today was a platform view of prompt injection: defenses need to survive adaptive attacks, cross-task transfer, and realistic deployment conditions, not just isolated benchmarks.
 
-Analysis: [sovereignty analysis](2026-04-11/sovereignty.md#checkpoint-persistence-is-now-a-security-boundary)
+Analysis: [sovereignty analysis](2026-04-12/sovereignty.md#prompt-injection-defense-is-becoming-an-evaluation-platform-problem-not-a-single-paper-claim)
 Durable topic: [Runtime Governance](runtime-governance/runtime-governance.md)
-Core source: [microsoft/agent-framework python-1.0.1](https://github.com/microsoft/agent-framework/releases/tag/python-1.0.1)
+Core source: [PIArena paper](https://arxiv.org/abs/2604.08499v1)
 Implementable now:
-- audit checkpoint serialization and restore paths as security-critical code
-- require explicit allowlists or typed schemas for restored state
-- separate trusted framework state from extension state
-- test restore paths with malicious or malformed fixtures
+- build standing prompt-injection regression suites
+- test defenses against adaptive attacks instead of static strings
+- evaluate across multiple tasks, tools, and retrieval settings
+- track graceful degradation versus catastrophic failure
 Tools, repos, and methodologies worth exploring:
-- [Microsoft Agent Framework](https://github.com/microsoft/agent-framework)
-- restore-path security tests
-- schema-first state formats
-- append-only audit logs for checkpoint replay
-Implementability score: 0.91
+- [PIArena](https://arxiv.org/abs/2604.08499v1)
+- [TraceSafe](https://arxiv.org/abs/2604.07223)
+- attack corpora with task-alignment variation
+- policy mediation ahead of tool execution
+Implementability score: 0.84
 
-### Personalization without consent calibration is not trustworthy assistance
-Summary: Personal-agent strategy still overrates task completion and underrates when the assistant asks, when it acts, and when it backs off.
+### Hardened execution isolation is becoming the sane default for coding agents
+Summary: The strongest sovereignty signal today was practical sandboxing: run coding agents inside bounded, inspectable, interruptible environments instead of your main workstation identity.
 
-Analysis: [sovereignty analysis](2026-04-11/sovereignty.md#personalization-without-consent-calibration-is-not-trustworthy-assistance)
-Core source: [KnowU-Bench paper](https://arxiv.org/abs/2604.08455v1)
+Analysis: [sovereignty analysis](2026-04-12/sovereignty.md#hardened-execution-isolation-is-becoming-the-sane-default-for-coding-agents)
+Durable topic: [Agent Sandboxing](agent-sandboxing/agent-sandboxing.md)
+Core source: [code-on-incus](https://github.com/mensfeld/code-on-incus)
 Implementable now:
-- default to clarification under preference uncertainty
-- add rejection-memory and cooldown logic for proactive systems
-- score assistants on restraint and consent quality
-- expose user controls for personalization scope and proactive behavior
+- use dedicated non-admin users or hardened containers for coding agents
+- keep SSH keys, cloud credentials, and host-wide env vars out of the runtime
+- add egress controls for agents that do not need arbitrary outbound access
+- preserve pause, kill, and workspace-inspection controls for incident response
 Tools, repos, and methodologies worth exploring:
-- hidden-profile eval suites
-- intervention-threshold policy engines
-- user-visible permission settings
-- trace review for clarification and consent behavior
-Implementability score: 0.76
+- [code-on-incus](https://github.com/mensfeld/code-on-incus)
+- [Running AI agents in a sandbox](https://oligot.be/posts/ai-sandbox/)
+- Incus or LXC-based workspaces
+- proxy-mediated egress controls
+- protected path policies
+Implementability score: 0.89
