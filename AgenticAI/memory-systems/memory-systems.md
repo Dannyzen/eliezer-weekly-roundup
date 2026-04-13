@@ -101,6 +101,9 @@ Avoid these traps:
 
 ## New April 2026 additions
 
+### Searchable memory compression is becoming installable infrastructure
+claude-mem is useful signal because it turns persistent memory into a product surface an operator can actually use: one-command install, searchable observations, progressive disclosure, explicit privacy exclusions, and inspectable citations. That pushes memory architecture in the right direction. Durable context should behave like governed infrastructure, not hidden prompt residue.
+
 ### Guidelines beat transcripts when the goal is transfer
 ALTK-Evolve sharpens the practical memory lesson of the month: the agent should not keep relearning from raw logs every time. Good memory systems preserve the episode, then promote the parts that proved reusable. That makes memory smaller, more auditable, and more transferable.
 

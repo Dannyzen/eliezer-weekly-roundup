@@ -2,40 +2,59 @@
 
 This index tracks the most recent week with structured content. Each finding includes a short summary, a link into the detailed analysis, a core source, practical ways to explore it now, and an implementability score from 0 to 1.
 
-## Most Recent Week: 2026-04-12
+## Most Recent Week: 2026-04-13
 
-### Workflow-defined AI coding is becoming a real product category
-Summary: The strongest implementation signal today was not a new model trick. It was open-source tooling pushing teams to encode planning, validation, and delivery as explicit agent workflows instead of trusting one-shot prompting.
+### Memory compression is turning into installable workflow infrastructure
+Summary: The strongest implementation signal today was memory becoming a product surface instead of a hidden prompt trick. Installable tooling now captures observations, compresses them, exposes search, and adds privacy controls around what becomes durable.
 
-Analysis: [reasoning analysis](2026-04-12/reasoning.md#workflow-defined-ai-coding-is-becoming-a-real-product-category)
-Core source: [Archon](https://github.com/coleam00/Archon)
+Analysis: [reasoning analysis](2026-04-13/reasoning.md#memory-compression-is-turning-into-installable-workflow-infrastructure)
+Durable topic: [Memory Systems](memory-systems/memory-systems.md)
+Core source: [claude-mem](https://github.com/thedotmack/claude-mem)
 Implementable now:
-- encode planning, implementation, testing, and review as explicit workflow phases
-- require plans, test outputs, and diff summaries as gating artifacts
-- version reusable agent instructions as skills or workflow steps
-- standardize one narrow coding lane before expanding to more autonomy
+- store observations and tool outcomes separately from polished summaries
+- expose searchable memory with citations so operators can inspect evidence
+- add exclusion or privacy controls before durable memory writes
+- use layered retrieval instead of dumping giant transcript summaries back into context
 Tools, repos, and methodologies worth exploring:
-- [Archon](https://github.com/coleam00/Archon)
+- [claude-mem](https://github.com/thedotmack/claude-mem)
+- observation-first memory schemas
+- progressive disclosure retrieval
+- citation-backed memory review
+- policy-gated memory writes
+Implementability score: 0.95
+
+### Managed agents are becoming workflow-native instead of prompt-native
+Summary: The best orchestration signal today is not a new model. It is open-source tooling that treats agents like assignable teammates with runtimes, queues, blockers, and reusable skills.
+
+Analysis: [reasoning analysis](2026-04-13/reasoning.md#managed-agents-are-becoming-workflow-native-instead-of-prompt-native)
+Core source: [Multica](https://github.com/multica-ai/multica)
+Implementable now:
+- route agent work through tickets or issues instead of free-form chat
+- require explicit lifecycle states such as queued, claimed, blocked, and complete
+- turn repeated solutions into reusable skills
+- separate planner, executor, and reviewer responsibilities in the workflow
+Tools, repos, and methodologies worth exploring:
 - [Multica](https://github.com/multica-ai/multica)
-- YAML-defined agent workflows
-- gated coding pipelines
-- reusable skill libraries
-Implementability score: 0.94
+- issue-backed agent queues
+- local-plus-cloud runtime routing
+- reusable skill registries
+- workflow boards with blocker reporting
+Implementability score: 0.93
 
-### Live-web evaluation is finally measuring what general-purpose assistants actually face
-Summary: Better agent evaluation is shifting from toy sandboxes to live websites with side-effect blocking and multi-layer telemetry, which is much closer to what real assistants will actually fail on.
+### Selective escalation is now a benchmarkable agent skill
+Summary: Better agent evaluation is starting to measure whether the system knew it should ask for help, not just whether it got lucky on a fully specified task.
 
-Analysis: [reasoning analysis](2026-04-12/reasoning.md#live-web-evaluation-is-finally-measuring-what-general-purpose-assistants-actually-face)
-Core source: [ClawBench paper](https://arxiv.org/abs/2604.08523v1)
+Analysis: [reasoning analysis](2026-04-13/reasoning.md#selective-escalation-is-now-a-benchmarkable-agent-skill)
+Core source: [HiL-Bench paper](https://arxiv.org/abs/2604.09408)
 Implementable now:
-- add final-action interception to evals that touch real services
-- capture browser actions, screenshots, network traces, and model trajectories together
-- score step quality separately from final completion
-- build eval suites from routine but messy real user workflows
+- add blocker detection and clarification steps to agent workflows
+- score escalation quality separately from raw task completion
+- build escalation templates for missing or contradictory requirements
+- review silent-guess failures as their own failure class
 Tools, repos, and methodologies worth exploring:
-- [ClawBench](https://claw-bench.com)
-- [Hugging Face paper page](https://huggingface.co/papers/2604.08523)
-- Playwright-based eval harnesses
-- trace-linked screenshot and HTTP logging
-- failure taxonomies for browsing agents
-Implementability score: 0.86
+- [HiL-Bench](https://arxiv.org/abs/2604.09408)
+- Ask-F1-style escalation metrics
+- ambiguity-focused eval corpora
+- approval checkpoints for under-specified work
+- escalation postmortems
+Implementability score: 0.78

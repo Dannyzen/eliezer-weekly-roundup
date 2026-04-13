@@ -3,17 +3,17 @@
 A category-first research repo for tracking what matters in agentic AI and strategy each week.
 
 ## Latest week
-- Week of 2026-04-12: [Sunday daily scan](roundups/2026-04-12.md)
+- Week of 2026-04-13: [Monday daily scan](roundups/2026-04-13.md)
 - AgenticAI index: [current implementation signal](AgenticAI/README.md)
 - Strategy index: [current sovereignty and governance signal](Strategy/README.md)
-- Deep dive to revisit: [Agent Sandboxing](Strategy/agent-sandboxing/agent-sandboxing.md)
+- Deep dive to revisit: [Memory Systems](AgenticAI/memory-systems/memory-systems.md)
 - Durable governance topic to revisit: [Runtime Governance](Strategy/runtime-governance/runtime-governance.md)
 
 ## Current signal
-- AI coding is becoming workflow-defined instead of prompt-defined.
-- Live-web agent evaluation is getting realistic enough to expose the actual gap to reliable assistance.
-- Prompt injection defense is maturing into a standing platform-evaluation problem.
-- Coding-agent sandboxing is becoming baseline operations hygiene, not a niche hardening extra.
+- Managed agents are becoming workflow-native instead of prompt-native.
+- Memory systems are becoming installable, inspectable operator infrastructure.
+- Checkpoint restore paths are becoming part of the runtime threat model.
+- Better agent evaluation is starting to score whether the system knew to ask for help.
 
 ## Browse by category
 - [AgenticAI](AgenticAI/README.md)
