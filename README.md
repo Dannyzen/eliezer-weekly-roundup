@@ -3,17 +3,18 @@
 A category-first research repo for tracking what matters in agentic AI and strategy each week.
 
 ## Latest week
-- Week of 2026-04-13: [Monday daily scan](roundups/2026-04-13.md)
+- Week of 2026-04-13: [Tuesday daily scan](roundups/2026-04-14.md)
 - AgenticAI index: [current implementation signal](AgenticAI/README.md)
 - Strategy index: [current sovereignty and governance signal](Strategy/README.md)
-- Deep dive to revisit: [Memory Systems](AgenticAI/memory-systems/memory-systems.md)
-- Durable governance topic to revisit: [Runtime Governance](Strategy/runtime-governance/runtime-governance.md)
+- Deep dive to revisit: [Trajectory-Aware Evaluation](AgenticAI/trajectory-aware-evaluation/trajectory-aware-evaluation.md)
+- Durable governance topic to revisit: [Governed Workflow Substrates](Strategy/governed-workflow-substrates/governed-workflow-substrates.md)
 
 ## Current signal
-- Managed agents are becoming workflow-native instead of prompt-native.
-- Memory systems are becoming installable, inspectable operator infrastructure.
-- Checkpoint restore paths are becoming part of the runtime threat model.
-- Better agent evaluation is starting to score whether the system knew to ask for help.
+- Portable skill stacks are becoming a cross-runtime agent operating system.
+- Tool-use work is converging on common traces and evaluation surfaces.
+- Coding agents need compressed reasoning state, not transcript hoarding.
+- Agent debugging is moving toward trace trees and failure-onset localization.
+- Infrastructure vendors are packaging the runtime substrate for long-lived agents.
 
 ## Browse by category
 - [AgenticAI](AgenticAI/README.md)

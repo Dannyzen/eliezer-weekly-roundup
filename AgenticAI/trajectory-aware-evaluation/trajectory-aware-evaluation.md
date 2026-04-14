@@ -68,6 +68,9 @@ A useful minimum stack now looks like this:
 ### Claw-Eval strengthens the case for trace-first grading
 Claw-Eval is the clearest current argument that final-output grading is not enough. Its three evidence channels and separate completion, safety, and robustness scores make a good default pattern for future agent benchmarks.
 
+### CodeTracer shows that trace structure matters as much as trace capture
+CodeTracer adds an important operational lesson: it is not enough to log everything if the resulting evidence is still too flat to debug. Reconstructing hierarchical state transitions, tagging likely failure onset, and tracing downstream error chains turns observability into something engineers can actually use to recover failed runs.
+
 ### Frameworks are starting to absorb evaluation prerequisites
 Microsoft Agent Framework is strategically relevant here because checkpointing, time travel, and observability reduce the gap between runtime debugging and benchmark evidence collection. The platform layer is beginning to catch up with what evaluation research actually needs.
 

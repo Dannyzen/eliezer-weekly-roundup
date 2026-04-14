@@ -19,6 +19,9 @@ It is this bundle of assumptions becoming normal at the same time:
 
 In other words: orchestration, governance, and observability are fusing into one substrate.
 
+### New April 2026 addition: substrate economics are becoming part of the design argument
+Cloudflare's Agent Cloud expansion adds a complementary signal from the infrastructure side. The market is beginning to package isolate-speed execution, agent sandboxes, and Git-compatible persistent storage as first-class platform primitives. That matters because governed workflows only win once the runtime is cheap enough, safe enough, and durable enough to host many agents at once.
+
 ## Why it matters
 
 This matters because it changes what the "agent stack" actually is.
@@ -115,4 +118,5 @@ Implications:
 
 - AutoGen to Microsoft Agent Framework migration guide: https://learn.microsoft.com/en-us/agent-framework/migration-guide/from-autogen
 - Semantic Kernel to Microsoft Agent Framework migration guide: https://learn.microsoft.com/en-us/agent-framework/migration-guide/from-semantic-kernel
+- Cloudflare Agent Cloud press release: https://www.cloudflare.com/press/press-releases/2026/cloudflare-expands-its-agent-cloud-to-power-the-next-generation-of-agents/
 - Claw-Eval for the evaluation side of the same control-plane shift: https://arxiv.org/abs/2604.06132
