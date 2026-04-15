@@ -3,18 +3,18 @@
 A category-first research repo for tracking what matters in agentic AI and strategy each week.
 
 ## Latest week
-- Week of 2026-04-13: [Tuesday daily scan](roundups/2026-04-14.md)
+- Week of 2026-04-13: [Wednesday daily scan](roundups/2026-04-15.md)
 - AgenticAI index: [current implementation signal](AgenticAI/README.md)
 - Strategy index: [current sovereignty and governance signal](Strategy/README.md)
-- Deep dive to revisit: [Trajectory-Aware Evaluation](AgenticAI/trajectory-aware-evaluation/trajectory-aware-evaluation.md)
-- Durable governance topic to revisit: [Governed Workflow Substrates](Strategy/governed-workflow-substrates/governed-workflow-substrates.md)
+- Deep dive to revisit: [File-as-Bus Workspaces](AgenticAI/file-as-bus-workspaces/file-as-bus-workspaces.md)
+- Durable memory topic to revisit: [Memory Systems](AgenticAI/memory-systems/memory-systems.md)
 
 ## Current signal
-- Portable skill stacks are becoming a cross-runtime agent operating system.
-- Tool-use work is converging on common traces and evaluation surfaces.
-- Coding agents need compressed reasoning state, not transcript hoarding.
-- Agent debugging is moving toward trace trees and failure-onset localization.
-- Infrastructure vendors are packaging the runtime substrate for long-lived agents.
+- Long-horizon agents need durable workspace state more than longer chat handoffs.
+- Cross-session memory gets better when facts keep contextual scene traces.
+- Installable memory infrastructure is more useful than hidden context stuffing.
+- Model routing only becomes real when it optimizes multi-turn trajectories.
+- No separate strategy note was strong enough to justify a fresh category update today.
 
 ## Browse by category
 - [AgenticAI](AgenticAI/README.md)
