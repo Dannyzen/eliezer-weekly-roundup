@@ -4,24 +4,24 @@ This index tracks the most recent week with structured content. Each finding inc
 
 ## Most Recent Week: 2026-04-15
 
-### File-as-Bus workspaces are becoming the practical substrate for long-horizon research agents
-Summary: The strongest implementation signal today is that durable workspace artifacts are beating conversational handoff. Long-horizon agents work better when plans, code, experiments, and summaries are first-class shared state.
+### Deep Dive Wednesday winner: File-as-Bus workspaces are becoming the practical substrate for long-horizon agents
+Summary: The strongest implementation signal this week is that durable workspace artifacts are beating conversational handoff. AiScientist makes the case cleanly: if the run cannot survive through files, logs, plans, and validation artifacts, it is not really built for long-horizon work.
 
-Analysis: [reasoning analysis](2026-04-15/reasoning.md#file-as-bus-workspaces-are-becoming-the-practical-substrate-for-long-horizon-research-agents)
+Analysis: [reasoning analysis](2026-04-15/reasoning.md#deep-dive-wednesday-winner)
 Durable topic: [File-as-Bus Workspaces](file-as-bus-workspaces/file-as-bus-workspaces.md)
 Core source: [Toward Autonomous Long-Horizon Engineering for ML Research](https://arxiv.org/abs/2604.13018)
 Implementable now:
-- move plans, experiment results, and decision logs into durable workspace artifacts
-- keep the orchestrator thin and force specialists to re-ground on files instead of transcript residue
-- use workspace maps and stage summaries to coordinate parallel work
-- permission-scope artifact ownership to reduce multi-agent collisions
+- use a workspace map as the entry point into long-running project state
+- require delegated tasks to name read sets, write sets, and verification targets
+- keep plans, experiment logs, and validation outputs as durable files
+- permission-scope who can edit which artifacts
 Tools, repos, and methodologies worth exploring:
 - [AiScientist](https://github.com/AweAI-Team/AiScientist)
-- file-as-bus workspaces
+- [PaperBench](https://github.com/openai/frontier-evals/tree/main/project/paperbench)
+- [MLE-Bench](https://github.com/openai/mle-bench)
 - artifact-first delegation
-- stage-gated orchestration
-- PaperBench and MLE-Bench Lite loops
-Implementability score: 0.91
+- workspace maps
+Implementability score: 0.92
 
 ### Dual-trace memory is a better design pattern than flat factual memory for cross-session agents
 Summary: Memory quality improves when stored facts carry contextual scene traces. That is the difference between remembering a sentence and remembering when it became true.
@@ -43,7 +43,7 @@ Tools, repos, and methodologies worth exploring:
 Implementability score: 0.83
 
 ### Installable memory infrastructure is beating hidden prompt residue
-Summary: The best open-source memory signal today is not a theory paper. It is `claude-mem`, which treats persistence as observable infrastructure with hooks, search, citations, and privacy controls.
+Summary: The best open-source memory signal this week is not just a theory paper. It is `claude-mem`, which treats persistence as observable infrastructure with hooks, search, citations, and privacy controls.
 
 Analysis: [reasoning analysis](2026-04-15/reasoning.md#installable-memory-infrastructure-is-beating-hidden-prompt-residue)
 Durable topic: [Memory Systems](memory-systems/memory-systems.md)
@@ -61,20 +61,19 @@ Tools, repos, and methodologies worth exploring:
 - operator-facing memory viewers
 Implementability score: 0.95
 
-### Sequential routing is finally treating multi-turn dialogue as a control problem
-Summary: Routing quality should be judged across a conversation, not one turn at a time. The stronger pattern is using sequential policies that trade off cumulative reward against cumulative cost.
+### Many-tier instruction hierarchy is the week’s sharpest agent-safety benchmark signal
+Summary: Real agents receive instructions from many sources with different authority levels. ManyIH shows current models still degrade badly when that hierarchy gets realistic.
 
-Analysis: [reasoning analysis](2026-04-15/reasoning.md#sequential-routing-is-finally-treating-multi-turn-dialogue-as-a-control-problem-instead-of-a-single-turn-leaderboard-trick)
-Core source: [From Myopic Selection to Long-Horizon Awareness: Sequential LLM Routing for Multi-Turn Dialogue](https://arxiv.org/abs/2604.12385)
+Analysis: [reasoning analysis](2026-04-15/reasoning.md#many-tier-instruction-hierarchy-is-the-weeks-sharpest-agent-safety-benchmark-signal)
+Core source: [Many-Tier Instruction Hierarchy in LLM Agents](https://arxiv.org/abs/2604.09443)
 Implementable now:
-- evaluate routing on cumulative trajectory reward instead of isolated turns
-- log dialogue-state features that predict downstream leverage
-- reserve expensive models for turns that change later outcomes
-- train routing policies offline from searched or replayed trajectories
+- annotate instruction sources with authority metadata
+- model privilege outside the raw prompt text when side effects matter
+- test multi-tier conflict resolution instead of only system-vs-user toy cases
+- keep tool and delegated-agent outputs from silently inheriting user authority
 Tools, repos, and methodologies worth exploring:
-- [DialRouter paper](https://arxiv.org/abs/2604.12385)
-- sequential routing policies
-- MCTS-assisted route discovery
-- cost-aware reward shaping
-- offline routing from dialogue traces
-Implementability score: 0.67
+- [ManyIH paper](https://arxiv.org/abs/2604.09443)
+- privilege-annotated prompt assembly
+- multi-tier instruction conflict tests
+- out-of-band policy enforcement
+Implementability score: 0.61

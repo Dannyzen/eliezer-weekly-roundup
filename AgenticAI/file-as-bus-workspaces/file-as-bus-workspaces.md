@@ -1,116 +1,132 @@
 # File-as-Bus Workspaces
 
-File-as-Bus is the most practical design pattern I have seen this week for long-horizon agent work.
+## Overview
 
-The core idea is simple: agents should coordinate through durable project artifacts instead of relying primarily on conversational handoff. Plans, analyses, code, experiment logs, and decision summaries become the shared medium. The orchestrator stays thin and stage-aware. Specialists repeatedly re-ground on the same workspace state.
+The strongest finding from the last 7 days is that durable workspace state is becoming the real substrate for serious long-horizon agents.
 
-## Why this topic matters
+The clearest proof point is **AiScientist**. The paper and repo both make the same argument: long-horizon performance is not mainly blocked on another increment of local reasoning quality. It is blocked on whether the system can preserve evolving project state across comprehension, planning, implementation, experimentation, debugging, and verification without collapsing into transcript soup.
 
-Long-running agents usually fail for boring reasons:
-- conversational context drifts
-- one subagent invents a local plan that never becomes durable
-- later steps cannot tell which artifact is authoritative
-- verification happens against stale assumptions rather than current project state
+The key move is a **permission-scoped File-as-Bus workspace**. The orchestrator keeps only thin control state: stage summaries, directives, and a compact workspace map. Specialists repeatedly re-ground on durable artifacts such as plans, code, experiment logs, paper analyses, and validation outputs. That is a much better default than asking every handoff to compress the project back into chat.
 
-File-as-Bus fixes that by making the workspace itself the communication substrate.
+## Core innovation
 
-## Core source
+The innovation is not “use files.” That part is obvious.
 
-- AiScientist paper: https://arxiv.org/abs/2604.13018
-- AiScientist repo: https://github.com/AweAI-Team/AiScientist
+The real innovation is treating files as the **coordination bus** and the **system of record**:
+- a top-level orchestrator keeps control thin instead of carrying the whole run in active context
+- a compact workspace map gives agents a lightweight index into the run state
+- specialists read only the artifacts relevant to their task instead of inheriting giant conversational residue
+- artifact regions are permission-scoped so multi-agent work does not silently stomp on itself
+- implementation, experimentation, and validation outputs remain inspectable after the run ends
 
-## Core thesis
+This produces what the paper calls **thin control over thick state**.
 
-Thin control over thick state is the right default for long-horizon agents.
+## Why it matters
 
-The orchestrator should own:
-- stage progression
-- delegation boundaries
-- concise summaries
-- workspace map updates
-- verification gates
+This matters because most long-running agents fail for boring infrastructure reasons:
+- important decisions are trapped inside one agent’s short-lived context window
+- later agents cannot tell which plan or result is authoritative
+- experiment evidence is not preserved in a way that changes later decisions
+- verification happens against stale summaries instead of current artifacts
+- operators cannot resume, diff, or audit a run without replaying the whole conversation
 
-The specialists should own:
-- producing or editing bounded artifacts
-- re-grounding on existing files before acting
-- leaving durable outputs instead of conversational residue
+AiScientist shows that this is not a side concern. It is a major performance lever.
 
-## What the pattern looks like
+The paper reports:
+- **33.73 average PaperBench score**
+- **81.82 Any Medal% on MLE-Bench Lite**
+- removing File-as-Bus drops PaperBench by **6.41 points**
+- removing File-as-Bus drops MLE-Bench Lite Any Medal% by **31.82 points**
 
-### 1. Shared workspace map
-Maintain a small durable index answering:
-- what artifacts exist
-- which ones are authoritative
-- what stage the project is in
-- which agents can touch which files
-- what still needs verification
+That is why this won the week over other strong findings. It changes how the runtime should be built, not just how one subsystem should be tuned.
 
-### 2. Artifact-first delegation
-Delegation should name inputs and outputs explicitly.
+## How it fits into the agentic stack
 
-Bad delegation:
-- "continue where we left off"
+### Orchestration layer
+The orchestrator becomes a stage manager, not a giant memory blob. It advances the workflow, assigns tasks, and checks verification gates.
 
-Better delegation:
-- read `plan.md`, `results/ablation-a.md`, and `src/runner.py`
-- update `results/ablation-b.md`
-- do not modify `plan.md`
-- return a short summary of what changed and what failed
+### State layer
+The workspace becomes durable external state with explicit artifact boundaries, instead of chat being the hidden source of truth.
 
-### 3. Thin summaries
-The orchestrator should not carry giant narrative state. It should keep:
-- stage summary
-- current blockers
-- artifact map
-- next verification target
+### Memory layer
+File-as-Bus is a practical form of external memory with provenance, inspectability, and low ambiguity about what changed.
 
-Everything else belongs in files.
+### Observability layer
+Artifact histories, logs, and validation bundles create a much better replay and audit surface than a raw transcript alone.
 
-### 4. Permission-scoped edits
-Parallel agents become much safer when edit authority is explicit.
+### Multi-agent coordination layer
+Permission-scoped write regions and artifact contracts reduce silent interference between specialists.
 
-At minimum distinguish:
-- read-only reference artifacts
-- writable work products
-- controlled summary files updated only by the coordinator
+## What is implementable now
 
-### 5. Verification against artifacts
-Verification should check actual workspace state:
-- do the expected files exist
-- do outputs match the stated stage goal
-- did tests or experiments run
-- are summaries consistent with artifacts
+You can apply the pattern immediately:
+- create a `workspace-map.md` or equivalent manifest that lists authoritative artifacts and their roles
+- require every delegated task to declare a read set, write set, and verification target
+- store plans, experiment results, debugging notes, and decision logs as first-class files
+- keep coordinator summaries short and regenerate them from artifacts when possible
+- separate append-only evidence logs from editable planning files
+- permission-scope which agents may edit summaries, plans, code, or validation outputs
+- finish runs with an exportable validation bundle that can be resumed or audited later
 
-## Why it fits the agentic stack
+## What remains conceptual
 
-- **Orchestration:** stage control becomes cleaner when the coordinator manages artifact flow rather than chat flow.
-- **Memory:** the workspace is durable external memory with clear scope and provenance.
-- **Observability:** file histories are easier to inspect and replay than sprawling conversations.
-- **Multi-agent safety:** artifact boundaries reduce silent overwrite and hidden divergence.
+Several pieces still need deeper work:
+- portable conventions for workspace-map schemas across different agent runtimes
+- cleaner artifact contracts for many-agent parallelism at larger scale
+- stronger automatic verification that summaries faithfully reflect artifact state
+- unification of workspace artifacts, trace telemetry, and benchmark evidence into one evidence plane
+- better patterns for spanning local files, object stores, and remote sandboxes without losing legibility
 
-## What to build now
+## Practical tools, repos, or methodologies worth trying now
 
-- keep a `workspace-map.md` or equivalent manifest for authoritative artifacts
-- require every subagent task to name read set, write set, and verification target
-- store intermediate analyses and experiment evidence as first-class files
-- keep the coordinator summary short and regenerate it from artifacts when possible
-- treat chat as transient control traffic, not the source of truth
+### Tools and repos
+- [AiScientist repo](https://github.com/AweAI-Team/AiScientist)
+- [AiScientist paper](https://arxiv.org/abs/2604.13018)
+- [PaperBench](https://github.com/openai/frontier-evals/tree/main/project/paperbench)
+- [MLE-Bench](https://github.com/openai/mle-bench)
 
-## Tools and methodologies worth trying now
+### Methodologies
+- artifact-first delegation
+- stage-gated orchestration
+- workspace maps as the run index
+- permission-scoped write regions
+- append-only experiment and validation logs
+- progressive disclosure of thick state instead of giant handoff prompts
 
-- AiScientist
-- project manifests or workspace maps
-- stage-gated execution
-- artifact-based delegation contracts
-- repo-local verification checklists
-- benchmark loops like PaperBench and MLE-Bench Lite
+## Implementation complexity
+
+Medium.
+
+This does not require a frontier-model breakthrough. It requires runtime discipline: explicit artifact contracts, workspace indexing, write permissions, verification gates, and operators who treat the filesystem as the coordination surface instead of a byproduct.
 
 ## Implementability score
 
-0.91
+0.92
 
-This is highly implementable because it does not require a frontier model breakthrough. It requires discipline in how the runtime uses the filesystem and how orchestration contracts are written.
+## Strategic implications for Danny's worldview and product thinking
+
+This reinforces a useful worldview update: **the moat is shifting from prompt cleverness to state architecture**.
+
+Implications:
+- the product boundary for serious agents is increasingly the workspace/runtime design, not the chat shell
+- long-horizon systems should be designed around recoverability, inspectability, and artifact continuity
+- multi-agent systems become much more credible when their collaboration is visible on disk instead of hidden in context windows
+- the right question is not “how do I make the agent remember more?” but “what state deserves to become durable, inspectable, and shared?”
+- sovereignty and reliability both improve when project state is legible to operators and portable across runtimes
+
+## Core source links
+
+- AiScientist paper: https://arxiv.org/abs/2604.13018
+- AiScientist HTML paper: https://arxiv.org/html/2604.13018v1
+- AiScientist repo: https://github.com/AweAI-Team/AiScientist
+- AiScientist README: https://raw.githubusercontent.com/AweAI-Team/AiScientist/main/README.md
+
+## Especially useful secondary sources
+
+- Hugging Face Daily Papers listing for the release-week signal: https://huggingface.co/papers
+- PaperBench as the reproduction benchmark context: https://github.com/openai/frontier-evals/tree/main/project/paperbench
+- MLE-Bench as the long-horizon engineering benchmark context: https://github.com/openai/mle-bench
 
 ## Working conclusion
 
-If a long-horizon agent system cannot survive the loss of its chat transcript, it is not really stateful. File-as-Bus is compelling because it moves state into durable, inspectable, operator-friendly artifacts.
+If a long-horizon agent system cannot survive the loss of its transcript, it is not really stateful. File-as-Bus wins because it makes the durable workspace—not the conversation—the thing that remembers.

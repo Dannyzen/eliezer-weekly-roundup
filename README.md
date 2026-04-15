@@ -3,18 +3,18 @@
 A category-first research repo for tracking what matters in agentic AI and strategy each week.
 
 ## Latest week
-- Week of 2026-04-13: [Wednesday daily scan](roundups/2026-04-15.md)
+- Week of 2026-04-13: [Wednesday deep dive](roundups/2026-04-15.md)
+- Deep Dive Wednesday winner: [File-as-Bus Workspaces](AgenticAI/file-as-bus-workspaces/file-as-bus-workspaces.md)
 - AgenticAI index: [current implementation signal](AgenticAI/README.md)
 - Strategy index: [current sovereignty and governance signal](Strategy/README.md)
-- Deep dive to revisit: [File-as-Bus Workspaces](AgenticAI/file-as-bus-workspaces/file-as-bus-workspaces.md)
 - Durable memory topic to revisit: [Memory Systems](AgenticAI/memory-systems/memory-systems.md)
 
 ## Current signal
 - Long-horizon agents need durable workspace state more than longer chat handoffs.
 - Cross-session memory gets better when facts keep contextual scene traces.
 - Installable memory infrastructure is more useful than hidden context stuffing.
-- Model routing only becomes real when it optimizes multi-turn trajectories.
-- No separate strategy note was strong enough to justify a fresh category update today.
+- Instruction authority is becoming a first-class runtime problem.
+- No strategy finding from the last 7 days beat the architectural leverage of the AgenticAI deep-dive winner.
 
 ## Browse by category
 - [AgenticAI](AgenticAI/README.md)
