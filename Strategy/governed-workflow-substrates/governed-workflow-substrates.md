@@ -22,6 +22,9 @@ In other words: orchestration, governance, and observability are fusing into one
 ### New April 2026 addition: substrate economics are becoming part of the design argument
 Cloudflare's Agent Cloud expansion adds a complementary signal from the infrastructure side. The market is beginning to package isolate-speed execution, agent sandboxes, and Git-compatible persistent storage as first-class platform primitives. That matters because governed workflows only win once the runtime is cheap enough, safe enough, and durable enough to host many agents at once.
 
+### New April 2026 addition: runtimes are becoming opinionated operating systems
+Project Think pushes the substrate story one step further. It is not only adding primitives. It is packaging durable execution, persistent sessions, isolated subagents, and sandboxed code execution into an opinionated runtime contract. That matters strategically because the platform that defines the default lifecycle for agents starts to shape how products are built, what they cost, and how governance enters the execution path.
+
 ## Why it matters
 
 This matters because it changes what the "agent stack" actually is.
@@ -43,13 +46,13 @@ Why this beat the week's other strong findings:
 ## How it fits into the strategic layer
 
 ### Runtime layer
-The runtime becomes the real product boundary. Workflow graphs, checkpoints, and replay decide whether an agent can survive contact with production.
+The runtime becomes the real product boundary. Workflow graphs, checkpoints, replay, and wakeable durable identities decide whether an agent can survive contact with production.
 
 ### Observability layer
 OpenTelemetry-class tracing means agent systems can plug into normal engineering observability instead of living inside bespoke demo dashboards.
 
 ### Governance layer
-Middleware and explicit workflow nodes create natural places for approvals, policy checks, exception handling, and kill switches.
+Middleware, session structure, and explicit workflow or runtime nodes create natural places for approvals, policy checks, exception handling, and kill switches.
 
 ### Organizational layer
 This architecture makes agent systems ownable by platform, SRE, and security teams. That is how agents move from experimental novelty to accepted infrastructure.
@@ -62,6 +65,7 @@ You can do these things immediately:
 - attach OpenTelemetry traces to agent steps, tool calls, and handoffs
 - introduce middleware for approval gates, policy injection, and exception rewriting
 - use the migration guides to port one AutoGen or Semantic Kernel flow and measure the operational difference
+- compare runtime vendors on persistence, isolation, and idle-cost behavior instead of only model access
 
 ## What remains conceptual
 
@@ -70,6 +74,7 @@ These pieces are still early:
 - consistent cross-vendor identity and permissions for multi-agent execution
 - a clean unification of runtime traces, benchmark traces, and compliance evidence into one shared evidence plane
 - mature operational patterns for distributed, long-lived agent workflows that span multiple substrates and vendors
+- clean migration paths between opinionated agent operating environments
 
 ## Practical tools, repos, or methodologies worth trying now
 
@@ -79,6 +84,8 @@ These pieces are still early:
 - [python-1.0.0 release notes](https://github.com/microsoft/agent-framework/releases/tag/python-1.0.0)
 - [AutoGen migration guide](https://learn.microsoft.com/en-us/agent-framework/migration-guide/from-autogen)
 - [Semantic Kernel migration guide](https://learn.microsoft.com/en-us/agent-framework/migration-guide/from-semantic-kernel)
+- [Project Think](https://blog.cloudflare.com/project-think/)
+- [Cloudflare Agents docs](https://developers.cloudflare.com/agents/index.md)
 
 ### Methodologies
 - workflow-first design instead of prompt-first design
@@ -86,12 +93,13 @@ These pieces are still early:
 - telemetry by default, not as a postmortem add-on
 - policy middleware before tool execution
 - migration spikes that compare operational behavior, not just developer ergonomics
+- runtime-first vendor evaluation
 
 ## Implementation complexity
 
 Medium.
 
-The framework is implementable now, but the real work is architectural discipline. Teams need to model workflows explicitly, decide where checkpoints live, define middleware boundaries, and connect telemetry to existing operations practices. That is real engineering, but it is ordinary engineering. It does not require a research breakthrough.
+The framework and runtime signals are implementable now, but the real work is architectural discipline. Teams need to model workflows explicitly, decide where checkpoints live, define middleware boundaries, connect telemetry to existing operations practices, and choose a runtime substrate whose persistence and isolation model fits their risk envelope. That is real engineering, but it is ordinary engineering. It does not require a research breakthrough.
 
 ## Implementability score
 
@@ -105,7 +113,7 @@ Implications:
 - products should be designed as governable runtimes, not clever wrappers around a model
 - if a workflow cannot be traced, resumed, inspected, and policy-mediated, it is not ready to own meaningful work
 - the right abstraction for many products is not "an agent" but "a workflow substrate with agentic steps"
-- vendor launches should be read as category tells: when Microsoft bundles graph orchestration, middleware, and migration guides into a stable release, it is signaling what enterprises will soon expect from everyone else
+- vendor launches should be read as category tells: when Microsoft and Cloudflare bundle orchestration, persistence, isolation, and migration or base-class ergonomics into stable products, they are signaling what enterprises will soon expect from everyone else
 - the strategic opportunity is to build products that feel native to reliability, governance, and sovereignty constraints instead of treating them as enterprise afterthoughts
 
 ## Core source links
@@ -113,10 +121,12 @@ Implications:
 - Microsoft Agent Framework repository: https://github.com/microsoft/agent-framework
 - Microsoft Agent Framework overview docs: https://learn.microsoft.com/en-us/agent-framework/overview/agent-framework-overview
 - Python 1.0.0 release: https://github.com/microsoft/agent-framework/releases/tag/python-1.0.0
+- Project Think: https://blog.cloudflare.com/project-think/
 
 ## Especially useful secondary sources
 
 - AutoGen to Microsoft Agent Framework migration guide: https://learn.microsoft.com/en-us/agent-framework/migration-guide/from-autogen
 - Semantic Kernel to Microsoft Agent Framework migration guide: https://learn.microsoft.com/en-us/agent-framework/migration-guide/from-semantic-kernel
 - Cloudflare Agent Cloud press release: https://www.cloudflare.com/press/press-releases/2026/cloudflare-expands-its-agent-cloud-to-power-the-next-generation-of-agents/
+- Cloudflare Agents docs: https://developers.cloudflare.com/agents/index.md
 - Claw-Eval for the evaluation side of the same control-plane shift: https://arxiv.org/abs/2604.06132

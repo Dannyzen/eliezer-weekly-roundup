@@ -3,18 +3,18 @@
 A category-first research repo for tracking what matters in agentic AI and strategy each week.
 
 ## Latest week
-- Week of 2026-04-13: [Wednesday deep dive](roundups/2026-04-15.md)
-- Deep Dive Wednesday winner: [File-as-Bus Workspaces](AgenticAI/file-as-bus-workspaces/file-as-bus-workspaces.md)
-- AgenticAI index: [current implementation signal](AgenticAI/README.md)
-- Strategy index: [current sovereignty and governance signal](Strategy/README.md)
+- Week of 2026-04-13: [Thursday daily scan](roundups/2026-04-16.md)
+- Fresh AgenticAI signal: [current implementation signal](AgenticAI/README.md)
+- Fresh Strategy signal: [current sovereignty and governance signal](Strategy/README.md)
+- Durable topic to revisit: [Embeddable Agent Kernels](AgenticAI/embeddable-agent-kernels/embeddable-agent-kernels.md)
 - Durable memory topic to revisit: [Memory Systems](AgenticAI/memory-systems/memory-systems.md)
 
 ## Current signal
-- Long-horizon agents need durable workspace state more than longer chat handoffs.
-- Cross-session memory gets better when facts keep contextual scene traces.
-- Installable memory infrastructure is more useful than hidden context stuffing.
-- Instruction authority is becoming a first-class runtime problem.
-- No strategy finding from the last 7 days beat the architectural leverage of the AgenticAI deep-dive winner.
+- Cross-domain memory gets better when agents retrieve abstract guidance instead of raw traces.
+- Coding agents are starting to look like embeddable kernels with multiple client shells.
+- Tool-agent benchmarks are getting more useful when they score execution quality, not just final answers.
+- Agent platforms are hardening into opinionated runtimes with persistence, subagents, and sandboxed execution built in.
+- The control plane keeps moving downward into the runtime substrate.
 
 ## Browse by category
 - [AgenticAI](AgenticAI/README.md)

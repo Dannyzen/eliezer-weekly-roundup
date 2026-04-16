@@ -6,13 +6,14 @@ The durable pattern across recent work is simple: agents become more useful when
 
 ## Why this topic now
 
-The April 2026 wave of memory work is pushing six ideas into focus:
+The April 2026 wave of memory work is pushing seven ideas into focus:
 - **MemMachine** argues that episodic memory should preserve full conversational evidence rather than summarize too aggressively.
 - **FileGram** argues that personalization should be grounded in behavioral traces from local file activity, not just dialogue.
 - **Springdrift** argues that persistent memory must be embedded in an auditable runtime with explicit recovery and policy controls.
 - **ALTK-Evolve** argues that the real goal is not replaying transcripts but extracting reusable guidelines, policies, and SOPs from trajectories.
 - **Drawing on Memory** argues that durable facts should be paired with contextual scene traces so temporal reasoning and update tracking survive across sessions.
 - **claude-mem** shows that installable memory infrastructure with search, citations, and progressive disclosure is a more practical product shape than hidden context injection.
+- **Memory Transfer Learning** shows that memory becomes much more valuable when distilled lessons transfer across domains instead of staying trapped inside one benchmark.
 
 Core sources:
 - MemMachine: https://arxiv.org/abs/2604.04853
@@ -22,6 +23,7 @@ Core sources:
 - ALTK-Evolve paper: https://arxiv.org/abs/2603.10600
 - Drawing on Memory: https://arxiv.org/abs/2604.12948
 - claude-mem: https://github.com/thedotmack/claude-mem
+- Memory Transfer Learning: https://arxiv.org/abs/2604.14004
 
 ## Core thesis
 
@@ -35,6 +37,7 @@ The right questions are:
 - what contextual trace should travel with a stored fact?
 - how should retrieval adapt to the query?
 - what policy should govern writes, reads, and profile formation?
+- what abstraction level makes a memory transferable to new tasks?
 
 If those questions are ignored, memory turns into a lossy, leaky mess that is simultaneously unhelpful and unsafe.
 
@@ -89,7 +92,10 @@ Run offline passes that convert repeated trajectory patterns into concise guidel
 ### Store contextual traces with durable facts
 A durable memory entry should not be only a proposition. Pair it with a lightweight scene trace: where it came from, when it was learned, and what local situation made it relevant.
 
-### Measure memory by continuity, not vibes
+### Promote memories at the abstraction level that transfers
+Raw traces are useful for audit and close-match replay, but cross-domain reuse depends on extracting higher-level workflows, validation routines, and generalizable insights.
+
+### Measure memory by continuity, transfer, and reversibility
 Useful metrics include:
 - factual continuity across sessions
 - profile accuracy over time
@@ -109,8 +115,12 @@ Avoid these traps:
 - assuming bigger context windows remove the need for memory design
 - confusing transcript replay with actual learning
 - writing decontextualized facts and hoping retrieval can recover the missing situation later
+- promoting overly specific low-level traces as if they will transfer cleanly to new task domains
 
 ## New April 2026 additions
+
+### Cross-domain transfer favors insight over trace replay
+Memory Transfer Learning sharpens the promotion problem. The memory object that transfers best is usually not the full episode and not even the task-specific summary. It is the reusable insight: validation habits, safe-editing routines, workflow constraints, and debugging patterns that survive a change of benchmark.
 
 ### Searchable memory compression is becoming installable infrastructure
 `claude-mem` is useful signal because it turns persistent memory into a product surface an operator can actually use: one-command install, searchable observations, progressive disclosure, explicit privacy exclusions, and inspectable citations. That pushes memory architecture in the right direction. Durable context should behave like governed infrastructure, not hidden prompt residue.
@@ -126,4 +136,4 @@ The most robust pattern is a two-loop design: the online loop acts, while a back
 
 ## Working conclusion
 
-The next generation of agents will be differentiated less by how eloquently they speak and more by how faithfully they remember. The winning systems will preserve evidence, retrieve context adaptively, promote only the right lessons into durable guidance, attach enough context for updates and temporal reasoning, and keep the most sensitive memory close to the user and under policy control.
+The next generation of agents will be differentiated less by how eloquently they speak and more by how faithfully they remember. The winning systems will preserve evidence, retrieve context adaptively, promote only the right lessons into durable guidance, attach enough context for updates and temporal reasoning, choose abstraction levels that transfer across tasks, and keep the most sensitive memory close to the user and under policy control.

@@ -40,6 +40,12 @@ Use multiple runs per task. A system that passes once in three attempts is not e
 ### 5. Separate scoring dimensions
 Completion, safety, and robustness should not be collapsed into one opaque metric.
 
+### 6. Parameter-level execution quality
+For tool-heavy work, many failures come from wrong arguments, wrong thresholds, and wrong target selection rather than bad intent or bad final prose. Good evals score those execution details directly.
+
+### 7. Modality-aware verification
+When outputs are visual, spatial, interactive, or otherwise world-facing, the grader should verify the artifact in the right modality instead of reducing everything to text matching.
+
 ## Practical build pattern
 
 A useful minimum stack now looks like this:
@@ -48,6 +54,7 @@ A useful minimum stack now looks like this:
 3. explicit scoring rubrics for completion, safety, and robustness
 4. repeated-trial metrics such as Pass@k and stricter consistency-oriented variants
 5. dashboards that let engineers inspect failures by trajectory, not only by top-line score
+6. environment-aware checks for parameter correctness and output fidelity
 
 ## Tools and methodologies worth exploring now
 
@@ -56,14 +63,20 @@ A useful minimum stack now looks like this:
 - rubric-based evaluators linked to traces rather than final outputs only
 - perturbation testing to measure recovery and consistency under noise
 - benchmark harnesses that preserve evidence artifacts for later replay
+- parameter-level execution scoring
+- modality-aware verifiers for visual or structured outputs
 
 ## Representative sources
 
 - Claw-Eval: Toward Trustworthy Evaluation of Autonomous Agents: https://arxiv.org/abs/2604.06132
 - Microsoft Agent Framework repository, especially its checkpointing and observability features: https://github.com/microsoft/agent-framework
 - OpenClaw real-world safety analysis: https://arxiv.org/abs/2604.04759
+- GeoAgentBench: https://arxiv.org/abs/2604.13888
 
 ## New April 2026 additions
+
+### GeoAgentBench shows why execution metrics need to reach below the final artifact
+GeoAgentBench is domain-specific on paper and generally useful in practice. Its main lesson is that tool-augmented agents often fail on the execution substrate: wrong parameters, weak recovery logic, and outputs that need modality-aware verification. Parameter Execution Accuracy is a good pattern because it grades what the agent actually did to the environment, not just whether it wrote a plausible answer afterward.
 
 ### Claw-Eval strengthens the case for trace-first grading
 Claw-Eval is the clearest current argument that final-output grading is not enough. Its three evidence channels and separate completion, safety, and robustness scores make a good default pattern for future agent benchmarks.
@@ -76,4 +89,4 @@ Microsoft Agent Framework is strategically relevant here because checkpointing, 
 
 ## Working conclusion
 
-Trajectory-aware evaluation should become default infrastructure for any team building autonomous or semi-autonomous agents. If the run cannot be replayed, inspected, and scored across safety and robustness dimensions, improvement efforts will stay shallow and trust claims will stay unearned.
+Trajectory-aware evaluation should become default infrastructure for any team building autonomous or semi-autonomous agents. If the run cannot be replayed, inspected, and scored across safety, robustness, parameter correctness, and environment fidelity dimensions, improvement efforts will stay shallow and trust claims will stay unearned.
