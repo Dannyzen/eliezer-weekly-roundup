@@ -3,18 +3,18 @@
 A category-first research repo for tracking what matters in agentic AI and strategy each week.
 
 ## Latest week
-- Week of 2026-04-13: [Thursday daily scan](roundups/2026-04-16.md)
+- Week ending 2026-04-17: [Friday synthesis](roundups/2026-04-17.md)
 - Fresh AgenticAI signal: [current implementation signal](AgenticAI/README.md)
 - Fresh Strategy signal: [current sovereignty and governance signal](Strategy/README.md)
-- Durable topic to revisit: [Embeddable Agent Kernels](AgenticAI/embeddable-agent-kernels/embeddable-agent-kernels.md)
-- Durable memory topic to revisit: [Memory Systems](AgenticAI/memory-systems/memory-systems.md)
+- Durable topic to revisit: [File-as-Bus Workspaces](AgenticAI/file-as-bus-workspaces/file-as-bus-workspaces.md)
+- Durable strategy topic to revisit: [Runtime Governance](Strategy/runtime-governance/runtime-governance.md)
 
 ## Current signal
-- Cross-domain memory gets better when agents retrieve abstract guidance instead of raw traces.
-- Coding agents are starting to look like embeddable kernels with multiple client shells.
-- Tool-agent benchmarks are getting more useful when they score execution quality, not just final answers.
-- Agent platforms are hardening into opinionated runtimes with persistence, subagents, and sandboxed execution built in.
-- The control plane keeps moving downward into the runtime substrate.
+- Reusable procedure is becoming a stronger asset than prompt residue.
+- Memory is graduating into an explicit subsystem with promotion, compression, and provenance.
+- The only benchmarks worth trusting now are the ones that watch real execution.
+- Runtime governance is moving into checkpoint restore, sandboxing, and instruction precedence.
+- The next platform war is about runtime operating systems for agents, not just model access.
 
 ## Browse by category
 - [AgenticAI](AgenticAI/README.md)
