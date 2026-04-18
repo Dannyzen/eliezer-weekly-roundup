@@ -2,80 +2,60 @@
 
 This index tracks the most recent week with structured content. Each finding includes a short summary, a link into the detailed analysis, a core source, practical ways to explore it now, and an implementability score from 0 to 1.
 
-## Most Recent Week: 2026-04-17
+## Most Recent Week: 2026-04-18
 
-### Portable procedure stacks are replacing prompt-native agent products
-Summary: The strongest implementation pattern of the week is that reusable procedure is becoming the durable unit of leverage. Artifact-first workspaces, skill packs, and harnessed workflows are beating prompt-only agent sessions.
+### Open mobile-agent training is finally getting an open recipe
+Summary: OpenMobile is the first strong sign in this window that open mobile-agent work can compete by owning the data recipe. Exploration-built environment memory, grounded task synthesis, and learner/expert rollout switching matter more than another isolated model release.
 
-Analysis: [reasoning analysis](2026-04-17/reasoning.md#portable-procedure-stacks-are-replacing-prompt-native-agent-products)
-Durable topic: [File-as-Bus Workspaces](file-as-bus-workspaces/file-as-bus-workspaces.md)
-Core source: [Toward Autonomous Long-Horizon Engineering for ML Research](https://arxiv.org/abs/2604.13018)
+Analysis: [reasoning analysis](2026-04-18/reasoning.md#open-mobile-agent-training-is-finally-getting-an-open-recipe)
+Core source: [OpenMobile](https://arxiv.org/abs/2604.15093)
 Implementable now:
-- make files, manifests, and validation artifacts the shared bus for long-running agent work
-- package workflows as reusable skills or harnesses with explicit gates
-- re-ground delegated agents on durable project artifacts instead of huge prompt history
-- expose task and blocker state as operator-visible workflow state
+- build environment memory from exploration before generating tasks
+- synthesize grounded mobile instructions from app functionality maps instead of one-off demos
+- keep learner/expert recovery traces in the training mix
+- publish overlap checks for synthetic task corpora
 Tools, repos, and methodologies worth exploring:
-- [AweAI-Team/AiScientist](https://github.com/AweAI-Team/AiScientist)
-- [obra/superpowers](https://github.com/obra/superpowers)
-- [coleam00/Archon](https://github.com/coleam00/Archon)
-- [multica-ai/multica](https://github.com/multica-ai/multica)
-- artifact-first delegation
-- skill-packaged workflows
-Implementability score: 0.94
+- [OpenMobile project page](https://njucckevin.github.io/openmobile/)
+- [njucckevin/OpenMobile-Code](https://github.com/njucckevin/OpenMobile-Code)
+- [OpenMobile dataset](https://huggingface.co/datasets/cckevinn/OpenMobile-Data)
+- exploration-built environment memory
+- learner/expert policy switching
+Implementability score: 0.87
 
-### Memory is becoming an explicit subsystem with promotion, compression, and transfer
-Summary: The useful memory pattern is no longer “store more context.” It is “promote better lessons.” Cross-domain transfer and operator-visible memory tooling both point toward memory as an engineered subsystem.
+### Verifiable environments are becoming training infrastructure, not just eval wrappers
+Summary: EcomRLVE-GYM shows the right pattern for tool-using agents: procedural environments, adaptive difficulty, algorithmic reward functions, and hallucination checks that can train and test the same stack.
 
-Analysis: [reasoning analysis](2026-04-17/reasoning.md#memory-is-becoming-an-explicit-subsystem-with-promotion-compression-and-transfer)
-Durable topic: [Memory Systems](memory-systems/memory-systems.md)
-Core source: [Memory Transfer Learning](https://arxiv.org/abs/2604.14004)
-Implementable now:
-- promote validation routines and debugging heuristics into first-class memory objects
-- keep compressed insights and raw traces in different tiers
-- require citations or provenance on recalled memories
-- measure transfer gain across task families
-Tools, repos, and methodologies worth exploring:
-- [MemoryTransferLearning code](https://github.com/KangsanKim07/MemoryTransferLearning)
-- [thedotmack/claude-mem](https://github.com/thedotmack/claude-mem)
-- [Dual-trace memory paper](https://arxiv.org/abs/2604.12948)
-- insight-first retrieval
-- memory promotion pipelines
-Implementability score: 0.91
-
-### Execution-first evaluation is replacing answer-only benchmarking
-Summary: Benchmarks are finally becoming useful when they watch tool execution, parameter quality, recovery loops, and output verification instead of only grading the final answer.
-
-Analysis: [reasoning analysis](2026-04-17/reasoning.md#execution-first-evaluation-is-replacing-answer-only-benchmarking)
+Analysis: [reasoning analysis](2026-04-18/reasoning.md#verifiable-environments-are-becoming-training-infrastructure-not-just-eval-wrappers)
 Durable topic: [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md)
-Core source: [GeoAgentBench](https://arxiv.org/abs/2604.13888)
+Core source: [Ecom-RLVE](https://huggingface.co/blog/ecom-rlve)
 Implementable now:
-- add parameter-level execution metrics to internal evals
-- benchmark recovery loops explicitly
-- verify outputs in the modality that matters
-- normalize tool traces into a common event schema
+- score tuple correctness, efficiency, and hallucination separately
+- build adaptive curricula instead of static benchmark-only task sets
+- reuse verifiable environments as post-training regression suites
+- prefer programmatic reward functions over judge-only scoring where possible
 Tools, repos, and methodologies worth exploring:
-- [ClawBench](https://arxiv.org/abs/2604.08523v1)
-- [Trace-tree debugging paper](https://arxiv.org/abs/2604.11641)
-- [Tool-use representation paper](https://arxiv.org/abs/2604.11557)
-- execution-sandbox eval harnesses
-- plan-versus-react scorecards
-Implementability score: 0.82
+- [owlgebra-ai/EcomRLVE-Gym](https://github.com/owlgebra-ai/EcomRLVE-Gym)
+- verifiable-reward environment design
+- adaptive curriculum scheduling
+- tuple-level grounded reward functions
+- retrieval-bound hallucination checks
+Implementability score: 0.90
 
-### Embeddable agent kernels are the right product shape for coding agents
-Summary: Sema Code’s main contribution is architectural: the agent core should be reusable infrastructure that multiple client surfaces can drive, not intelligence trapped in one interface.
+### Trajectory safety evaluation is becoming runtime-specific diagnosis
+Summary: ATBench-Claw and ATBench-CodeX make the key safety point of the day: the benchmark framework can be shared, but the taxonomy has to match the runtime’s shells, tools, sessions, approvals, and external-action surface.
 
-Analysis: [reasoning analysis](2026-04-17/reasoning.md#embeddable-agent-kernels-are-the-right-product-shape-for-coding-agents)
-Durable topic: [Embeddable Agent Kernels](embeddable-agent-kernels/embeddable-agent-kernels.md)
-Core source: [Sema Code](https://arxiv.org/abs/2604.11045)
+Analysis: [reasoning analysis](2026-04-18/reasoning.md#trajectory-safety-evaluation-is-becoming-runtime-specific-diagnosis)
+Durable topic: [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md)
+Core source: [ATBench-Claw and ATBench-CodeX](https://arxiv.org/abs/2604.14858)
 Implementable now:
-- separate the reasoning kernel from IDE, CLI, and messaging surfaces
-- centralize permissions, task state, and long-running execution in the shared core
-- expose typed APIs instead of burying behavior inside one product shell
-- keep clients thin and replaceable
+- define runtime-specific safety taxonomies before writing the next eval suite
+- preserve trace structure for diagnosis instead of only pass/fail outcomes
+- separate completion, safety, and diagnosis outputs in reports
+- score approval-boundary violations and external actions explicitly
 Tools, repos, and methodologies worth exploring:
-- [sema-code-core](https://github.com/midea-ai/sema-code-core)
-- [sema-code-vscode-extension](https://github.com/midea-ai/sema-code-vscode-extension)
-- kernel-plus-client architecture
-- MCP and skills as extension surfaces
-Implementability score: 0.88
+- [Claw-Eval](https://arxiv.org/abs/2604.06132)
+- [OpenClaw safety analysis](https://arxiv.org/abs/2604.04759)
+- runtime-specific safety taxonomies
+- trajectory-diagnostic benchmark design
+- approval-boundary-aware evals
+Implementability score: 0.81

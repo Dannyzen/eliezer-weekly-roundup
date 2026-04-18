@@ -65,6 +65,8 @@ A useful minimum stack now looks like this:
 - benchmark harnesses that preserve evidence artifacts for later replay
 - parameter-level execution scoring
 - modality-aware verifiers for visual or structured outputs
+- adaptive curricula that keep environments near the policy frontier
+- runtime-specific safety taxonomies for different execution surfaces
 
 ## Representative sources
 
@@ -72,6 +74,8 @@ A useful minimum stack now looks like this:
 - Microsoft Agent Framework repository, especially its checkpointing and observability features: https://github.com/microsoft/agent-framework
 - OpenClaw real-world safety analysis: https://arxiv.org/abs/2604.04759
 - GeoAgentBench: https://arxiv.org/abs/2604.13888
+- Ecom-RLVE: https://huggingface.co/blog/ecom-rlve
+- ATBench-Claw and ATBench-CodeX: https://arxiv.org/abs/2604.14858
 
 ## New April 2026 additions
 
@@ -84,9 +88,15 @@ Claw-Eval is the clearest current argument that final-output grading is not enou
 ### CodeTracer shows that trace structure matters as much as trace capture
 CodeTracer adds an important operational lesson: it is not enough to log everything if the resulting evidence is still too flat to debug. Reconstructing hierarchical state transitions, tagging likely failure onset, and tracing downstream error chains turns observability into something engineers can actually use to recover failed runs.
 
+### EcomRLVE-GYM turns verifiable environments into reusable agent infrastructure
+EcomRLVE-GYM adds a useful escalation of the trajectory-aware-eval idea. The environment is not only the place where you score the agent after the fact. It is also the curriculum, the verifier, and the regression harness. Procedural generation, adaptive difficulty, and tuple-level reward computation make the benchmark reusable as training infrastructure.
+
+### ATBench shows safety eval has to adapt to the runtime surface
+ATBench-Claw and ATBench-CodeX make an important design correction: the benchmark pipeline can stay shared while the safety taxonomy changes with the runtime. Shells, patches, approvals, sessions, skills, and external actions create different harm surfaces, so the taxonomy has to move with the execution setting.
+
 ### Frameworks are starting to absorb evaluation prerequisites
 Microsoft Agent Framework is strategically relevant here because checkpointing, time travel, and observability reduce the gap between runtime debugging and benchmark evidence collection. The platform layer is beginning to catch up with what evaluation research actually needs.
 
 ## Working conclusion
 
-Trajectory-aware evaluation should become default infrastructure for any team building autonomous or semi-autonomous agents. If the run cannot be replayed, inspected, and scored across safety, robustness, parameter correctness, and environment fidelity dimensions, improvement efforts will stay shallow and trust claims will stay unearned.
+Trajectory-aware evaluation should become default infrastructure for any team building autonomous or semi-autonomous agents. If the run cannot be replayed, inspected, and scored across safety, robustness, parameter correctness, environment fidelity, and runtime-specific harm dimensions, improvement efforts will stay shallow and trust claims will stay unearned.

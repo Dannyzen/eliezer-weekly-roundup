@@ -3,18 +3,18 @@
 A category-first research repo for tracking what matters in agentic AI and strategy each week.
 
 ## Latest week
-- Week ending 2026-04-17: [Friday synthesis](roundups/2026-04-17.md)
+- Week ending 2026-04-18: [Daily scan](roundups/2026-04-18.md)
 - Fresh AgenticAI signal: [current implementation signal](AgenticAI/README.md)
 - Fresh Strategy signal: [current sovereignty and governance signal](Strategy/README.md)
-- Durable topic to revisit: [File-as-Bus Workspaces](AgenticAI/file-as-bus-workspaces/file-as-bus-workspaces.md)
+- Durable topic to revisit: [Trajectory-Aware Evaluation](AgenticAI/trajectory-aware-evaluation/trajectory-aware-evaluation.md)
 - Durable strategy topic to revisit: [Runtime Governance](Strategy/runtime-governance/runtime-governance.md)
 
 ## Current signal
-- Reusable procedure is becoming a stronger asset than prompt residue.
-- Memory is graduating into an explicit subsystem with promotion, compression, and provenance.
-- The only benchmarks worth trusting now are the ones that watch real execution.
-- Runtime governance is moving into checkpoint restore, sandboxing, and instruction precedence.
-- The next platform war is about runtime operating systems for agents, not just model access.
+- Open mobile-agent progress now depends more on owning the data recipe than on waiting for another closed demo.
+- Verifiable environments are becoming reusable training and regression infrastructure for tool-using agents.
+- Safety evaluation is getting more useful when the taxonomy matches the runtime instead of pretending every agent fails the same way.
+- RL with verifiable rewards turns verifier design into a governance surface, not a scoring detail.
+- The credible frontier is grounded task generation, programmatic verification, and runtime-specific diagnosis.
 
 ## Browse by category
 - [AgenticAI](AgenticAI/README.md)
