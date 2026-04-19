@@ -72,6 +72,24 @@ Use cloud-first when the workload needs:
 - elastic compute for rare heavy spikes
 - provider-managed evaluation, observability, or compliance features you do not want to build yet
 
+## New April 2026 additions
+
+### Hybrid escalation beats purity tests
+Atropos sharpens the real architecture lesson for local-first agents: the small or local model does not need to finish every hard task. It needs to own the easy path and hand off only when the trajectory gives evidence that it will fail. That turns local-first from a purity test into an explicit routing policy.
+
+Sources:
+- [Atropos](https://arxiv.org/abs/2604.15075)
+- [GitHub Copilot CLI auto model selection](https://github.blog/changelog/2026-04-17-github-copilot-cli-now-supports-copilot-auto-model-selection/)
+
+### Agent-native browser surfaces make local-first computer use more plausible
+Vessel Browser is useful signal because it has the right product shape for sovereign browsing: an agent-first browser with human supervision, persistent state, an MCP endpoint, and local model support through Ollama and llama.cpp. That is much more interesting than another cloud-only browser demo.
+
+Source:
+- [Vessel Browser](https://huggingface.co/blog/unmodeled-tyler/vessel-browser-for-agents)
+
+### Policy implication
+The sovereignty question is no longer only "can the model run locally?" It is also "what stays local by default, what triggers escalation, and what operator surface keeps the human in control?"
+
 ## Current read
 
-The important shift is not that local models beat every hosted model. They do not. The shift is that local-first is now viable enough to become the default for a meaningful slice of agent workloads. That forces better architecture decisions: explicit routing, explicit scopes, and explicit reasons for what leaves the device.
+The important shift is not just that local models beat every hosted model. They do not. The shift is that local-first is now viable enough to become the default for a meaningful slice of agent workloads, especially when paired with explicit escalation rules and agent-native local surfaces. That forces better architecture decisions: explicit routing, explicit scopes, explicit reasons for what leaves the device, and operator surfaces that preserve human supervision.

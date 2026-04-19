@@ -2,60 +2,58 @@
 
 This index tracks the most recent week with structured content. Each finding includes a short summary, a link into the detailed analysis, a core source, practical ways to explore it now, and an implementability score from 0 to 1.
 
-## Most Recent Week: 2026-04-18
+## Most Recent Week: 2026-04-19
 
-### Open mobile-agent training is finally getting an open recipe
-Summary: OpenMobile is the first strong sign in this window that open mobile-agent work can compete by owning the data recipe. Exploration-built environment memory, grounded task synthesis, and learner/expert rollout switching matter more than another isolated model release.
+### Workflow-level serving is becoming the new orchestration bottleneck
+Summary: Scepsy is the clearest sign in this window that multi-LLM agents need workflow-level resource planning. The right optimization target is the aggregate execution path, not each model in isolation.
 
-Analysis: [reasoning analysis](2026-04-18/reasoning.md#open-mobile-agent-training-is-finally-getting-an-open-recipe)
-Core source: [OpenMobile](https://arxiv.org/abs/2604.15093)
+Analysis: [reasoning analysis](2026-04-19/reasoning.md#workflow-level-serving-is-becoming-the-new-orchestration-bottleneck)
+Core source: [Scepsy](https://arxiv.org/abs/2604.15186)
 Implementable now:
-- build environment memory from exploration before generating tasks
-- synthesize grounded mobile instructions from app functionality maps instead of one-off demos
-- keep learner/expert recovery traces in the training mix
-- publish overlap checks for synthetic task corpora
+- profile which models dominate total workflow execution share across representative runs
+- allocate GPUs against end-to-end bottlenecks instead of isolated model benchmarks
+- plan tensor parallelism, replica counts, and placement together
+- watch workflow latency and tail behavior directly before scaling replicas
 Tools, repos, and methodologies worth exploring:
-- [OpenMobile project page](https://njucckevin.github.io/openmobile/)
-- [njucckevin/OpenMobile-Code](https://github.com/njucckevin/OpenMobile-Code)
-- [OpenMobile dataset](https://huggingface.co/datasets/cckevinn/OpenMobile-Data)
-- exploration-built environment memory
-- learner/expert policy switching
-Implementability score: 0.87
+- [Scepsy paper](https://arxiv.org/abs/2604.15186)
+- aggregate-LLM-pipeline planning
+- workflow-level GPU allocation
+- topology-aware placement heuristics
+- end-to-end latency tracing for multi-LLM paths
+Implementability score: 0.68
 
-### Verifiable environments are becoming training infrastructure, not just eval wrappers
-Summary: EcomRLVE-GYM shows the right pattern for tool-using agents: procedural environments, adaptive difficulty, algorithmic reward functions, and hallucination checks that can train and test the same stack.
+### Prompt optimization is a preflight decision, not a reflex
+Summary: Prompt optimization in compound systems only pays when there is real structural headroom. Cheap diagnostics are a better default than blindly launching another DSPy or TextGrad search loop.
 
-Analysis: [reasoning analysis](2026-04-18/reasoning.md#verifiable-environments-are-becoming-training-infrastructure-not-just-eval-wrappers)
-Durable topic: [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md)
-Core source: [Ecom-RLVE](https://huggingface.co/blog/ecom-rlve)
+Analysis: [reasoning analysis](2026-04-19/reasoning.md#prompt-optimization-is-a-preflight-decision-not-a-reflex)
+Core source: [Prompt Optimization Is a Coin Flip](https://arxiv.org/abs/2604.14585)
 Implementable now:
-- score tuple correctness, efficiency, and hallucination separately
-- build adaptive curricula instead of static benchmark-only task sets
-- reuse verifiable environments as post-training regression suites
-- prefer programmatic reward functions over judge-only scoring where possible
+- run a fast coupling test before assuming prompt interactions need joint optimization
+- add a headroom check before spending compute on search
+- optimize output schemas and intermediate artifacts before prompt wording
+- keep zero-shot as a real control in the eval loop
 Tools, repos, and methodologies worth exploring:
-- [owlgebra-ai/EcomRLVE-Gym](https://github.com/owlgebra-ai/EcomRLVE-Gym)
-- verifiable-reward environment design
-- adaptive curriculum scheduling
-- tuple-level grounded reward functions
-- retrieval-bound hallucination checks
-Implementability score: 0.90
+- [DSPy](https://github.com/stanfordnlp/dspy)
+- [TextGrad](https://github.com/zou-group/textgrad)
+- ANOVA-style agent coupling tests
+- output-headroom diagnostics
+- schema-first intermediate design
+Implementability score: 0.92
 
-### Trajectory safety evaluation is becoming runtime-specific diagnosis
-Summary: ATBench-Claw and ATBench-CodeX make the key safety point of the day: the benchmark framework can be shared, but the taxonomy has to match the runtime’s shells, tools, sessions, approvals, and external-action surface.
+### AG2 turns delegation, local execution, and observability into one operator surface
+Summary: AG2 v0.12.0 is a strong open-source framework signal because it bundles the right primitives together: agent delegation via tool calls, subscribable observer events, local shell execution, and skill discovery.
 
-Analysis: [reasoning analysis](2026-04-18/reasoning.md#trajectory-safety-evaluation-is-becoming-runtime-specific-diagnosis)
-Durable topic: [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md)
-Core source: [ATBench-Claw and ATBench-CodeX](https://arxiv.org/abs/2604.14858)
+Analysis: [reasoning analysis](2026-04-19/reasoning.md#ag2-turns-delegation-local-execution-and-observability-into-one-operator-surface)
+Core source: [AG2 v0.12.0](https://github.com/ag2ai/ag2/releases/tag/v0.12.0)
 Implementable now:
-- define runtime-specific safety taxonomies before writing the next eval suite
-- preserve trace structure for diagnosis instead of only pass/fail outcomes
-- separate completion, safety, and diagnosis outputs in reports
-- score approval-boundary violations and external actions explicitly
+- wrap narrow subagents as tools instead of giving every agent broad chat authority
+- instrument event streams before scaling multi-agent workflows
+- use bounded local execution surfaces for operator-controlled tasks
+- package reusable skills instead of cloning prompt blobs
 Tools, repos, and methodologies worth exploring:
-- [Claw-Eval](https://arxiv.org/abs/2604.06132)
-- [OpenClaw safety analysis](https://arxiv.org/abs/2604.04759)
-- runtime-specific safety taxonomies
-- trajectory-diagnostic benchmark design
-- approval-boundary-aware evals
-Implementability score: 0.81
+- [ag2ai/ag2](https://github.com/ag2ai/ag2)
+- Agent.as_tool delegation patterns
+- Observer API event tracing
+- LocalShellTool and LocalShellEnvironment
+- skills-as-reusable-procedure packaging
+Implementability score: 0.89

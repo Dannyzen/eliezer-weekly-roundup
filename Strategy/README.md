@@ -2,22 +2,23 @@
 
 This index tracks the most recent week with structured content. Each finding includes a short summary, a link into the detailed analysis, a core source, practical ways to explore it now, and an implementability score from 0 to 1.
 
-## Most Recent Week: 2026-04-18
+## Most Recent Week: 2026-04-19
 
-### RL with verifiable rewards is now a governance problem, not just a capability story
-Summary: RLVR is splitting into a good story and a dangerous one. Tool-use RL can genuinely expand capability, but weak verifiers can train models to optimize for fake success instead of the intended task.
+### Hybrid routing is becoming a sovereignty lever, not just a cost optimization
+Summary: Atropos plus current product and tooling releases point to the same lesson: local-first works best when you own the escalation policy. Smaller or local models should do the easy and sensitive work first, then stronger models should take over only when the evidence says they need to.
 
-Analysis: [sovereignty analysis](2026-04-18/sovereignty.md#rl-with-verifiable-rewards-is-now-a-governance-problem-not-just-a-capability-story)
-Core source: [LLMs Gaming Verifiers: RLVR can Lead to Reward Hacking](https://arxiv.org/abs/2604.15149)
+Analysis: [sovereignty analysis](2026-04-19/sovereignty.md#hybrid-routing-is-becoming-an-architecture-choice-not-a-cost-hack)
+Durable topic: [Local-First Agents](local-first-agents/local-first-agents.md)
+Core source: [Atropos](https://arxiv.org/abs/2604.15075)
 Implementable now:
-- run perturbation-based verifier checks instead of relying on one canonical grading path
-- add isomorphic or semantically equivalent task rewrites to catch shortcut strategies
-- separate capability metrics from verifier-integrity metrics in dashboards
-- threat-model reward functions and benchmark graders like production assets
+- route bounded or sensitive tasks to smaller or local models first
+- escalate only when midpoint evidence predicts failure or policy requires more capability
+- log why a task escalated and which model completed it
+- keep routing policy auditable instead of burying it in provider defaults
 Tools, repos, and methodologies worth exploring:
-- [PASS@(k,T) analysis for RL tool use](https://arxiv.org/abs/2604.14877)
-- [owlgebra-ai/EcomRLVE-Gym](https://github.com/owlgebra-ai/EcomRLVE-Gym)
-- isomorphic perturbation testing
-- verifier threat modeling
-- capability-boundary analysis under interaction depth
-Implementability score: 0.78
+- [Atropos](https://arxiv.org/abs/2604.15075)
+- [GitHub Copilot CLI auto model selection](https://github.blog/changelog/2026-04-17-github-copilot-cli-now-supports-copilot-auto-model-selection/)
+- [Vessel Browser](https://huggingface.co/blog/unmodeled-tyler/vessel-browser-for-agents)
+- failure-prediction-based hotswap routing
+- escalation logging and policy dashboards
+Implementability score: 0.79

@@ -3,18 +3,17 @@
 A category-first research repo for tracking what matters in agentic AI and strategy each week.
 
 ## Latest week
-- Week ending 2026-04-18: [Daily scan](roundups/2026-04-18.md)
+- Week ending 2026-04-19: [Daily scan](roundups/2026-04-19.md)
 - Fresh AgenticAI signal: [current implementation signal](AgenticAI/README.md)
 - Fresh Strategy signal: [current sovereignty and governance signal](Strategy/README.md)
 - Durable topic to revisit: [Trajectory-Aware Evaluation](AgenticAI/trajectory-aware-evaluation/trajectory-aware-evaluation.md)
-- Durable strategy topic to revisit: [Runtime Governance](Strategy/runtime-governance/runtime-governance.md)
+- Durable strategy topic to revisit: [Local-First Agents](Strategy/local-first-agents/local-first-agents.md)
 
 ## Current signal
-- Open mobile-agent progress now depends more on owning the data recipe than on waiting for another closed demo.
-- Verifiable environments are becoming reusable training and regression infrastructure for tool-using agents.
-- Safety evaluation is getting more useful when the taxonomy matches the runtime instead of pretending every agent fails the same way.
-- RL with verifiable rewards turns verifier design into a governance surface, not a scoring detail.
-- The credible frontier is grounded task generation, programmatic verification, and runtime-specific diagnosis.
+- Workflow serving is becoming its own systems problem; multi-LLM agent stacks need allocation policies that optimize the whole workflow, not each model in isolation.
+- Blind prompt optimization in compound systems is mostly wasted motion unless the task has real structural headroom.
+- Open agent frameworks are converging on the same operator surface: delegation via tool calls, local execution, skills, and traceable observers.
+- Sovereign or local-first AI increasingly depends on explicit escalation policy: keep easy or sensitive work local, then hotswap only the failing trajectories.
 
 ## Browse by category
 - [AgenticAI](AgenticAI/README.md)
