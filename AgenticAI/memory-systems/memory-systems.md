@@ -24,6 +24,7 @@ Core sources:
 - Drawing on Memory: https://arxiv.org/abs/2604.12948
 - claude-mem: https://github.com/thedotmack/claude-mem
 - Memory Transfer Learning: https://arxiv.org/abs/2604.14004
+- Experience Compression Spectrum: https://arxiv.org/abs/2604.15877
 
 ## Core thesis
 
@@ -118,6 +119,16 @@ Avoid these traps:
 - promoting overly specific low-level traces as if they will transfer cleanly to new task domains
 
 ## New April 2026 additions
+
+### Memory, skills, and rules are one compression pipeline
+Experience Compression Spectrum adds the abstraction this category was missing. Episodic memory, procedural skills, and declarative rules are not separate product features. They are compression levels for the same underlying experience. The practical move is to preserve evidence once, then promote it along a governed ladder from episode to reusable routine to compact rule when transfer value is high and specificity costs are acceptable. The paper's "missing diagonal" is the opportunity: most systems can store or summarize, but very few can adapt compression level to the query, the time horizon, or the privacy tier.
+
+The concrete design hint is useful immediately. Treat memory promotion as a lifecycle problem with three explicit targets:
+- episodic recall when auditability and context fidelity matter
+- skill extraction when a reusable procedure keeps paying off
+- rule distillation when the lesson is stable enough to survive aggressive compression
+
+The compression ratios in the paper make the trade-off legible instead of mystical: roughly 5-20x for episodic memory, 50-500x for skills, and 1,000x or more for rules. That is the right language for designing memory budgets.
 
 ### Cross-domain transfer favors insight over trace replay
 Memory Transfer Learning sharpens the promotion problem. The memory object that transfers best is usually not the full episode and not even the task-specific summary. It is the reusable insight: validation habits, safe-editing routines, workflow constraints, and debugging patterns that survive a change of benchmark.

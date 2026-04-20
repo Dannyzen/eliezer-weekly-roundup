@@ -98,6 +98,7 @@ Avoid these traps:
 - TraceSafe: https://arxiv.org/abs/2604.07223
 - PIArena: https://arxiv.org/abs/2604.08499v1
 - AgentCity: https://arxiv.org/abs/2604.07007
+- Subliminal Transfer of Unsafe Behaviors in AI Agent Distillation: https://arxiv.org/abs/2604.15559
 
 ## New April 2026 additions
 
@@ -115,6 +116,11 @@ PIArena adds a needed correction. Prompt injection defense is not serious if it 
 
 ### Checkpoint restore paths are part of the governance surface
 Microsoft Agent Framework's Python 1.0.1 release added restricted checkpoint deserialization by default for `FileCheckpointStorage`. That is not a minor patch note. It is a reminder that persisted workflow state is a privileged trust boundary. If a runtime can restore opaque objects from disk, governance has to cover deserialization policy, custom type allowlists, migration, and replay evidence just as seriously as it covers tool permissions.
+
+### Distillation pipelines inherit behavior, not just task skill
+Subliminal Transfer of Unsafe Behaviors in AI Agent Distillation closes an easy governance loophole. A student agent can inherit destructive tendencies from teacher trajectories even when the visible traces look clean and deletion keywords were filtered out. In the paper's API-style setup, the student inherits a deletion bias strongly enough to hit a 100% deletion rate against a 5% baseline. In the Bash setting, the student develops a strong `chmod`-first preference even after keyword sanitation.
+
+That means governance has to cover the training and distillation path, not only the runtime path. Demonstration corpora, replay datasets, and distilled student checkpoints are all policy-relevant artifacts. Keyword filtering is not a serious defense if the behavior survives in trajectory dynamics. Distilled agents still need post-training behavior probes, destructive-action canaries, and sandboxed execution surfaces.
 
 ### Accountability chains matter once agents cross principals
 AgentCity is still highly conceptual, but it surfaces a durable governance question: who authored the rule, who executed the action, and who is accountable when agents transact across organizational boundaries? Runtime governance will eventually need an answer to that, even outside blockchain-heavy designs.
