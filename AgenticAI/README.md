@@ -2,59 +2,62 @@
 
 This index tracks the most recent week with structured content. Each finding includes a short summary, a link into the detailed analysis, a core source, practical ways to explore it now, and an implementability score from 0 to 1.
 
-## Most Recent Week: 2026-04-20
+## Most Recent Week: 2026-04-21
 
-### Experience compression is becoming the right mental model for agent memory
-Summary: Memory, skills, and rules are not separate features. They are compression levels on the same experience pipeline, and most current systems still cannot move knowledge adaptively across those levels.
+### Memory engines are moving from flat recall to write-time reconciliation
+Summary: Flat vector recall is not enough for long-running agents. The stronger design is a memory engine that can reconcile contradiction, supersession, and identity at write time while keeping an auditable lineage of state changes.
 
-Analysis: [reasoning analysis](2026-04-20/reasoning.md#experience-compression-is-becoming-the-right-mental-model-for-agent-memory)
+Analysis: [reasoning analysis](2026-04-21/reasoning.md#memory-engines-are-moving-from-flat-recall-to-write-time-reconciliation)
 Durable topic: [Memory Systems](memory-systems/memory-systems.md)
-Core source: [Experience Compression Spectrum](https://arxiv.org/abs/2604.15877)
+Core source: [WorldDB](https://arxiv.org/abs/2604.18478v1)
 Implementable now:
-- separate stored experience into episodes, reusable routines, and compact rules
-- promote memories upward in background jobs instead of forcing every recall through transcript search
-- choose retrieval depth by query risk, time horizon, and privacy tier
-- measure transfer gain, token savings, and reversibility together
+- introduce explicit supersession and contradiction handling instead of raw append-only memory writes
+- keep entity reconciliation close to write-time so retrieval does not have to guess identity every run
+- use immutable or versioned memory objects for auditability and rollback
+- separate semantic retrieval from memory-state mutation logic
 Tools, repos, and methodologies worth exploring:
-- [Experience Compression Spectrum](https://arxiv.org/abs/2604.15877)
-- background consolidation loops for memory promotion
-- skill distillation pipelines
-- rule extraction from repeated trajectories
-- tiered memory objects with explicit promotion criteria
-Implementability score: 0.74
+- [WorldDB](https://arxiv.org/abs/2604.18478v1)
+- content-addressed memory objects
+- write-time reconciliation handlers for supersession and contradiction
+- Merkle-style memory lineage
+- entity resolution before retrieval
+Implementability score: 0.66
 
-### Multi-agent reliability improves faster when you subsidize the weak link
-Summary: Many multi-agent systems are bottlenecked by one flaky role. Reliability improves faster when you locate that weak link and allocate more reasoning budget there instead of scaling every role evenly.
+### Agent harness architecture is becoming a first-class design discipline
+Summary: Agent engineering is finally getting legible enough to compare directly. The important differences now sit in context management, tool systems, safety boundaries, orchestration, and subagent design rather than in prompt aesthetics alone.
 
-Analysis: [reasoning analysis](2026-04-20/reasoning.md#multi-agent-reliability-improves-faster-when-you-subsidize-the-weak-link)
-Core source: [Weak-Link Optimization for Multi-Agent Reasoning and Collaboration](https://arxiv.org/abs/2604.15972)
+Analysis: [reasoning analysis](2026-04-21/reasoning.md#agent-harness-architecture-is-becoming-a-first-class-design-discipline)
+Durable topic: [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md)
+Core source: [Architectural Design Decisions in AI Agent Harnesses](https://arxiv.org/abs/2604.18071v1)
+Supporting source: [Microsoft Agent Framework python-1.1.0](https://github.com/microsoft/agent-framework/releases/tag/python-1.1.0)
 Implementable now:
-- score each agent role for reliability instead of hiding instability in one system average
-- route extra sampling or review budget to the weakest role first
-- add per-role instability dashboards to multi-agent evals
-- make weak-link localization a standard pre-optimization step
+- evaluate frameworks on context strategy, tool registration, isolation, and audit instead of only DX demos
+- default long-running workflows to file-persistent or hybrid context rather than one flat transcript buffer
+- make tool and checkpoint boundaries explicit enough to govern with allowlists and policy hooks
+- compare harnesses by architectural pattern before locking in a stack
 Tools, repos, and methodologies worth exploring:
-- [Weak-Link Optimization for Multi-Agent Reasoning and Collaboration](https://arxiv.org/abs/2604.15972)
-- per-role reliability scoring
-- uncertainty-driven budget allocation
-- repeated sampling only on unstable roles
-- multi-agent failure propagation analysis
-Implementability score: 0.83
+- [Architectural Design Decisions in AI Agent Harnesses](https://arxiv.org/abs/2604.18071v1)
+- [microsoft/agent-framework](https://github.com/microsoft/agent-framework)
+- [python-1.1.0 release notes](https://github.com/microsoft/agent-framework/releases/tag/python-1.1.0)
+- [zilliztech/claude-context](https://github.com/zilliztech/claude-context)
+- architecture scorecards for context, tools, safety, and orchestration
+Implementability score: 0.91
 
-### Runtime compaction and local structured output are becoming the same product surface
-Summary: Serious agent runtimes are making context compaction and local structured tool use explicit configuration surfaces instead of hoping long runs and local providers behave like hosted defaults.
+### Generated environments are becoming the eval API for agents
+Summary: The benchmark is turning into a compiler. Instead of hand-authoring every task, teams can generate verified environments from natural-language capability descriptions and use the same pipeline for eval, training, and regression testing.
 
-Analysis: [reasoning analysis](2026-04-20/reasoning.md#runtime-compaction-and-local-structured-output-are-becoming-the-same-product-surface)
-Core source: [PydanticAI v1.84.0](https://github.com/pydantic/pydantic-ai/releases/tag/v1.84.0)
+Analysis: [reasoning analysis](2026-04-21/reasoning.md#generated-environments-are-becoming-the-eval-api-for-agents)
+Durable topic: [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md)
+Core source: [ClawEnvKit](https://arxiv.org/abs/2604.18543v1)
 Implementable now:
-- enable compaction on long-running sessions before context blowups appear in production
-- regression-test structured outputs on local or OpenAI-compatible providers
-- treat compaction policy and schema fidelity as part of the runtime contract
-- standardize local structured tool use around explicit capability tests
+- compile user-described capabilities into verified tasks with explicit validators
+- keep parser, generator, and validator as distinct modules so failures are debuggable
+- benchmark harnesses as seriously as models because scaffolding still moves scores materially
+- use generated environments as adaptive curricula that target current weaknesses
 Tools, repos, and methodologies worth exploring:
-- [pydantic/pydantic-ai](https://github.com/pydantic/pydantic-ai)
-- [PydanticAI v1.84.0](https://github.com/pydantic/pydantic-ai/releases/tag/v1.84.0)
-- [Ollama](https://ollama.com)
-- structured output regression tests
-- compaction policy configuration and replay tests
-Implementability score: 0.95
+- [ClawEnvKit](https://arxiv.org/abs/2604.18543v1)
+- validator-driven environment generation
+- capability-to-task compilers
+- harness A/B testing against shared task distributions
+- adaptive curricula based on observed failure clusters
+Implementability score: 0.84

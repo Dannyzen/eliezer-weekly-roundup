@@ -3,17 +3,17 @@
 A category-first research repo for tracking what matters in agentic AI and strategy each week.
 
 ## Latest week
-- Week ending 2026-04-20: [Daily scan](roundups/2026-04-20.md)
+- Week ending 2026-04-21: [Daily scan](roundups/2026-04-21.md)
 - Fresh AgenticAI signal: [current implementation signal](AgenticAI/README.md)
 - Fresh Strategy signal: [current sovereignty and governance signal](Strategy/README.md)
-- Durable topic to revisit: [Memory Systems](AgenticAI/memory-systems/memory-systems.md)
-- Durable strategy topic to revisit: [Runtime Governance](Strategy/runtime-governance/runtime-governance.md)
+- Durable topic to revisit: [Agent Harness Architecture](AgenticAI/agent-harness-architecture/agent-harness-architecture.md)
+- Durable strategy topic to revisit: [Local-First Agents](Strategy/local-first-agents/local-first-agents.md)
 
 ## Current signal
-- Memory, skills, and rules are converging into one experience-compression ladder; the real open gap is adaptive promotion across those levels.
-- Multi-agent systems get more reliable when they profile and subsidize weak roles instead of only optimizing their strongest agents.
-- Production frameworks are turning compaction and local structured outputs into first-class runtime settings instead of hiding them behind optimistic abstractions.
-- Distilled agent behavior is a governance surface; sanitized trajectories can still transfer destructive habits.
+- Agent memory is starting to need write-time reconciliation, not just smarter retrieval.
+- Harness design is becoming legible enough to compare on context services, tool boundaries, isolation, and audit instead of vibes.
+- Verified environment factories are replacing static hand-built eval sets as the way to keep agents improving.
+- Sovereign agents need sovereign grounding data, not just local inference runtimes.
 
 ## Browse by category
 - [AgenticAI](AgenticAI/README.md)

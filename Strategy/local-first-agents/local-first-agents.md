@@ -87,6 +87,16 @@ Vessel Browser is useful signal because it has the right product shape for sover
 Source:
 - [Vessel Browser](https://huggingface.co/blog/unmodeled-tyler/vessel-browser-for-agents)
 
+### Sovereign grounding data matters as much as local inference
+Nemotron-Personas-Korea adds an important correction to the local-first story. A model running on-device or on-prem is not yet sovereign if it still defaults to someone else's demographic assumptions, public-system workflows, and cultural norms. The new dataset's useful move is to treat synthetic, zero-PII persona grounding as part of the local-first stack itself.
+
+That changes the design question from "can the model run locally?" to three better questions:
+- what stays local?
+- what escalates?
+- what worldview is the local system grounded in before it acts?
+
+The practical implication is strong. Country-specific synthetic persona assets should sit next to routing rules, privacy controls, and workflow tests. Sovereignty is about priors and data assets, not only about inference location.
+
 ### Policy implication
 The sovereignty question is no longer only "can the model run locally?" It is also "what stays local by default, what triggers escalation, and what operator surface keeps the human in control?"
 

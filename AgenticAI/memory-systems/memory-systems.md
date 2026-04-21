@@ -145,6 +145,17 @@ ALTK-Evolve sharpens the practical memory lesson of the month: the agent should 
 ### Memory quality loops belong off the critical path
 The most robust pattern is a two-loop design: the online loop acts, while a background consolidation loop scores, merges, and prunes learned guidance. That keeps the action path lean without giving up long-term improvement.
 
+### Write-time reconciliation is the next memory moat
+WorldDB adds an important correction to current memory fashion. The problem is not only retrieving the right fact. It is deciding what a new write should do to the memory state. Flat vector stores and many graph memories still treat updates as passive additions, then hope the answerer can reconcile contradictions later. WorldDB argues for the opposite design: nodes should be immutable and content-addressed, while edge types should execute write-time behavior such as supersession, contradiction handling, and merge proposals.
+
+That matters because many of the failures operators actually care about are state failures, not retrieval failures:
+- stale preferences that should have been replaced
+- conflicting facts that should have remained visible as conflicts
+- aliases that should have been merged earlier
+- audit trails that vanish once summaries overwrite the past
+
+The practical lesson is immediate even if the full architecture is heavy. High-value memory should stop behaving like an append-only note pad. It should have explicit mutation semantics, version lineage, and enough structure that update tracking does not depend on whatever the answering model improvises at query time.
+
 ## Working conclusion
 
 The next generation of agents will be differentiated less by how eloquently they speak and more by how faithfully they remember. The winning systems will preserve evidence, retrieve context adaptively, promote only the right lessons into durable guidance, attach enough context for updates and temporal reasoning, choose abstraction levels that transfer across tasks, and keep the most sensitive memory close to the user and under policy control.

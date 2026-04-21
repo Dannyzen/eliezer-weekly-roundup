@@ -97,6 +97,15 @@ ATBench-Claw and ATBench-CodeX make an important design correction: the benchmar
 ### Frameworks are starting to absorb evaluation prerequisites
 Microsoft Agent Framework is strategically relevant here because checkpointing, time travel, and observability reduce the gap between runtime debugging and benchmark evidence collection. The platform layer is beginning to catch up with what evaluation research actually needs.
 
+### Environment generation turns eval into a service, not a spreadsheet
+ClawEnvKit sharpens the next step beyond trace-first evaluation. The benchmark should not only record what happened inside a fixed set of tasks. It should generate new verified tasks when the capability frontier moves. Its parser-generator-validator pipeline and 1,040-environment Auto-ClawEval benchmark make the design pattern clear: a capability description can be compiled into an environment, scored automatically, and recycled into both training and regression testing.
+
+Two lessons matter immediately:
+- harness engineering still changes outcomes materially, so eval has to compare scaffolding and not only model families
+- operators should be able to describe a desired capability in natural language and get back a verified task world instead of waiting for the next benchmark paper
+
+This is a better product shape for agent evaluation. The environment factory becomes part of the runtime improvement loop.
+
 ## Working conclusion
 
 Trajectory-aware evaluation should become default infrastructure for any team building autonomous or semi-autonomous agents. If the run cannot be replayed, inspected, and scored across safety, robustness, parameter correctness, environment fidelity, and runtime-specific harm dimensions, improvement efforts will stay shallow and trust claims will stay unearned.
