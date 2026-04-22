@@ -4,6 +4,26 @@ This index tracks the most recent week with structured content. Each finding inc
 
 ## Most Recent Week: 2026-04-22
 
+### Deep Dive Wednesday winner: Sandbox-native agent workers turn execution substrate into the product surface
+Summary: OpenAI's Agents SDK now ships Sandbox Agents with persistent isolated workspaces, manifests, snapshots, resume support, workspace memory, and local, Docker, or hosted backends. The important shift is not one more tool call. It is that the worker runtime itself is becoming a first-class design surface.
+
+Analysis: [reasoning analysis](2026-04-22/reasoning.md#deep-dive-wednesday-winner)
+Durable topic: [Sandbox-Native Agent Workers](sandbox-native-agent-workers/sandbox-native-agent-workers.md)
+Core source: [OpenAI Agents SDK v0.14.0](https://github.com/openai/openai-agents-python/releases/tag/v0.14.0)
+Supporting source: [The next evolution of the Agents SDK](https://openai.com/index/the-next-evolution-of-the-agents-sdk)
+Implementable now:
+- define long-running workers through manifests instead of improvised shell sessions
+- use local or Docker sandbox clients as explicit execution backends
+- snapshot and resume non-trivial runs instead of forcing them into one uninterrupted session
+- keep worker memory and mounts explicit so state stays inspectable
+Tools, repos, and methodologies worth exploring:
+- [openai/openai-agents-python](https://github.com/openai/openai-agents-python)
+- [Sandbox Agents docs](https://openai.github.io/openai-agents-python/sandbox_agents/)
+- `UnixLocalSandboxClient`
+- `DockerSandboxClient`
+- [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md)
+Implementability score: 0.95
+
 ### Delegation should be calibrated to context, not static agent roles
 Summary: The same agent can be strong on short, self-contained tasks and weak on long-horizon or dependency-heavy work. Static capability profiles blur that difference and cause systematic misdelegation.
 

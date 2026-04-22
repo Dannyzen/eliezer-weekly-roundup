@@ -1,6 +1,33 @@
 # AgenticAI analysis: 2026-04-22
 
-Today’s implementation signal is that agent coordination and agent reliability are starting to look like control problems instead of prompt craft. The interesting work in this window is not another claim that agents can act. It is better evidence for when a specialist should actually receive a task, and better discipline around whether a successful run can happen again.
+This week’s strongest signal is that the worker runtime itself is becoming more explicit. Serious stacks are turning the agent into a bounded, resumable execution unit, while coordination and reliability start to look more like control problems than prompt craft. The interesting work in this window is not another claim that agents can act. It is better evidence for when a specialist should actually receive a task, better discipline around whether a successful run can happen again, and a clearer product surface for where long-running execution should live.
+
+## Deep Dive Wednesday winner
+
+**Winner:** OpenAI Agents SDK's sandbox-native turn → [Sandbox-Native Agent Workers](../sandbox-native-agent-workers/sandbox-native-agent-workers.md)
+
+Why it won the week:
+- it turns execution substrate design into a shipped SDK primitive instead of a framework appendix
+- it operationalizes several themes already compounding in the repo: file-as-bus workspaces, harness architecture, resumability, and containment
+- it is architecturally bigger than the week's strong delegation and evaluation papers because it changes what the default worker should be
+- it is implementable right now with normal engineering effort instead of requiring a research breakthrough
+
+Core sources:
+- https://openai.com/index/the-next-evolution-of-the-agents-sdk
+- https://openai.com/news/rss.xml
+- https://github.com/openai/openai-agents-python/releases/tag/v0.14.0
+- https://github.com/openai/openai-agents-python
+- https://openai.github.io/openai-agents-python/sandbox_agents/
+
+What is implementable now:
+- define long-running workers through manifests instead of improvised shell sessions
+- use local or Docker sandbox clients as explicit execution backends
+- snapshot and resume non-trivial runs instead of forcing them into one uninterrupted session
+- keep worker memory and mounts explicit so state stays inspectable
+- separate thin orchestration from bounded execution workers
+
+Implementation complexity: Medium
+Implementability score: 0.95
 
 ## Delegation should be calibrated to context, not static agent roles
 Source window: 2026-04-21 to 2026-04-22
@@ -84,5 +111,5 @@ A computer-use agent is not production-ready until it can do the same thing twic
 
 Implementability score: 0.86
 
-## What changed in my model today
-The agent stack is becoming less about who can act at all and more about who should act here, under what evidence, and how often that action repeats. Good systems now need better delegation priors and stricter repeatability discipline.
+## What changed in my model this week
+The agent stack is not just adding better routing and stricter evaluation. It is turning the worker itself into a bounded runtime with explicit state, resumability, and execution backends. Good systems now need better delegation priors, stronger repeatability discipline, and a computer boundary that operators can actually reason about.

@@ -4,12 +4,14 @@ A category-first research repo for tracking what matters in agentic AI and strat
 
 ## Latest week
 - Week ending 2026-04-22: [Daily scan](roundups/2026-04-22.md)
+- Deep Dive Wednesday winner: [Sandbox-Native Agent Workers](AgenticAI/sandbox-native-agent-workers/sandbox-native-agent-workers.md)
 - Fresh AgenticAI signal: [current implementation signal](AgenticAI/README.md)
 - Fresh Strategy signal: [current sovereignty and governance signal](Strategy/README.md)
-- Durable topic to revisit: [Agent Harness Architecture](AgenticAI/agent-harness-architecture/agent-harness-architecture.md)
+- Durable topic to revisit: [Sandbox-Native Agent Workers](AgenticAI/sandbox-native-agent-workers/sandbox-native-agent-workers.md)
 - Durable strategy topic to revisit: [Agent Sandboxing](Strategy/agent-sandboxing/agent-sandboxing.md)
 
 ## Current signal
+- Serious agent frameworks are turning the execution substrate into a resumable, inspectable worker with bounded workspace state.
 - Multi-agent systems should delegate by context-conditioned evidence, not static role labels.
 - Computer-use agents need repeatability metrics, not one lucky pass.
 - Local-first deployment should be routed by task shape: structured extraction local, long-context coaching selectively escalated.
