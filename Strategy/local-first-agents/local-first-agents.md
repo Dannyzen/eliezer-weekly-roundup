@@ -97,6 +97,17 @@ That changes the design question from "can the model run locally?" to three bett
 
 The practical implication is strong. Country-specific synthetic persona assets should sit next to routing rules, privacy controls, and workflow tests. Sovereignty is about priors and data assets, not only about inference location.
 
+### Capability-specific benchmarking beats local-first ideology
+Benchmarking System Dynamics AI Assistants is the right correction to local-first hype. On structured extraction, the best local model matches mid-tier cloud performance. On interactive discussion and especially error fixing, local models still lag because long-context handling and backend behavior remain limiting factors. The deeper lesson is architectural: backend choice can matter more than quantization level, and structured tasks with constrained outputs are much closer to local-ready than long-turn coaching.
+
+Practical implication:
+- route structured extraction locally first
+- benchmark backends, not just models
+- treat long-context correction tasks as selective cloud escalation paths until local stacks stop stalling or forgetting
+
+Source:
+- [Benchmarking System Dynamics AI Assistants](https://arxiv.org/abs/2604.18566)
+
 ### Policy implication
 The sovereignty question is no longer only "can the model run locally?" It is also "what stays local by default, what triggers escalation, and what operator surface keeps the human in control?"
 

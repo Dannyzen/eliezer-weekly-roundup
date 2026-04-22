@@ -151,6 +151,17 @@ Microsoft Agent Framework 1.1.0 is useful because it turns survey dimensions int
 ### Context services are externalizing
 Claude Context is good category signal because it treats code retrieval as an installable service rather than a hidden prompt trick. That is the right shape. Context should increasingly look like governed infrastructure.
 
+### Delegation needs contextual calibration, not static role cards
+CADMAS-CTX sharpens the subagent point. The same agent can be strong on short edits and weak on long-horizon debugging, so a single global skill label is too blunt. The paper's practical move is to keep per-context capability posteriors and route with an uncertainty penalty. That is a better harness pattern than hard-coded specialist identities or static skill scores.
+
+Practical lesson:
+- delegation should depend on context buckets and observed outcomes
+- sparse evidence should reduce routing confidence instead of being averaged away
+- harnesses need delegation telemetry good enough to learn from comparable situations, not just final task pass rates
+
+Source:
+- [CADMAS-CTX](https://arxiv.org/abs/2604.17950)
+
 ## Working conclusion
 
 Agent harness architecture is becoming one of the clearest ways to tell whether a team is building a toy, a developer tool, or a real operating substrate. The winning systems will make context explicit, tool boundaries governable, restore paths safe, orchestration legible, and evidence easy to inspect.

@@ -2,62 +2,42 @@
 
 This index tracks the most recent week with structured content. Each finding includes a short summary, a link into the detailed analysis, a core source, practical ways to explore it now, and an implementability score from 0 to 1.
 
-## Most Recent Week: 2026-04-21
+## Most Recent Week: 2026-04-22
 
-### Memory engines are moving from flat recall to write-time reconciliation
-Summary: Flat vector recall is not enough for long-running agents. The stronger design is a memory engine that can reconcile contradiction, supersession, and identity at write time while keeping an auditable lineage of state changes.
+### Delegation should be calibrated to context, not static agent roles
+Summary: The same agent can be strong on short, self-contained tasks and weak on long-horizon or dependency-heavy work. Static capability profiles blur that difference and cause systematic misdelegation.
 
-Analysis: [reasoning analysis](2026-04-21/reasoning.md#memory-engines-are-moving-from-flat-recall-to-write-time-reconciliation)
-Durable topic: [Memory Systems](memory-systems/memory-systems.md)
-Core source: [WorldDB](https://arxiv.org/abs/2604.18478v1)
-Implementable now:
-- introduce explicit supersession and contradiction handling instead of raw append-only memory writes
-- keep entity reconciliation close to write-time so retrieval does not have to guess identity every run
-- use immutable or versioned memory objects for auditability and rollback
-- separate semantic retrieval from memory-state mutation logic
-Tools, repos, and methodologies worth exploring:
-- [WorldDB](https://arxiv.org/abs/2604.18478v1)
-- content-addressed memory objects
-- write-time reconciliation handlers for supersession and contradiction
-- Merkle-style memory lineage
-- entity resolution before retrieval
-Implementability score: 0.66
-
-### Agent harness architecture is becoming a first-class design discipline
-Summary: Agent engineering is finally getting legible enough to compare directly. The important differences now sit in context management, tool systems, safety boundaries, orchestration, and subagent design rather than in prompt aesthetics alone.
-
-Analysis: [reasoning analysis](2026-04-21/reasoning.md#agent-harness-architecture-is-becoming-a-first-class-design-discipline)
+Analysis: [reasoning analysis](2026-04-22/reasoning.md#delegation-should-be-calibrated-to-context-not-static-agent-roles)
 Durable topic: [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md)
-Core source: [Architectural Design Decisions in AI Agent Harnesses](https://arxiv.org/abs/2604.18071v1)
-Supporting source: [Microsoft Agent Framework python-1.1.0](https://github.com/microsoft/agent-framework/releases/tag/python-1.1.0)
+Core source: [CADMAS-CTX](https://arxiv.org/abs/2604.17950)
 Implementable now:
-- evaluate frameworks on context strategy, tool registration, isolation, and audit instead of only DX demos
-- default long-running workflows to file-persistent or hybrid context rather than one flat transcript buffer
-- make tool and checkpoint boundaries explicit enough to govern with allowlists and policy hooks
-- compare harnesses by architectural pattern before locking in a stack
+- bucket tasks by coarse context before routing them across agents
+- keep per-agent success posteriors instead of one global reputation score
+- penalize delegation decisions when evidence is sparse or noisy
+- log enough delegation context that routing can improve over time
 Tools, repos, and methodologies worth exploring:
-- [Architectural Design Decisions in AI Agent Harnesses](https://arxiv.org/abs/2604.18071v1)
+- [CADMAS-CTX](https://arxiv.org/abs/2604.17950)
+- contextual bandit or Beta-posterior routing
+- delegation event logs and per-context scorecards
+- [LangGraph](https://github.com/langchain-ai/langgraph)
 - [microsoft/agent-framework](https://github.com/microsoft/agent-framework)
-- [python-1.1.0 release notes](https://github.com/microsoft/agent-framework/releases/tag/python-1.1.0)
-- [zilliztech/claude-context](https://github.com/zilliztech/claude-context)
-- architecture scorecards for context, tools, safety, and orchestration
-Implementability score: 0.91
+Implementability score: 0.79
 
-### Generated environments are becoming the eval API for agents
-Summary: The benchmark is turning into a compiler. Instead of hand-authoring every task, teams can generate verified environments from natural-language capability descriptions and use the same pipeline for eval, training, and regression testing.
+### Repeatability is becoming the real reliability metric for computer-use agents
+Summary: A computer-use agent that succeeds once and fails on the same task the next run is not reliable. Repeated execution, ambiguity handling, and behavior stability are now the meaningful evaluation surface.
 
-Analysis: [reasoning analysis](2026-04-21/reasoning.md#generated-environments-are-becoming-the-eval-api-for-agents)
+Analysis: [reasoning analysis](2026-04-22/reasoning.md#repeatability-is-becoming-the-real-reliability-metric-for-computer-use-agents)
 Durable topic: [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md)
-Core source: [ClawEnvKit](https://arxiv.org/abs/2604.18543v1)
+Core source: [On the Reliability of Computer Use Agents](https://arxiv.org/abs/2604.17849)
 Implementable now:
-- compile user-described capabilities into verified tasks with explicit validators
-- keep parser, generator, and validator as distinct modules so failures are debuggable
-- benchmark harnesses as seriously as models because scaffolding still moves scores materially
-- use generated environments as adaptive curricula that target current weaknesses
+- rerun browser or desktop tasks multiple times before trusting pass rates
+- track ambiguity and clarification failure as first-class error modes
+- separate stochastic flukes from stable behaviors in benchmark reporting
+- favor strategies that stay within a narrow behavioral envelope across runs
 Tools, repos, and methodologies worth exploring:
-- [ClawEnvKit](https://arxiv.org/abs/2604.18543v1)
-- validator-driven environment generation
-- capability-to-task compilers
-- harness A/B testing against shared task distributions
-- adaptive curricula based on observed failure clusters
-Implementability score: 0.84
+- [On the Reliability of Computer Use Agents](https://arxiv.org/abs/2604.17849)
+- repeated-run evaluation harnesses
+- replayable browser or desktop task environments
+- OpenTelemetry-style trace capture
+- stability dashboards that compare runs of the same task
+Implementability score: 0.86

@@ -92,6 +92,19 @@ A lighter-weight dedicated-user pattern may be enough when:
 - network access can be heavily constrained
 - a human is reviewing every material step
 
+### Read-only mounts and writable overlays are becoming default containment
+Shannon v1.1.0 is useful category signal because it bakes containment into the product: read-only repository mounts, writable overlay workspaces, structured exploit queues, and ephemeral workers. That is the right direction for any agent with enough autonomy to analyze source and execute real attacks. A killable sandbox is not enough; the workspace also needs a clean separation between what the agent can read, what it can mutate, and what evidence survives the run.
+
+Useful pattern:
+- mount the target source or data read-only
+- give the agent a separate writable overlay or scratch volume
+- preserve workspaces and reports for audit
+- keep high-risk agent work inside self-hosted runners or disposable environments
+
+Source:
+- [Shannon v1.1.0](https://github.com/KeygraphHQ/shannon/releases/tag/v1.1.0)
+- [KeygraphHQ/shannon](https://github.com/KeygraphHQ/shannon)
+
 ## Current read
 
 Agent sandboxing is not a niche hardening detail. It is becoming part of the default operating model for serious coding-agent use. The winning pattern is not "trust the model less" in the abstract. It is "give the model a smaller, killable, inspectable world to work inside."

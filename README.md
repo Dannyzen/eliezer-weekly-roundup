@@ -3,17 +3,17 @@
 A category-first research repo for tracking what matters in agentic AI and strategy each week.
 
 ## Latest week
-- Week ending 2026-04-21: [Daily scan](roundups/2026-04-21.md)
+- Week ending 2026-04-22: [Daily scan](roundups/2026-04-22.md)
 - Fresh AgenticAI signal: [current implementation signal](AgenticAI/README.md)
 - Fresh Strategy signal: [current sovereignty and governance signal](Strategy/README.md)
 - Durable topic to revisit: [Agent Harness Architecture](AgenticAI/agent-harness-architecture/agent-harness-architecture.md)
-- Durable strategy topic to revisit: [Local-First Agents](Strategy/local-first-agents/local-first-agents.md)
+- Durable strategy topic to revisit: [Agent Sandboxing](Strategy/agent-sandboxing/agent-sandboxing.md)
 
 ## Current signal
-- Agent memory is starting to need write-time reconciliation, not just smarter retrieval.
-- Harness design is becoming legible enough to compare on context services, tool boundaries, isolation, and audit instead of vibes.
-- Verified environment factories are replacing static hand-built eval sets as the way to keep agents improving.
-- Sovereign agents need sovereign grounding data, not just local inference runtimes.
+- Multi-agent systems should delegate by context-conditioned evidence, not static role labels.
+- Computer-use agents need repeatability metrics, not one lucky pass.
+- Local-first deployment should be routed by task shape: structured extraction local, long-context coaching selectively escalated.
+- High-autonomy security agents are turning read-only mounts and self-hosted runners into baseline containment patterns.
 
 ## Browse by category
 - [AgenticAI](AgenticAI/README.md)
@@ -24,6 +24,21 @@ A category-first research repo for tracking what matters in agentic AI and strat
 - `Strategy/YYYY-MM-DD/sovereignty.md`: strategic analysis on governance, sovereign infrastructure, local-first systems, operating models, and enterprise adoption.
 - `AgenticAI/<topic>/<topic>.md` and `Strategy/<topic>/<topic>.md`: durable deep dives when a pattern deserves to persist beyond one cycle.
 - `roundups/YYYY-MM-DD.md`: weekly synthesis or daily scan tying both categories into one opinionated model.
+
+## NotebookLM podcast MVP
+1. Install project dependencies with `uv sync`.
+2. Install Chromium for the first NotebookLM login with `uv run playwright install chromium`.
+3. Authenticate NotebookLM once with `uv run notebooklm login`.
+4. Generate or reuse a report notebook and podcast:
+   - `uv run eliezer-roundup generate-podcast roundups/2026-04-22.md`
+   - add `--push` if you want the updated markdown, podcast file, and manifest committed and pushed to GitHub.
+
+What the command does:
+- creates or reuses one NotebookLM notebook per report title
+- uploads the report markdown content plus cited URLs as NotebookLM sources
+- generates an audio overview and downloads it next to the report markdown, for example `roundups/2026-04-22.notebooklm.mp3`
+- updates the markdown with a managed `## Audio Overview` section linking to the podcast
+- writes durable notebook and artifact ids to `.notebooklm-sync.json`
 
 ## How to read it
 1. Start with a category README for the current week's strongest findings.

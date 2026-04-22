@@ -106,6 +106,17 @@ Two lessons matter immediately:
 
 This is a better product shape for agent evaluation. The environment factory becomes part of the runtime improvement loop.
 
+### Repeated execution is now a first-class reliability test
+On the Reliability of Computer Use Agents adds the correction this topic needed. A task is not solved because the agent passed once. The same model can alternate between success and failure across repeated runs due to execution stochasticity, task ambiguity, and behavioral drift. That turns repeated-trial consistency from a nice-to-have into a required metric for browser and desktop agents.
+
+The product lesson is direct:
+- rerun the same task multiple times before trusting a pass rate
+- record ambiguity and clarification failure as benchmark data, not annotation noise
+- optimize for stable strategies across runs instead of one aggressive lucky trajectory
+
+Source:
+- [On the Reliability of Computer Use Agents](https://arxiv.org/abs/2604.17849)
+
 ## Working conclusion
 
 Trajectory-aware evaluation should become default infrastructure for any team building autonomous or semi-autonomous agents. If the run cannot be replayed, inspected, and scored across safety, robustness, parameter correctness, environment fidelity, and runtime-specific harm dimensions, improvement efforts will stay shallow and trust claims will stay unearned.
