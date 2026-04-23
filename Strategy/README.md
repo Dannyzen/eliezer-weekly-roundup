@@ -2,43 +2,42 @@
 
 This index tracks the most recent week with structured content. Each finding includes a short summary, a link into the detailed analysis, a core source, practical ways to explore it now, and an implementability score from 0 to 1.
 
-## Most Recent Week: 2026-04-22
+## Most Recent Week: 2026-04-23
 
-### Local-first claims need task-shaped benchmarking, not slogans
-Summary: Structured extraction workloads are much closer to local-ready than long-context coaching or correction work. Local-first is becoming a routing policy, not a purity test.
+### Privacy filters are becoming the practical boundary before cloud escalation
+Summary: A small open-weight privacy model that runs locally is more strategically useful than another abstract privacy promise. Redact first, then decide what is allowed to leave the boundary.
 
-Analysis: [sovereignty analysis](2026-04-22/sovereignty.md#local-first-claims-need-task-shaped-benchmarking-not-slogans)
+Analysis: [sovereignty analysis](2026-04-23/sovereignty.md#privacy-filters-are-becoming-the-practical-boundary-before-cloud-escalation)
+Core source: [Introducing OpenAI Privacy Filter](https://openai.com/index/introducing-openai-privacy-filter)
+Implementable now:
+- run local privacy filtering before sending tickets, notes, logs, or transcripts to hosted models
+- scrub secrets and identifiers before indexing internal corpora
+- fine-tune the filter to local policy rather than trusting default masking rules blindly
+- reserve human review for high-sensitivity or low-confidence cases
+Tools, repos, and methodologies worth exploring:
+- [openai/privacy-filter](https://github.com/openai/privacy-filter)
+- [openai/privacy-filter on Hugging Face](https://huggingface.co/openai/privacy-filter)
+- local redaction gates before cloud escalation
+- in-domain privacy evaluation suites
+- [Local-First Agents](local-first-agents/local-first-agents.md)
+Implementability score: 0.95
+
+### Edge multimodal agents are now credible on commodity boards
+Summary: A Jetson-class local stack with Gemma 4, `llama.cpp`, Parakeet, Kokoro, and one explicit vision tool shows that multimodal agents can stay on-device when the action surface is narrow.
+
+Analysis: [sovereignty analysis](2026-04-23/sovereignty.md#edge-multimodal-agents-are-now-credible-on-commodity-boards)
 Durable topic: [Local-First Agents](local-first-agents/local-first-agents.md)
-Core source: [Benchmarking System Dynamics AI Assistants](https://arxiv.org/abs/2604.18566)
+Core source: [Gemma 4 VLA Demo on Jetson Orin Nano Super](https://huggingface.co/blog/nvidia/gemma4)
+Supporting source: [asierarranz/Google_Gemma](https://github.com/asierarranz/Google_Gemma)
 Implementable now:
-- benchmark each subtask separately before choosing a local or cloud default
-- route structured extraction and schema-constrained work to local models first
-- escalate long-context correction or coaching tasks selectively to cloud
-- test backend behavior and JSON guarantees before spending effort on quantization sweeps
+- stand up a local multimodal assistant on Jetson-class hardware with an OpenAI-compatible local endpoint
+- keep the tool surface to one or two explicit actions instead of a broad workstation abstraction
+- benchmark quant choices and memory cleanup before scaling hardware budgets
+- use local-first multimodal assistants for narrow workflows before attempting general autonomy
 Tools, repos, and methodologies worth exploring:
-- [Benchmarking System Dynamics AI Assistants](https://arxiv.org/abs/2604.18566)
-- [llama.cpp](https://github.com/ggml-org/llama.cpp)
-- [mlx-lm](https://github.com/ml-explore/mlx-lm)
-- task-specific local-versus-cloud routing tables
-- backend-specific JSON conformance tests
-Implementability score: 0.90
-
-### High-autonomy security agents are forcing containment into the product surface
-Summary: If an agent can inspect source and execute real exploits, containment is part of the product. Read-only mounts, writable overlays, and self-hosted runner boundaries are becoming default design expectations.
-
-Analysis: [sovereignty analysis](2026-04-22/sovereignty.md#high-autonomy-security-agents-are-forcing-containment-into-the-product-surface)
-Durable topic: [Agent Sandboxing](agent-sandboxing/agent-sandboxing.md)
-Core source: [Shannon v1.1.0](https://github.com/KeygraphHQ/shannon/releases/tag/v1.1.0)
-Supporting source: [KeygraphHQ/shannon](https://github.com/KeygraphHQ/shannon)
-Implementable now:
-- run exploit-capable agents only on staging or disposable environments
-- mount source read-only and give the agent a separate writable overlay
-- keep exploit candidate queues structured and inspectable
-- prefer self-hosted runner models when the agent touches proprietary code or live-like systems
-Tools, repos, and methodologies worth exploring:
-- [Shannon v1.1.0](https://github.com/KeygraphHQ/shannon/releases/tag/v1.1.0)
-- [KeygraphHQ/shannon](https://github.com/KeygraphHQ/shannon)
-- read-only mounts plus writable overlays
-- self-hosted runner deployments
-- proof-producing exploit queues and replayable reports
-Implementability score: 0.92
+- [Gemma 4 VLA Demo on Jetson Orin Nano Super](https://huggingface.co/blog/nvidia/gemma4)
+- [asierarranz/Google_Gemma](https://github.com/asierarranz/Google_Gemma)
+- [ggml-org/llama.cpp](https://github.com/ggml-org/llama.cpp)
+- [unsloth/gemma-4-E2B-it-GGUF](https://huggingface.co/unsloth/gemma-4-E2B-it-GGUF)
+- Parakeet STT and Kokoro TTS
+Implementability score: 0.88

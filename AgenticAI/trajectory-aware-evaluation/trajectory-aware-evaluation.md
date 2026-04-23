@@ -117,6 +117,20 @@ The product lesson is direct:
 Source:
 - [On the Reliability of Computer Use Agents](https://arxiv.org/abs/2604.17849)
 
+### SWE-chat shows why coding-agent eval has to leave benchmark theater
+SWE-chat adds the missing field evidence for coding agents. Instead of another curated benchmark, it captures 6,000 real coding-agent sessions from open-source development, with more than 63,000 user prompts and 355,000 agent tool calls. That makes it possible to score what actually matters in practice: how often humans interrupt or correct the agent, how much agent-written code survives into commits, and whether security quality drops when the agent is doing more of the work.
+
+Its numbers are useful precisely because they are messy. Only 44% of agent-produced code survives into user commits, users push back against agent outputs in 44% of turns, and agent-written code introduces more security vulnerabilities than human-authored code. That is a much better eval substrate than a clean coding benchmark because it captures the negotiation between user and agent instead of pretending the interaction ends when the model emits code.
+
+Practical lesson:
+- measure code-survival and authorship patterns, not just task completion
+- treat interruption and rewrite behavior as primary signals of usefulness
+- run security analysis on agent-authored diffs as part of the same benchmark loop
+- preserve full user-agent traces so teams can study where collaboration actually degrades
+
+Source:
+- [SWE-chat: Coding Agent Interactions From Real Users in the Wild](https://arxiv.org/abs/2604.20779)
+
 ## Working conclusion
 
-Trajectory-aware evaluation should become default infrastructure for any team building autonomous or semi-autonomous agents. If the run cannot be replayed, inspected, and scored across safety, robustness, parameter correctness, environment fidelity, and runtime-specific harm dimensions, improvement efforts will stay shallow and trust claims will stay unearned.
+Trajectory-aware evaluation should become default infrastructure for any team building autonomous or semi-autonomous agents. If the run cannot be replayed, inspected, and scored across safety, robustness, parameter correctness, environment fidelity, runtime-specific harm dimensions, and real-user collaboration traces, improvement efforts will stay shallow and trust claims will stay unearned.

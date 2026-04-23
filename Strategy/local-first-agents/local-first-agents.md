@@ -108,9 +108,37 @@ Practical implication:
 Source:
 - [Benchmarking System Dynamics AI Assistants](https://arxiv.org/abs/2604.18566)
 
+### Local privacy filters should sit before model escalation
+OpenAI Privacy Filter adds the missing boundary primitive to the local-first story. A sovereign stack does not need to choose between never using cloud models and shipping raw internal text upstream by default. It can first run a local privacy stage that masks PII and secrets, then decide what filtered artifact is allowed to leave the boundary.
+
+This matters because the release is not just a benchmark claim. It is an open-weight model built for high-throughput privacy workflows, long-text processing, and local deployment. That makes privacy filtering a real systems layer for training-data prep, logging, retrieval indexing, and agent memory pipelines.
+
+Practical implication:
+- redact before escalation instead of after logging the raw artifact elsewhere
+- put privacy filters in front of retrieval and memory ingestion, not only in front of end-user output
+- treat small specialized local models as strategic infrastructure, not as consolation prizes
+
+Sources:
+- [Introducing OpenAI Privacy Filter](https://openai.com/index/introducing-openai-privacy-filter)
+- [openai/privacy-filter](https://github.com/openai/privacy-filter)
+
+### Edge multimodal agents get much more plausible when the tool surface is tiny
+NVIDIA's Gemma 4 VLA demo on Jetson Orin Nano Super is useful because it shows the right local-first product shape. The interesting part is not only that the model runs locally. It is that the entire stack stays narrow and inspectable: local speech-to-text, local `llama.cpp` serving, one explicit webcam tool, and local text-to-speech on a small board.
+
+That design lesson matters. A constrained local multimodal agent with one or two explicit tools is much easier to reason about than a miniaturized cloud workstation. Sovereignty improves when the action surface is short enough to audit and the runtime remains OpenAI-compatible enough to swap into existing tooling.
+
+Practical implication:
+- start with one or two explicit local tools instead of a broad workstation abstraction
+- use local OpenAI-compatible serving paths so cloud escalation remains optional
+- benchmark the smallest acceptable quant and memory profile before assuming a bigger device is required
+
+Sources:
+- [Gemma 4 VLA Demo on Jetson Orin Nano Super](https://huggingface.co/blog/nvidia/gemma4)
+- [asierarranz/Google_Gemma](https://github.com/asierarranz/Google_Gemma)
+
 ### Policy implication
-The sovereignty question is no longer only "can the model run locally?" It is also "what stays local by default, what triggers escalation, and what operator surface keeps the human in control?"
+The sovereignty question is no longer only "can the model run locally?" It is also "what stays local by default, what triggers escalation, what gets privacy-filtered before escalation, and what operator surface keeps the human in control?"
 
 ## Current read
 
-The important shift is not just that local models beat every hosted model. They do not. The shift is that local-first is now viable enough to become the default for a meaningful slice of agent workloads, especially when paired with explicit escalation rules and agent-native local surfaces. That forces better architecture decisions: explicit routing, explicit scopes, explicit reasons for what leaves the device, and operator surfaces that preserve human supervision.
+The important shift is not just that local models beat every hosted model. They do not. The shift is that local-first is now viable enough to become the default for a meaningful slice of agent workloads, especially when paired with explicit escalation rules, local privacy filters, and narrow multimodal action surfaces. That forces better architecture decisions: explicit routing, explicit scopes, explicit reasons for what leaves the device, and operator surfaces that preserve human supervision.
