@@ -14,6 +14,7 @@ The April 2026 wave of memory work is pushing seven ideas into focus:
 - **Drawing on Memory** argues that durable facts should be paired with contextual scene traces so temporal reasoning and update tracking survive across sessions.
 - **claude-mem** shows that installable memory infrastructure with search, citations, and progressive disclosure is a more practical product shape than hidden context injection.
 - **Memory Transfer Learning** shows that memory becomes much more valuable when distilled lessons transfer across domains instead of staying trapped inside one benchmark.
+- **StructMem** argues that long-horizon memory needs event-level bindings, temporal anchors, and cross-event links rather than isolated vectorized facts.
 
 Core sources:
 - MemMachine: https://arxiv.org/abs/2604.04853
@@ -25,6 +26,8 @@ Core sources:
 - claude-mem: https://github.com/thedotmack/claude-mem
 - Memory Transfer Learning: https://arxiv.org/abs/2604.14004
 - Experience Compression Spectrum: https://arxiv.org/abs/2604.15877
+- StructMem: https://arxiv.org/abs/2604.21748
+- LightMem: https://github.com/zjunlp/LightMem
 
 ## Core thesis
 
@@ -155,6 +158,19 @@ That matters because many of the failures operators actually care about are stat
 - audit trails that vanish once summaries overwrite the past
 
 The practical lesson is immediate even if the full architecture is heavy. High-value memory should stop behaving like an append-only note pad. It should have explicit mutation semantics, version lineage, and enough structure that update tracking does not depend on whatever the answering model improvises at query time.
+
+### StructMem makes event structure the practical middle path between flat memory and brittle graphs
+StructMem adds a useful correction to the memory stack. Flat memory is cheap, but it loses the relations that matter for long-horizon behavior. Full graph memory can model relationships, but construction and maintenance are expensive and fragile. StructMem sits in the middle: preserve event-level bindings, temporally anchor memories, induce cross-event links, and periodically consolidate related items in the background.
+
+The implementation lesson is direct:
+- store memory as events with provenance, timestamps, participants, and relation candidates
+- retrieve event neighborhoods rather than isolated nearest-neighbor chunks
+- run consolidation off the critical path so the online loop stays fast
+- evaluate memory on temporal and multi-hop behavior, not just fact recall
+
+Source:
+- [StructMem: Structured Memory for Long-Horizon Behavior in LLMs](https://arxiv.org/abs/2604.21748)
+- [zjunlp/LightMem](https://github.com/zjunlp/LightMem)
 
 ## Working conclusion
 

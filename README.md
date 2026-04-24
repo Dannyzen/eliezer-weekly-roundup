@@ -3,18 +3,18 @@
 A category-first research repo for tracking what matters in agentic AI and strategy each week.
 
 ## Latest week
-- Week ending 2026-04-23: [Daily scan](roundups/2026-04-23.md)
+- Week ending 2026-04-24: [Daily scan](roundups/2026-04-24.md)
 - Fresh AgenticAI signal: [current implementation signal](AgenticAI/README.md)
-- Fresh Strategy signal: [current sovereignty and governance signal](Strategy/README.md)
-- Durable topic to revisit: [Sessionful Agent Loops](AgenticAI/sessionful-agent-loops/sessionful-agent-loops.md)
+- Fresh Strategy signal: [current sovereignty and infrastructure signal](Strategy/README.md)
+- Durable topic to revisit: [Context Economy for Agents](AgenticAI/context-economy/context-economy.md)
 - Durable strategy topic to revisit: [Local-First Agents](Strategy/local-first-agents/local-first-agents.md)
 
 ## Current signal
-- Agent loops are becoming sessionful services with shared workspaces, approval gates, analytics, and connection-scoped state reuse.
-- Real coding-agent evaluation needs wild traces, diff survival, and interruption data, not only curated benchmark wins.
-- Local privacy filters can now sit in front of cloud escalation as narrow inspectable boundary infrastructure.
-- Local multimodal agents are plausible on commodity edge hardware when the action surface is tiny and explicit.
-- GitHub's most worth-trying open-source harness today is [huggingface/ml-intern](https://github.com/huggingface/ml-intern), which packages compaction, approvals, tool routing, and MCP support into one ML-engineer agent.
+- Agent builders are moving from context maximalism to context accounting: KV-cache economics, tool-schema gating, code-context retrieval, and structured memory all matter.
+- DeepSeek-V4 is a useful long-context agent signal because it treats KV cache, tool-call schema, interleaved reasoning, and sandbox RL as one system.
+- MCP and repository context need admission control; `zilliztech/claude-context` is the most worth-trying GitHub-trending tool today.
+- Agent memory needs event structure, temporal anchors, and background consolidation, not just isolated vectorized facts.
+- Cloud infrastructure is splitting between training and low-latency agentic serving; that is useful bottleneck evidence and a portability warning.
 
 ## Browse by category
 - [AgenticAI](AgenticAI/README.md)
@@ -31,13 +31,13 @@ A category-first research repo for tracking what matters in agentic AI and strat
 2. Install Chromium for the first NotebookLM login with `uv run playwright install chromium`.
 3. Authenticate NotebookLM once with `uv run notebooklm login`.
 4. Generate or reuse a report notebook and podcast:
-   - `uv run eliezer-roundup generate-podcast roundups/2026-04-23.md`
+   - `uv run eliezer-roundup generate-podcast roundups/2026-04-24.md`
    - add `--push` if you want the updated markdown, podcast file, and manifest committed and pushed to GitHub.
 
 What the command does:
 - creates or reuses one NotebookLM notebook per report title
 - uploads the report markdown content plus cited URLs as NotebookLM sources
-- generates an audio overview and downloads it next to the report markdown, for example `roundups/2026-04-23.notebooklm.mp3`
+- generates an audio overview and downloads it next to the report markdown, for example `roundups/2026-04-24.notebooklm.mp3`
 - updates the markdown with a managed `## Audio Overview` section linking to the podcast
 - writes durable notebook and artifact ids to `.notebooklm-sync.json`
 
