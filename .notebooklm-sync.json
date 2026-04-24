@@ -19,6 +19,45 @@
         "df3f1b60-3e2d-48d2-8334-f2d4d368879d",
         "a226ef2b-3e72-4469-9e49-a438ea6aa006"
       ]
+    },
+    "roundups/2026-04-24.md": {
+      "audio_artifact_id": "1df7e072-0f8c-43f8-87f5-c11453aabe2f",
+      "audio_path": "roundups/2026-04-24.notebooklm.mp3",
+      "notebook_id": "ba48fdf9-ee21-460d-bf80-55d3cd0d4931",
+      "notebook_title": "NotebookLM: Friday Synthesis: Week ending 2026-04-24",
+      "report_path": "roundups/2026-04-24.md",
+      "report_source_id": "435c7920-f510-4b7b-8795-02e1bec137fe",
+      "source_digest": "a0c8d6be1883836480d4debc29f6c8b8681a5ece59df07a6bdba05c6ebc6fe13",
+      "url_source_ids": [
+        "d978a6e5-b966-4b76-82c4-ff4f68b7a712",
+        "933d4a94-19e4-47ab-b754-20d586b74806",
+        "e1f3349b-75bd-4ed0-a263-f0a822d259c7",
+        "a1a86ee3-3c51-4697-a438-08acc48111c7",
+        "fe668d30-3e9b-4506-9ecd-5854df381854",
+        "bd2bb9b3-8f9e-4541-a04f-deb2de9ae11c",
+        "a3d5d1c4-262e-4740-bb80-91d6d9e3dc09",
+        "83ae4345-09e1-4e45-a20e-d9aedff46147",
+        "7d748641-dd02-436f-bc68-35f0a16f586e",
+        "0abc86c7-51be-4973-b75e-b70296435380",
+        "0c5de4ab-e588-4e6b-9289-33fd37d49093",
+        "0c18261c-c82c-4f6b-af45-6e4c78781781",
+        "97c68ee1-d0a8-4cd3-93ee-37e38d28b235",
+        "bba3a0a3-8459-4b4d-9773-ea835c375cf7",
+        "575cae7f-2cfc-4ce2-859e-af9e26a8a512",
+        "8380a701-611b-473b-8234-c85ea90baafc",
+        "5a8c0b2d-5e43-49a9-8c59-5e6bae30838b",
+        "76bff1ce-19c5-437a-bacf-0a6b37f6959e",
+        "cee6358d-fbbc-4e28-8a1d-f28ea4d7cc98",
+        "e88d7f27-9325-4e8a-a6e5-dde9f21a7f40",
+        "7a13d476-5213-443f-8e65-c73e2dcf9ab3",
+        "67a9ff31-aa44-4ce1-8527-5d136a7df6d6",
+        "0a966296-202d-4220-b7e8-572c3023ce37",
+        "7d6b517d-9f71-44f7-8178-279f46978526",
+        "2563e01d-afcd-4df2-92e4-5fcb322d7568",
+        "083d5bca-045d-417e-8428-07bd04bb9840",
+        "37d40e11-1e30-42ef-8065-24168e30330d",
+        "25d07687-9b12-4825-b693-f9d70b6c9776"
+      ]
     }
   }
 }
