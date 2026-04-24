@@ -38,6 +38,27 @@ def test_build_parser_parses_generate_podcast_command(tmp_path: Path) -> None:
     assert args.timeout_seconds == 900
 
 
+def test_build_parser_parses_process_podcast_hook_command(tmp_path: Path) -> None:
+    parser = build_parser()
+
+    args = parser.parse_args(
+        [
+            "process-podcast-hook",
+            "--state-path",
+            str(tmp_path / "state.json"),
+            "--timeout-seconds",
+            "1800",
+            "--max-reports",
+            "2",
+        ]
+    )
+
+    assert args.command == "process-podcast-hook"
+    assert args.state_path == tmp_path / "state.json"
+    assert args.timeout_seconds == 1800
+    assert args.max_reports == 2
+
+
 def test_main_returns_actionable_message_when_notebooklm_auth_is_missing(
     monkeypatch: pytest.MonkeyPatch,
     capsys: pytest.CaptureFixture[str],
