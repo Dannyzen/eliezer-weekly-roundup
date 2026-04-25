@@ -4,21 +4,22 @@ A living, category-first research system for the agentic stack: agents, tools, m
 
 The primary lens is the agentic stack itself, not generic AI news. The repo tracks research and releases that change how a builder should design autonomous systems: orchestration, prompting, tool use, memory, deterministic testing, observability, multi-agent systems, model routing, and sovereign or self-hosted infrastructure.
 
-## Latest week
+## Latest update
 
-- Week ending 2026-04-24: [Friday synthesis](roundups/2026-04-24.md)
-- AgenticAI analysis: [week ending 2026-04-24](AgenticAI/2026-04-24/reasoning.md)
-- Strategy analysis: [week ending 2026-04-24](Strategy/2026-04-24/sovereignty.md)
+- Daily scan 2026-04-25: [daily synthesis](roundups/2026-04-25.md)
+- AgenticAI analysis: [2026-04-25](AgenticAI/2026-04-25/reasoning.md)
+- Strategy analysis: [2026-04-25](Strategy/2026-04-25/sovereignty.md)
 - Fresh AgenticAI index: [AgenticAI README](AgenticAI/README.md)
 - Fresh Strategy index: [Strategy README](Strategy/README.md)
+- Prior Friday synthesis: [week ending 2026-04-24](roundups/2026-04-24.md)
 
 ## Current thesis
 
+- Agent runtimes are becoming evented app servers: resumable sessions, sticky environments, deferred tools, permission profiles, plugin APIs, and rollout traces are now core primitives.
+- Skills and grounding documents are becoming the deterministic control layer between human expertise and agent autonomy.
+- Boundary safety must live below the prompt: SDK-level path blocking, portable permissions, session-level moderation, sandboxed execution, and evidence traces.
+- Multi-agent communication is becoming a measurable protocol. Latent communication research is promising, but today’s implementable move is typed, traceable handoffs.
 - The agent stack is moving from context maximalism to context accounting: tool schemas, code, memory, traces, and KV cache all need admission control.
-- Sessionful agent loops are becoming product surfaces, which makes harness architecture, state compaction, WebSocket-style transport, and observability more important than one-shot prompting.
-- Evaluation is shifting toward generated or verifiable environments, repeated-run reliability, and trajectory-level diagnosis.
-- Sovereignty is no longer just local inference. It is routing, privacy filtering, local grounding data, containment, and explicit cloud escalation policy.
-- Specialized cloud hardware is useful evidence about agent-serving bottlenecks, but it should be treated as a portability and lock-in risk until routing and fallback paths are explicit.
 
 ## Browse by category
 
@@ -27,6 +28,7 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 ## Durable topics
 
+- [Skills as Control](AgenticAI/skills-as-control/skills-as-control.md)
 - [Context Economy for Agents](AgenticAI/context-economy/context-economy.md)
 - [Memory Systems](AgenticAI/memory-systems/memory-systems.md)
 - [Local-First Agents](Strategy/local-first-agents/local-first-agents.md)
@@ -58,4 +60,4 @@ Selected items usually have at least one of these properties:
 
 ## Subscribe
 
-Use GitHub's Watch feature if you want repo updates as the research system evolves. The category READMEs are the intended entry points; the roundup is the weekly synthesis layer.
+Use GitHub's Watch feature if you want repo updates as the research system evolves. The category READMEs are the intended entry points; the roundup is the synthesis layer.
