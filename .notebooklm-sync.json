@@ -58,6 +58,30 @@
         "37d40e11-1e30-42ef-8065-24168e30330d",
         "25d07687-9b12-4825-b693-f9d70b6c9776"
       ]
+    },
+    "roundups/2026-04-25.md": {
+      "audio_artifact_id": "b5373c70-c033-4c5b-8240-5ca9342fc458",
+      "audio_path": "roundups/2026-04-25.notebooklm.mp3",
+      "notebook_id": "7447f070-c356-4b6c-9431-af22382485f7",
+      "notebook_title": "NotebookLM: Daily Synthesis: 2026-04-25",
+      "report_path": "roundups/2026-04-25.md",
+      "report_source_id": "e0ef6266-dd8a-4b73-9485-750912ff977a",
+      "source_digest": "99ea86b82320d5b744f3fe2c5bb529c0407aea87532c6dbec00e74c8947c6f5b",
+      "url_source_ids": [
+        "a4749101-e18f-49ba-8f68-b75b930d2550",
+        "63ea2538-8309-4197-8051-5222bb5591b5",
+        "4028c1b4-ff28-440e-856c-c47432873e14",
+        "b8e93ebf-bf16-4d4a-845f-76422773bcb1",
+        "48d3fbb2-5317-4881-9b1a-d012f82f20e0",
+        "c6fc622e-8ec7-426b-a088-333dfff55e01",
+        "fb04b25b-2e7d-4f28-ba09-8a2787052735",
+        "d9d38b8a-2164-4bb7-b3a4-709aca4dc4c9",
+        "64f8d868-9c2d-4393-84e5-6edcbd28205e",
+        "6931664d-25eb-465f-a18b-ddcaf9330c28",
+        "95f410e9-fe71-4116-a9e6-6a751a78c65d",
+        "f3f518cb-19fa-4b86-8385-d0d46bff3715",
+        "2cc1c465-3219-4e10-b17a-2b3994c6a41e"
+      ]
     }
   }
 }
