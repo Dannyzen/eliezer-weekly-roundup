@@ -2,66 +2,61 @@
 
 This index tracks the most recent structured update. Each finding includes a short summary, a link into the detailed analysis, a core source, practical ways to explore it now, and an implementability score from 0 to 1.
 
-## Most Recent Structured Update: 2026-04-25
+## Most Recent Structured Update: 2026-04-26
 
-### Agent runtimes are becoming evented app servers, not CLI loops
-Summary: The latest framework and tool releases point to the same runtime shape: resumable sessions, sticky environments, process event streams, deferred tool calls, permission profiles, plugin APIs, and rollout traces. Agents are becoming app servers with state, not scripts around prompts.
+### CrewAI makes checkpoints, forks, and sandboxes normal agent-runtime plumbing
+Summary: CrewAI 1.14.3 is a practical runtime-hardening release: checkpoint lifecycle events, checkpoint/fork support for standalone agents, replay fixes, E2B and Daytona sandbox tools, and MCP cold-start optimization. The pattern is clear: agent frameworks are standardizing resumability and isolated execution.
 
-Analysis: [reasoning analysis](2026-04-25/reasoning.md#agent-runtimes-are-becoming-evented-app-servers-not-cli-loops)
-Core source: [OpenAI Codex 0.125.0](https://github.com/openai/codex/releases/tag/rust-v0.125.0)
+Analysis: [reasoning analysis](2026-04-26/reasoning.md#crewai-makes-checkpoints-forks-and-sandboxes-normal-agent-runtime-plumbing)
+Core source: [CrewAI 1.14.3](https://github.com/crewAIInc/crewAI/releases/tag/1.14.3)
 Supporting sources:
-- [Pydantic AI v1.87.0](https://github.com/pydantic/pydantic-ai/releases/tag/v1.87.0)
-- [LangGraph prebuilt 1.0.11](https://github.com/langchain-ai/langgraph/releases/tag/prebuilt%3D%3D1.0.11)
-- [AG2 v0.12.1](https://github.com/ag2ai/ag2/releases/tag/v0.12.1)
+- [OpenAI Agents Python v0.14.6](https://github.com/openai/openai-agents-python/releases/tag/v0.14.6)
+- [LangChain core 1.3.2](https://github.com/langchain-ai/langchain/releases/tag/langchain-core%3D%3D1.3.2)
 Implementable now:
-- model each agent run as an evented state machine with resumable thread state
-- preserve tool, permission, environment, human-approval, and model events as typed trace records
-- expose reasoning-token usage and rollout traces to programmatic consumers
-- use permission profiles as data structures that travel across sessions and shell escalation
+- add checkpoint lifecycle events to long-running agent workflows
+- support fork/resume paths as first-class runtime operations
+- run untrusted or high-variance tool work in E2B, Daytona, Docker, Modal, or comparable sandboxes
+- test checkpoint replay and fork resume as normal CI scenarios
 Tools, repos, and methodologies worth exploring:
-- OpenAI Codex app-server APIs and rollout traces
-- Pydantic AI `ProcessEventStream` and `HandleDeferredToolCalls`
-- LangGraph `ToolRuntime`
-- AG2 step events and toolkit merging
-- OpenTelemetry-style traces for tool and session lifecycle
-Implementability score: 0.93
+- CrewAI checkpoint/fork runtime
+- OpenAI Agents sessions with documented MongoDB persistence
+- LangChain content-block-centric streaming
+- sandbox-backed replay tests
+Implementability score: 0.88
 
-### Skills and grounding documents are becoming the deterministic control layer
-Summary: New research on scientific workflows, GROUNDING.md, and reasoning skills converges on a practical pattern: let the LLM map intent, but use reviewed markdown skills, hard constraints, and deterministic generators to control execution.
+### Codex skills are becoming installable operational packages, not prompt snippets
+Summary: OpenAI’s Codex skills docs and the fast-moving `awesome-codex-skills` repo make the skill pattern concrete: skills have metadata, install paths, scripts, references, and progressive disclosure. This turns reusable procedure into a shareable control surface rather than a pile of copied instructions.
 
-Analysis: [reasoning analysis](2026-04-25/reasoning.md#skills-and-grounding-documents-are-becoming-the-deterministic-control-layer)
+Analysis: [reasoning analysis](2026-04-26/reasoning.md#codex-skills-are-becoming-installable-operational-packages-not-prompt-snippets)
 Durable topic: [Skills as Control](skills-as-control/skills-as-control.md)
-Core source: [From Research Question to Scientific Workflow](https://arxiv.org/abs/2604.21910v1)
-Supporting sources:
-- [GROUNDING.md for agentic coding](https://arxiv.org/abs/2604.21744v1)
-- [Thinking with Reasoning Skills](https://arxiv.org/abs/2604.21764v1)
-- [AEL: Agent Evolving Learning](https://arxiv.org/abs/2604.21725v1)
+Core source: [OpenAI Codex plugins and skills](https://openai.com/academy/codex-plugins-and-skills)
+Supporting source: [ComposioHQ/awesome-codex-skills](https://github.com/ComposioHQ/awesome-codex-skills)
 Implementable now:
-- create repo, domain, and method-level `GROUNDING.md` or `SKILLS.md` files
-- separate hard constraints from conventions, examples, and tests
-- compile LLM intents into deterministic DAGs, scripts, or configs before execution
-- promote repeated successes into reviewed skills instead of raw memory dumps
+- package recurring workflows as `SKILL.md` folders with metadata and deterministic helpers
+- keep long references and scripts outside the active prompt until the skill fires
+- build small skill installers and skill-sharing conventions
+- distinguish plugins for external data/actions from skills for internal process control
 Tools, repos, and methodologies worth exploring:
-- markdown skill libraries
-- typed intent schemas
-- deterministic workflow generators
-- reasoning-skill retrieval
-- skill regression tests
-Implementability score: 0.86
+- Codex skills
+- Composio `awesome-codex-skills`
+- metadata-triggered progressive disclosure
+- skill regression tests and review workflows
+Implementability score: 0.94
 
-### Learned latent multi-agent communication is a research signal, not an implementation default
-Summary: DiffMAS shows that inter-agent communication may eventually be learned as a latent channel rather than written as verbose text handoffs. The practical takeaway today is narrower: make handoffs typed, measured, and traceable before adding more agents.
+### Recursive Language Models are a useful counterweight to million-token context maximalism
+Summary: The GitHub-trending `rlm` library implements Recursive Language Models: the model treats long context as an external environment, inspects and decomposes it programmatically, and recursively calls itself over snippets. It is not a drop-in production default, but it is a strong design pattern for agents that should not blindly stuff everything into one context window.
 
-Analysis: [reasoning analysis](2026-04-25/reasoning.md#learned-latent-multi-agent-communication-is-a-research-signal-not-an-implementation-default)
-Core source: [Learning to Communicate](https://arxiv.org/abs/2604.21794v1)
+Analysis: [reasoning analysis](2026-04-26/reasoning.md#recursive-language-models-are-a-useful-counterweight-to-million-token-context-maximalism)
+Core source: [alexzhang13/rlm](https://github.com/alexzhang13/rlm)
+Supporting source: [Recursive Language Models paper](https://arxiv.org/abs/2512.24601)
 Implementable now:
-- replace free-form inter-agent summaries with typed handoff schemas
-- measure token cost, failure rate, and missing evidence at each handoff boundary
-- preserve structured multi-agent traces for offline analysis
-- test whether fewer agents with better state transfer beat more role prompts
+- prototype recursive context inspection for long documents, logs, or repositories
+- keep trajectory metadata for every recursive sub-call
+- isolate the REPL or code-execution environment before using the pattern on untrusted input
+- compare RLM-style decomposition against long-context model calls and retrieval-only baselines
 Tools, repos, and methodologies worth exploring:
-- typed handoff contracts in LangGraph, AG2, or custom orchestrators
-- trajectory analysis by handoff boundary
-- multi-agent ablation suites
-- DiffMAS-style research tracking
-Implementability score: 0.28
+- `rlms` Python package
+- Docker, Modal, Prime, Daytona, or E2B sandbox environments
+- trajectory visualizers for recursive calls
+- long-context task ablations
+Implementability score: 0.50

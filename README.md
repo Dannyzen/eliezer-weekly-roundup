@@ -6,20 +6,21 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 ## Latest update
 
-- Daily scan 2026-04-25: [daily synthesis](roundups/2026-04-25.md)
-- AgenticAI analysis: [2026-04-25](AgenticAI/2026-04-25/reasoning.md)
-- Strategy analysis: [2026-04-25](Strategy/2026-04-25/sovereignty.md)
+- Daily scan 2026-04-26: [daily synthesis](roundups/2026-04-26.md)
+- AgenticAI analysis: [2026-04-26](AgenticAI/2026-04-26/reasoning.md)
+- Strategy analysis: [2026-04-26](Strategy/2026-04-26/sovereignty.md)
 - Fresh AgenticAI index: [AgenticAI README](AgenticAI/README.md)
 - Fresh Strategy index: [Strategy README](Strategy/README.md)
 - Prior Friday synthesis: [week ending 2026-04-24](roundups/2026-04-24.md)
 
 ## Current thesis
 
-- Agent runtimes are becoming evented app servers: resumable sessions, sticky environments, deferred tools, permission profiles, plugin APIs, and rollout traces are now core primitives.
-- Skills and grounding documents are becoming the deterministic control layer between human expertise and agent autonomy.
-- Boundary safety must live below the prompt: SDK-level path blocking, portable permissions, session-level moderation, sandboxed execution, and evidence traces.
+- Agent runtimes are becoming replayable systems: checkpoints, forks, resumable sessions, lifecycle events, sandbox substrates, and stream-preserving traces are now core primitives.
+- Skills and grounding documents are becoming installable control packages, not just reusable prompt snippets.
+- Boundary safety must live below the prompt: SDK-level path blocking, portable permissions, session-level moderation, sandboxed execution, evidence traces, and router-level request controls.
 - Multi-agent communication is becoming a measurable protocol. Latent communication research is promising, but today’s implementable move is typed, traceable handoffs.
-- The agent stack is moving from context maximalism to context accounting: tool schemas, code, memory, traces, and KV cache all need admission control.
+- The agent stack is moving from context maximalism to context operations: tool schemas, code, memory, traces, KV cache, and recursive inspection all need admission control.
+- Sovereignty is becoming router governance: model/provider selection, budget enforcement, reasoning-mode normalization, MCP auth state, and protocol-shim review are part of the control plane.
 
 ## Browse by category
 
@@ -34,6 +35,7 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 - [Local-First Agents](Strategy/local-first-agents/local-first-agents.md)
 - [Agent Sandboxing](Strategy/agent-sandboxing/agent-sandboxing.md)
 - [Runtime Governance](Strategy/runtime-governance/runtime-governance.md)
+- [Model Router Governance](Strategy/model-router-governance/model-router-governance.md)
 
 ## How the repo is organized
 
