@@ -136,6 +136,24 @@ Sources:
 - [Gemma 4 VLA Demo on Jetson Orin Nano Super](https://huggingface.co/blog/nvidia/gemma4)
 - [asierarranz/Google_Gemma](https://github.com/asierarranz/Google_Gemma)
 
+### Local code and task graphs are becoming the real sovereign substrate
+GitNexus and Beads add a practical correction to local-first thinking. Running a model locally is only one layer. A coding agent also needs repository structure, task state, dependency history, claims, blockers, messages, and prior decisions. If those context substrates are hosted elsewhere by default, the system is not meaningfully local-first.
+
+GitNexus points toward local code intelligence: graph indexing, CLI/MCP access, bridge mode, local storage, and editor integration for Claude Code, Cursor, Codex, Windsurf, and similar tools. Beads points toward local task memory: a Dolt-backed graph issue tracker with dependency links, JSON output, claims, gates, messages, compaction, and sync options.
+
+Practical implication:
+- keep repo graphs and task graphs local by default;
+- expose them to agents through narrow MCP tools and schemas;
+- route only minimal retrieved evidence to hosted models;
+- verify binaries/checksums and review licenses before production adoption;
+- treat task memory as auditable state, not markdown scratchpad residue.
+
+Sources:
+- [GitNexus](https://github.com/abhigyanpatwari/GitNexus)
+- [GitNexus v1.6.4-rc.9](https://github.com/abhigyanpatwari/GitNexus/releases/tag/v1.6.4-rc.9)
+- [Beads](https://github.com/gastownhall/beads)
+- [Beads v1.0.3](https://github.com/gastownhall/beads/releases/tag/v1.0.3)
+
 ### Policy implication
 The sovereignty question is no longer only "can the model run locally?" It is also "what stays local by default, what triggers escalation, what gets privacy-filtered before escalation, and what operator surface keeps the human in control?"
 

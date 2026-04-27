@@ -2,61 +2,63 @@
 
 This index tracks the most recent structured update. Each finding includes a short summary, a link into the detailed analysis, a core source, practical ways to explore it now, and an implementability score from 0 to 1.
 
-## Most Recent Structured Update: 2026-04-26
+## Most Recent Structured Update: 2026-04-27
 
-### CrewAI makes checkpoints, forks, and sandboxes normal agent-runtime plumbing
-Summary: CrewAI 1.14.3 is a practical runtime-hardening release: checkpoint lifecycle events, checkpoint/fork support for standalone agents, replay fixes, E2B and Daytona sandbox tools, and MCP cold-start optimization. The pattern is clear: agent frameworks are standardizing resumability and isolated execution.
+### AgentSearchBench proves agent discovery needs behavioral probes, not descriptions
+Summary: AgentSearchBench crawls 9,759 real-world agents and evaluates agent search with more than 66K executions. The important result is architectural: semantic similarity between a task and an agent description is not enough. Agent selection needs execution-aware probing, task-specific reranking, and outcome traces.
 
-Analysis: [reasoning analysis](2026-04-26/reasoning.md#crewai-makes-checkpoints-forks-and-sandboxes-normal-agent-runtime-plumbing)
-Core source: [CrewAI 1.14.3](https://github.com/crewAIInc/crewAI/releases/tag/1.14.3)
+Analysis: [reasoning analysis](2026-04-27/reasoning.md#agentsearchbench-proves-agent-discovery-needs-behavioral-probes-not-descriptions)
+Durable topic: [Agent Discovery](agent-discovery/agent-discovery.md)
+Core source: [AgentSearchBench paper](https://arxiv.org/abs/2604.22436)
 Supporting sources:
-- [OpenAI Agents Python v0.14.6](https://github.com/openai/openai-agents-python/releases/tag/v0.14.6)
-- [LangChain core 1.3.2](https://github.com/langchain-ai/langchain/releases/tag/langchain-core%3D%3D1.3.2)
+- [Bingo-W/AgentSearchBench](https://github.com/Bingo-W/AgentSearchBench)
+- [AgentSearchBench task dataset](https://huggingface.co/datasets/AgentSearch/AgentSearchBench-Tasks/viewer/single-agent_task_query)
 Implementable now:
-- add checkpoint lifecycle events to long-running agent workflows
-- support fork/resume paths as first-class runtime operations
-- run untrusted or high-variance tool work in E2B, Daytona, Docker, Modal, or comparable sandboxes
-- test checkpoint replay and fork resume as normal CI scenarios
+- maintain an internal agent/tool registry with executable probes, not only descriptions
+- record task-level outcomes and use them as retrieval/reranking features
+- add behavioral smoke tests before routing valuable work to a specialist agent
+- separate candidate retrieval from execution-grounded reranking
 Tools, repos, and methodologies worth exploring:
-- CrewAI checkpoint/fork runtime
-- OpenAI Agents sessions with documented MongoDB persistence
-- LangChain content-block-centric streaming
-- sandbox-backed replay tests
-Implementability score: 0.88
+- AgentSearchBench datasets and leaderboard
+- Qwen/BGE/MXBAI rerankers plus task-specific probes
+- LangGraph or Temporal for probe execution traces
+- OpenTelemetry spans around agent selection outcomes
+Implementability score: 0.74
 
-### Codex skills are becoming installable operational packages, not prompt snippets
-Summary: OpenAI’s Codex skills docs and the fast-moving `awesome-codex-skills` repo make the skill pattern concrete: skills have metadata, install paths, scripts, references, and progressive disclosure. This turns reusable procedure into a shareable control surface rather than a pile of copied instructions.
+### Memanto makes typed, versioned memory a practical alternative to graph-heavy agent memory
+Summary: Memanto argues that production agent memory does not have to start with a fragile knowledge graph. Its useful pattern is typed semantic memory, temporal versioning, automated conflict resolution, and a single-query retrieval path. Even if the exact backend is not open, the design pressure is practical: memory needs write semantics and retrieval latency discipline.
 
-Analysis: [reasoning analysis](2026-04-26/reasoning.md#codex-skills-are-becoming-installable-operational-packages-not-prompt-snippets)
-Durable topic: [Skills as Control](skills-as-control/skills-as-control.md)
-Core source: [OpenAI Codex plugins and skills](https://openai.com/academy/codex-plugins-and-skills)
-Supporting source: [ComposioHQ/awesome-codex-skills](https://github.com/ComposioHQ/awesome-codex-skills)
+Analysis: [reasoning analysis](2026-04-27/reasoning.md#memanto-makes-typed-versioned-memory-a-practical-alternative-to-graph-heavy-agent-memory)
+Durable topic: [Memory Systems](memory-systems/memory-systems.md)
+Core source: [Memanto](https://arxiv.org/abs/2604.22085)
 Implementable now:
-- package recurring workflows as `SKILL.md` folders with metadata and deterministic helpers
-- keep long references and scripts outside the active prompt until the skill fires
-- build small skill installers and skill-sharing conventions
-- distinguish plugins for external data/actions from skills for internal process control
+- define typed memory categories before adding another vector index
+- version memory writes and preserve supersession/conflict metadata
+- evaluate memory on LongMemEval/LoCoMo-style continuity tasks, not only nearest-neighbor recall
+- keep online retrieval to one or a few deterministic calls whenever possible
 Tools, repos, and methodologies worth exploring:
-- Codex skills
-- Composio `awesome-codex-skills`
-- metadata-triggered progressive disclosure
-- skill regression tests and review workflows
-Implementability score: 0.94
+- typed memory schemas
+- temporal versioning and conflict-resolution policies
+- SQLite/Postgres plus vector/FTS hybrids for practical prototypes
+- LongMemEval and LoCoMo memory evaluations
+Implementability score: 0.66
 
-### Recursive Language Models are a useful counterweight to million-token context maximalism
-Summary: The GitHub-trending `rlm` library implements Recursive Language Models: the model treats long context as an external environment, inspects and decomposes it programmatically, and recursively calls itself over snippets. It is not a drop-in production default, but it is a strong design pattern for agents that should not blindly stuff everything into one context window.
+### Agentic world modeling is a useful map, but not yet a turnkey implementation pattern
+Summary: The new Agentic World Modeling survey organizes world models by capability level, from one-step predictors to simulators to evolvers, and by law regime: physical, digital, social, and scientific. The map is valuable because it forces agent builders to ask what environment dynamics their system actually models. The implementation path remains heavy unless scoped to narrow digital or synthetic environments.
 
-Analysis: [reasoning analysis](2026-04-26/reasoning.md#recursive-language-models-are-a-useful-counterweight-to-million-token-context-maximalism)
-Core source: [alexzhang13/rlm](https://github.com/alexzhang13/rlm)
-Supporting source: [Recursive Language Models paper](https://arxiv.org/abs/2512.24601)
+Analysis: [reasoning analysis](2026-04-27/reasoning.md#agentic-world-modeling-is-a-useful-map-but-not-yet-a-turnkey-implementation-pattern)
+Core source: [Agentic World Modeling](https://arxiv.org/abs/2604.22748)
+Supporting sources:
+- [awesome-agentic-world-modeling](https://github.com/matrix-agent/awesome-agentic-world-modeling)
+- [Snowflake Agent World Model](https://github.com/Snowflake-Labs/agent-world-model)
 Implementable now:
-- prototype recursive context inspection for long documents, logs, or repositories
-- keep trajectory metadata for every recursive sub-call
-- isolate the REPL or code-execution environment before using the pattern on untrusted input
-- compare RLM-style decomposition against long-context model calls and retrieval-only baselines
+- use the L1/L2/L3 taxonomy as an evaluation rubric for agent environments
+- start with narrow digital world models where state transitions can be checked
+- use synthetic, executable environments for agent RL/evaluation before claiming open-world competence
+- require decision-centric evaluation, not just next-step prediction accuracy
 Tools, repos, and methodologies worth exploring:
-- `rlms` Python package
-- Docker, Modal, Prime, Daytona, or E2B sandbox environments
-- trajectory visualizers for recursive calls
-- long-context task ablations
-Implementability score: 0.50
+- matrix-agent taxonomy and bibliography
+- Snowflake Agent World Model synthetic MCP environments
+- state-transition tests for digital workflows
+- falsification-first rollout evaluation
+Implementability score: 0.46

@@ -123,6 +123,21 @@ Avoid these traps:
 
 ## New April 2026 additions
 
+### Typed semantic memory is the practical middle path after vector-only and graph-heavy memory
+Memanto sharpens the memory architecture tradeoff. The paper argues that high-fidelity agent memory does not always require LLM-mediated entity extraction, explicit graph schema maintenance, and multi-query retrieval. Its proposed pattern is typed semantic memory, automated conflict resolution, temporal versioning, and a single-query retrieval path.
+
+The immediate design lesson is not to depend blindly on one proprietary retrieval backend. It is to make memory writes more disciplined:
+- classify durable memories into typed categories;
+- attach timestamp, source, supersession, and conflict metadata;
+- reconcile contradictions at write time instead of asking the answerer to improvise later;
+- keep the online retrieval path cheap enough to use continuously;
+- evaluate long-horizon continuity with realistic temporal and multi-session tasks.
+
+This connects directly to StructMem and WorldDB. Flat memory is too lossy, but full graph memory can be expensive and brittle. A typed, versioned event/state layer is the practical middle path for many agent products.
+
+Source:
+- [Memanto: Typed Semantic Memory with Information-Theoretic Retrieval for Long-Horizon Agents](https://arxiv.org/abs/2604.22085)
+
 ### Memory, skills, and rules are one compression pipeline
 Experience Compression Spectrum adds the abstraction this category was missing. Episodic memory, procedural skills, and declarative rules are not separate product features. They are compression levels for the same underlying experience. The practical move is to preserve evidence once, then promote it along a governed ladder from episode to reusable routine to compact rule when transfer value is high and specificity costs are acceptable. The paper's "missing diagonal" is the opportunity: most systems can store or summarize, but very few can adapt compression level to the query, the time horizon, or the privacy tier.
 

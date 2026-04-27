@@ -6,21 +6,22 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 ## Latest update
 
-- Daily scan 2026-04-26: [daily synthesis](roundups/2026-04-26.md)
-- AgenticAI analysis: [2026-04-26](AgenticAI/2026-04-26/reasoning.md)
-- Strategy analysis: [2026-04-26](Strategy/2026-04-26/sovereignty.md)
+- Daily scan 2026-04-27: [daily synthesis](roundups/2026-04-27.md)
+- AgenticAI analysis: [2026-04-27](AgenticAI/2026-04-27/reasoning.md)
+- Strategy analysis: [2026-04-27](Strategy/2026-04-27/sovereignty.md)
 - Fresh AgenticAI index: [AgenticAI README](AgenticAI/README.md)
 - Fresh Strategy index: [Strategy README](Strategy/README.md)
 - Prior Friday synthesis: [week ending 2026-04-24](roundups/2026-04-24.md)
 
 ## Current thesis
 
+- Agent selection is becoming a retrieval-and-evaluation problem: descriptions are weak signals, while execution traces, probes, and task-level outcomes are stronger routing evidence.
+- Agent memory is moving away from vector-only transcript recall toward typed, versioned, conflict-aware state that can be audited and updated.
 - Agent runtimes are becoming replayable systems: checkpoints, forks, resumable sessions, lifecycle events, sandbox substrates, and stream-preserving traces are now core primitives.
 - Skills and grounding documents are becoming installable control packages, not just reusable prompt snippets.
 - Boundary safety must live below the prompt: SDK-level path blocking, portable permissions, session-level moderation, sandboxed execution, evidence traces, and router-level request controls.
-- Multi-agent communication is becoming a measurable protocol. Latent communication research is promising, but today’s implementable move is typed, traceable handoffs.
 - The agent stack is moving from context maximalism to context operations: tool schemas, code, memory, traces, KV cache, and recursive inspection all need admission control.
-- Sovereignty is becoming router governance: model/provider selection, budget enforcement, reasoning-mode normalization, MCP auth state, and protocol-shim review are part of the control plane.
+- Sovereignty is becoming local context infrastructure plus router governance: what stays on-device, what escalates, what is indexed locally, and what passes through provider gateways all need explicit policy.
 
 ## Browse by category
 
@@ -29,6 +30,7 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 ## Durable topics
 
+- [Agent Discovery](AgenticAI/agent-discovery/agent-discovery.md)
 - [Skills as Control](AgenticAI/skills-as-control/skills-as-control.md)
 - [Context Economy for Agents](AgenticAI/context-economy/context-economy.md)
 - [Memory Systems](AgenticAI/memory-systems/memory-systems.md)
