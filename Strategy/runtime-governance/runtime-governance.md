@@ -99,6 +99,12 @@ Avoid these traps:
 - PIArena: https://arxiv.org/abs/2604.08499v1
 - AgentCity: https://arxiv.org/abs/2604.07007
 - Subliminal Transfer of Unsafe Behaviors in AI Agent Distillation: https://arxiv.org/abs/2604.15559
+- AgentWard: https://arxiv.org/abs/2604.24657
+- FIND-Lab/AgentWard: https://github.com/FIND-Lab/AgentWard
+- AgentVisor: https://arxiv.org/abs/2604.24118
+- Governing What You Cannot Observe: https://arxiv.org/abs/2604.24686
+- OpenAI Privacy Filter: https://openai.com/index/introducing-openai-privacy-filter/
+- openai/privacy-filter: https://github.com/openai/privacy-filter
 
 ## New April 2026 additions
 
@@ -124,6 +130,32 @@ That means governance has to cover the training and distillation path, not only 
 
 ### Accountability chains matter once agents cross principals
 AgentCity is still highly conceptual, but it surfaces a durable governance question: who authored the rule, who executed the action, and who is accountable when agents transact across organizational boundaries? Runtime governance will eventually need an answer to that, even outside blockchain-heavy designs.
+
+### Runtime security is becoming lifecycle mediation
+AgentWard, AgentVisor, RiskGate, and OpenAI Privacy Filter sharpen this topic into an implementation pattern.
+
+AgentWard organizes controls across startup, input processing, memory, decision-making, and execution. That is the right level of abstraction because agent failures propagate through lifecycle stages instead of staying inside one prompt boundary.
+
+AgentVisor frames the target agent as an untrusted guest and places a trusted semantic mediator at the tool-call boundary. The important idea is semantic privilege separation: the system should inspect what the action means, what context caused it, and whether the privilege escalation is justified before the tool executes.
+
+RiskGate adds adaptive monitoring. Agents can become unsafe without a code change, so governance has to observe drift, pattern shifts, and unobserved-risk margins at runtime.
+
+OpenAI Privacy Filter adds a practical local-first context gate. Sensitive context should be labeled or redacted before it is stored in memory, retrieved into prompts, routed to hosted models, or passed to external tools.
+
+Practical lesson:
+- split controls across lifecycle stages
+- put a mediator in front of privileged tool calls
+- keep PII filtering local where possible
+- record governance events in the same trace as actions and memory writes
+- treat drift monitoring as part of runtime policy, not only analytics
+
+Sources:
+- [AgentWard](https://arxiv.org/abs/2604.24657)
+- [FIND-Lab/AgentWard](https://github.com/FIND-Lab/AgentWard)
+- [AgentVisor](https://arxiv.org/abs/2604.24118)
+- [Governing What You Cannot Observe](https://arxiv.org/abs/2604.24686)
+- [OpenAI Privacy Filter](https://openai.com/index/introducing-openai-privacy-filter/)
+- [openai/privacy-filter](https://github.com/openai/privacy-filter)
 
 ## Working conclusion
 

@@ -1,6 +1,6 @@
 # Skills as Control
 
-Last updated: 2026-04-26
+Last updated: 2026-04-28
 
 Core sources:
 - From Research Question to Scientific Workflow: Leveraging Agentic AI for Science Automation: https://arxiv.org/abs/2604.21910v1
@@ -9,6 +9,8 @@ Core sources:
 - AEL: Agent Evolving Learning for Open-Ended Environments: https://arxiv.org/abs/2604.21725v1
 - OpenAI Codex plugins and skills: https://openai.com/academy/codex-plugins-and-skills
 - ComposioHQ/awesome-codex-skills: https://github.com/ComposioHQ/awesome-codex-skills
+- Skill Retrieval Augmentation for Agentic AI: https://arxiv.org/abs/2604.24594
+- From Skill Text to Skill Structure: https://arxiv.org/abs/2604.24026
 
 ## Thesis
 
@@ -23,6 +25,23 @@ The newest practical signal is that skills are becoming installable packages. Op
 `ComposioHQ/awesome-codex-skills` turns the pattern into a distribution format. It uses `$CODEX_HOME/skills`, per-skill folders, required `SKILL.md` metadata, optional `scripts/`, `references/`, and `assets/`, and an installer that fetches skills from GitHub. The README also describes progressive disclosure: load metadata to decide whether a skill applies, then load the body only after the skill fires.
 
 That turns the skill from a prompt trick into a software artifact. It can be pinned, reviewed, installed, tested, shared, deprecated, and audited.
+
+## April 28 retrieval update: skills need admission control
+
+Skill Retrieval Augmentation makes the scaling problem explicit. A large skill library cannot be pasted into context. The system has to retrieve a small candidate set, decide whether external procedural knowledge is actually needed, and then load only the useful parts. The paper's SRA-Bench construction is useful because it separates retrieval, incorporation, and end-task execution, and it shows that current agents often load skills indiscriminately even when a gold skill is absent or the task does not require one.
+
+The SSL skill-representation paper adds the missing structure. Skills should expose scheduling signals, execution structure, logic-level action/resource evidence, prerequisites, and side effects. That structure improves both discovery and risk assessment compared with text-only lookup.
+
+Immediate design implication:
+- keep short metadata separate from full skill bodies
+- retrieve by metadata first, then rerank by task fit
+- add a load/no-load gate before consuming context
+- normalize skills into invocation interfaces, execution phases, resource touches, side effects, and tests
+- log retrieved skills, loaded skills, and task outcomes so stale or harmful skills can be pruned
+
+Sources:
+- [Skill Retrieval Augmentation for Agentic AI](https://arxiv.org/abs/2604.24594)
+- [From Skill Text to Skill Structure](https://arxiv.org/abs/2604.24026)
 
 ## Architecture pattern
 

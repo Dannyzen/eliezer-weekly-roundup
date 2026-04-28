@@ -2,26 +2,29 @@
 
 This index tracks the most recent structured update. Each finding includes a short summary, a link into the detailed analysis, a core source, practical ways to explore it now, and an implementability score from 0 to 1.
 
-## Most Recent Structured Update: 2026-04-27
+## Most Recent Structured Update: 2026-04-28
 
-### Local-first code and task context is becoming the sovereign coding-agent substrate
-Summary: GitHub Trending surfaced two practical local-first context systems: GitNexus indexes code into a local knowledge graph and exposes it through CLI/MCP, while Beads gives coding agents a Dolt-backed graph issue tracker with dependency, task, and message memory. The strategic move is clear: keep repository structure, task state, and agent coordination data close to the operator before escalating to hosted models.
+### Agent security is becoming lifecycle governance plus semantic privilege separation
+Summary: AgentWard, AgentVisor, RiskGate, and OpenAI Privacy Filter all point to the same strategic move: security for agents has to sit in the runtime path. The stack needs lifecycle controls across startup, input, memory, decision, and execution; a trusted mediator for tool calls; adaptive monitoring for drift; and local PII filtering before sensitive context reaches a model or tool.
 
-Analysis: [sovereignty analysis](2026-04-27/sovereignty.md#local-first-code-and-task-context-is-becoming-the-sovereign-coding-agent-substrate)
-Durable topic: [Local-First Agents](local-first-agents/local-first-agents.md)
-Core source: [GitNexus](https://github.com/abhigyanpatwari/GitNexus)
+Analysis: [sovereignty analysis](2026-04-28/sovereignty.md#agent-security-is-becoming-lifecycle-governance-plus-semantic-privilege-separation)
+Durable topic: [Runtime Governance](runtime-governance/runtime-governance.md)
+Core source: [AgentWard](https://arxiv.org/abs/2604.24657)
 Supporting sources:
-- [GitNexus v1.6.4-rc.9](https://github.com/abhigyanpatwari/GitNexus/releases/tag/v1.6.4-rc.9)
-- [Beads](https://github.com/gastownhall/beads)
-- [Beads v1.0.3](https://github.com/gastownhall/beads/releases/tag/v1.0.3)
+- [FIND-Lab/AgentWard](https://github.com/FIND-Lab/AgentWard)
+- [AgentVisor](https://arxiv.org/abs/2604.24118)
+- [Governing What You Cannot Observe](https://arxiv.org/abs/2604.24686)
+- [OpenAI Privacy Filter](https://openai.com/index/introducing-openai-privacy-filter/)
+- [openai/privacy-filter](https://github.com/openai/privacy-filter)
 Implementable now:
-- index repositories locally and expose code-graph context through MCP rather than uploading whole repos to hosted tools
-- keep agent task memory in a structured dependency graph instead of markdown scratchpads
-- use GitNexus or similar local code context tools for blast-radius and dependency-aware edits
-- use Beads-style task graphs for multi-agent handoffs, claims, blockers, and audit trails
+- add a policy mediator in front of privileged tool calls
+- separate foundation scan, input sanitization, memory protection, decision alignment, and execution control
+- run local PII filtering/redaction before agent context is stored, retrieved, or sent upstream
+- track drift and anomaly signals as runtime governance evidence, not only postmortem analytics
 Tools, repos, and methodologies worth exploring:
-- GitNexus CLI/MCP and bridge mode
-- Beads `bd` CLI, Dolt-backed task graph, JSON schema envelope, and gates
-- local-first code graph indexing
-- checksum verification and license review before production adoption
-Implementability score: 0.86
+- AgentWard's OpenClaw plugin architecture
+- AgentVisor-style semantic privilege separation
+- RiskGate-style monotonic restriction and viability indices
+- OpenAI Privacy Filter for local redaction and context minimization
+- OPA/Cedar policies and trace-linked evidence capture
+Implementability score: 0.64

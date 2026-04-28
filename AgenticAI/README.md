@@ -2,63 +2,69 @@
 
 This index tracks the most recent structured update. Each finding includes a short summary, a link into the detailed analysis, a core source, practical ways to explore it now, and an implementability score from 0 to 1.
 
-## Most Recent Structured Update: 2026-04-27
+## Most Recent Structured Update: 2026-04-28
 
-### AgentSearchBench proves agent discovery needs behavioral probes, not descriptions
-Summary: AgentSearchBench crawls 9,759 real-world agents and evaluates agent search with more than 66K executions. The important result is architectural: semantic similarity between a task and an agent description is not enough. Agent selection needs execution-aware probing, task-specific reranking, and outcome traces.
+### Symphony turns issue trackers into agent control planes
+Summary: OpenAI's Symphony release is the clearest current example of ticket-native coding-agent orchestration. The useful pattern is not the Elixir implementation; it is the spec: poll an issue tracker, create an isolated workspace per issue, run a coding-agent session continuously, keep workflow policy in-repo, and expose enough logs/status for a human to manage work instead of sessions.
 
-Analysis: [reasoning analysis](2026-04-27/reasoning.md#agentsearchbench-proves-agent-discovery-needs-behavioral-probes-not-descriptions)
-Durable topic: [Agent Discovery](agent-discovery/agent-discovery.md)
-Core source: [AgentSearchBench paper](https://arxiv.org/abs/2604.22436)
+Analysis: [reasoning analysis](2026-04-28/reasoning.md#symphony-turns-issue-trackers-into-agent-control-planes)
+Durable topic: [Ticket-Native Agent Orchestration](ticket-native-agent-orchestration/ticket-native-agent-orchestration.md)
+Core source: [OpenAI Symphony announcement](https://openai.com/index/open-source-codex-orchestration-symphony)
 Supporting sources:
-- [Bingo-W/AgentSearchBench](https://github.com/Bingo-W/AgentSearchBench)
-- [AgentSearchBench task dataset](https://huggingface.co/datasets/AgentSearch/AgentSearchBench-Tasks/viewer/single-agent_task_query)
+- [openai/symphony](https://github.com/openai/symphony)
+- [Symphony SPEC.md](https://github.com/openai/symphony/blob/main/SPEC.md)
+- [Codex App Server](https://developers.openai.com/codex/app-server/)
 Implementable now:
-- maintain an internal agent/tool registry with executable probes, not only descriptions
-- record task-level outcomes and use them as retrieval/reranking features
-- add behavioral smoke tests before routing valuable work to a specialist agent
-- separate candidate retrieval from execution-grounded reranking
+- use Linear, GitHub Issues, or another tracker as the durable task queue
+- create per-ticket workspaces with explicit cleanup and stop semantics
+- put workflow rules in `WORKFLOW.md` or an equivalent repo-owned contract
+- attach CI status, PR links, review packets, and proof-of-work artifacts to the ticket
+- start with trusted environments and add sandbox/approval posture explicitly
 Tools, repos, and methodologies worth exploring:
-- AgentSearchBench datasets and leaderboard
-- Qwen/BGE/MXBAI rerankers plus task-specific probes
-- LangGraph or Temporal for probe execution traces
-- OpenTelemetry spans around agent selection outcomes
-Implementability score: 0.74
+- OpenAI Symphony spec and reference implementation
+- Codex App Server or another programmatic agent runner
+- Linear/GitHub Issues as state machines
+- structured logs, OpenTelemetry spans, and workspace lifecycle hooks
+Implementability score: 0.88
 
-### Memanto makes typed, versioned memory a practical alternative to graph-heavy agent memory
-Summary: Memanto argues that production agent memory does not have to start with a fragile knowledge graph. Its useful pattern is typed semantic memory, temporal versioning, automated conflict resolution, and a single-query retrieval path. Even if the exact backend is not open, the design pressure is practical: memory needs write semantics and retrieval latency discipline.
+### Agent evaluation is moving to DAGs, deployment signals, and OS-agent stress tests
+Summary: Three fresh papers point in the same direction: agent eval is becoming operational observability. AgentEval models workflows as DAGs for root-cause attribution, AgentPulse scores deployed agents across benchmark/adoption/sentiment/ecosystem signals, and OS-SPEAR evaluates OS agents across safety, performance, efficiency, and robustness.
 
-Analysis: [reasoning analysis](2026-04-27/reasoning.md#memanto-makes-typed-versioned-memory-a-practical-alternative-to-graph-heavy-agent-memory)
-Durable topic: [Memory Systems](memory-systems/memory-systems.md)
-Core source: [Memanto](https://arxiv.org/abs/2604.22085)
-Implementable now:
-- define typed memory categories before adding another vector index
-- version memory writes and preserve supersession/conflict metadata
-- evaluate memory on LongMemEval/LoCoMo-style continuity tasks, not only nearest-neighbor recall
-- keep online retrieval to one or a few deterministic calls whenever possible
-Tools, repos, and methodologies worth exploring:
-- typed memory schemas
-- temporal versioning and conflict-resolution policies
-- SQLite/Postgres plus vector/FTS hybrids for practical prototypes
-- LongMemEval and LoCoMo memory evaluations
-Implementability score: 0.66
-
-### Agentic world modeling is a useful map, but not yet a turnkey implementation pattern
-Summary: The new Agentic World Modeling survey organizes world models by capability level, from one-step predictors to simulators to evolvers, and by law regime: physical, digital, social, and scientific. The map is valuable because it forces agent builders to ask what environment dynamics their system actually models. The implementation path remains heavy unless scoped to narrow digital or synthetic environments.
-
-Analysis: [reasoning analysis](2026-04-27/reasoning.md#agentic-world-modeling-is-a-useful-map-but-not-yet-a-turnkey-implementation-pattern)
-Core source: [Agentic World Modeling](https://arxiv.org/abs/2604.22748)
+Analysis: [reasoning analysis](2026-04-28/reasoning.md#agent-evaluation-is-moving-to-dags-deployment-signals-and-os-agent-stress-tests)
+Durable topic: [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md)
+Core source: [AgentEval](https://arxiv.org/abs/2604.23581)
 Supporting sources:
-- [awesome-agentic-world-modeling](https://github.com/matrix-agent/awesome-agentic-world-modeling)
-- [Snowflake Agent World Model](https://github.com/Snowflake-Labs/agent-world-model)
+- [AgentPulse](https://arxiv.org/abs/2604.24038)
+- [OS-SPEAR](https://arxiv.org/abs/2604.24348)
+- [Wuzheng02/OS-SPEAR](https://github.com/Wuzheng02/OS-SPEAR)
 Implementable now:
-- use the L1/L2/L3 taxonomy as an evaluation rubric for agent environments
-- start with narrow digital world models where state transitions can be checked
-- use synthetic, executable environments for agent RL/evaluation before claiming open-world competence
-- require decision-centric evaluation, not just next-step prediction accuracy
+- represent workflow traces as DAGs with typed node metrics and dependency edges
+- score intermediate failures, not only final outputs
+- collect deployment health signals such as issue velocity, package usage, sentiment, and ecosystem activity
+- separate OS-agent safety, latency/token cost, performance, and robustness perturbation tests
 Tools, repos, and methodologies worth exploring:
-- matrix-agent taxonomy and bibliography
-- Snowflake Agent World Model synthetic MCP environments
-- state-transition tests for digital workflows
-- falsification-first rollout evaluation
-Implementability score: 0.46
+- AgentEval-style hierarchical failure taxonomies
+- AgentPulse-style multi-signal dashboards
+- OS-SPEAR safety/performance/efficiency/robustness subsets
+- CI/CD regression gates over replayable traces
+Implementability score: 0.76
+
+### Skill repositories need retrieval gates and machine-readable structure
+Summary: Skill Retrieval Augmentation and SSL skill representation both attack the same failure mode: dumping every skill into context does not scale. Agents need a skill registry that retrieves candidates, decides whether loading is actually necessary, and exposes scheduling, structural, logical, and risk evidence in a machine-readable form.
+
+Analysis: [reasoning analysis](2026-04-28/reasoning.md#skill-repositories-need-retrieval-gates-and-machine-readable-structure)
+Durable topic: [Skills as Control](skills-as-control/skills-as-control.md)
+Core source: [Skill Retrieval Augmentation for Agentic AI](https://arxiv.org/abs/2604.24594)
+Supporting sources:
+- [From Skill Text to Skill Structure](https://arxiv.org/abs/2604.24026)
+Implementable now:
+- store skill metadata separately from full skill bodies
+- retrieve a small candidate set, then gate loading on task fit and external-capability need
+- normalize skill artifacts into invocation interfaces, execution structure, side effects, and risk tags
+- log which retrieved skills were loaded and whether they improved task outcomes
+Tools, repos, and methodologies worth exploring:
+- embedding plus lexical retrieval over skills
+- rerankers and applicability classifiers
+- structured skill schemas inspired by SSL
+- regression tests that compare text-only skill lookup against structured lookup
+Implementability score: 0.70

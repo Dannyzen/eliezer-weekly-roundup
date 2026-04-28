@@ -76,6 +76,10 @@ A useful minimum stack now looks like this:
 - GeoAgentBench: https://arxiv.org/abs/2604.13888
 - Ecom-RLVE: https://huggingface.co/blog/ecom-rlve
 - ATBench-Claw and ATBench-CodeX: https://arxiv.org/abs/2604.14858
+- AgentEval: https://arxiv.org/abs/2604.23581
+- AgentPulse: https://arxiv.org/abs/2604.24038
+- OS-SPEAR: https://arxiv.org/abs/2604.24348
+- Wuzheng02/OS-SPEAR: https://github.com/Wuzheng02/OS-SPEAR
 
 ## New April 2026 additions
 
@@ -130,6 +134,28 @@ Practical lesson:
 
 Source:
 - [SWE-chat: Coding Agent Interactions From Real Users in the Wild](https://arxiv.org/abs/2604.20779)
+
+### April 28 update: eval is becoming operational observability
+AgentEval, AgentPulse, and OS-SPEAR add a useful three-layer correction to this topic.
+
+AgentEval shows that multi-step workflows should be represented as DAGs, not flat logs. Typed node metrics, dependency edges, and hierarchical failure labels make root-cause attribution possible and CI regression results actionable.
+
+AgentPulse shows that deployed agent quality also has an ecosystem dimension. Benchmark scores need to be interpreted next to adoption signals, package/marketplace activity, issue health, community sentiment, and maintenance evidence. Those signals are not ground truth, but they catch risks that static benchmarks miss.
+
+OS-SPEAR makes the runtime-specific case for OS agents. Safety, performance, efficiency, and robustness have to be scored separately because a desktop/browser agent can finish a task while still being slow, unsafe, or brittle under visual/textual perturbations.
+
+Practical lesson:
+- store traces in a shape that preserves dependencies
+- grade intermediate steps, not only final artifacts
+- connect eval failures to CI/CD root-cause reports
+- track deployment-health signals as context around benchmark scores
+- use runtime-specific perturbation and efficiency tests for OS/browser/desktop agents
+
+Sources:
+- [AgentEval](https://arxiv.org/abs/2604.23581)
+- [AgentPulse](https://arxiv.org/abs/2604.24038)
+- [OS-SPEAR](https://arxiv.org/abs/2604.24348)
+- [Wuzheng02/OS-SPEAR](https://github.com/Wuzheng02/OS-SPEAR)
 
 ## Working conclusion
 
