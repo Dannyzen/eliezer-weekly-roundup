@@ -157,6 +157,24 @@ Sources:
 - [OpenAI Privacy Filter](https://openai.com/index/introducing-openai-privacy-filter/)
 - [openai/privacy-filter](https://github.com/openai/privacy-filter)
 
+### Semantic gateways turn MCP exposure into a governable enterprise boundary
+The Semantic Gateway paper and Jarvis Registry update this topic with a concrete enterprise control-plane pattern. MCP makes tool discovery easy; governance has to make discovery scoped, execution authorized, and transitions auditable.
+
+Practical lesson:
+- put an MCP/A2A gateway in front of privileged tools
+- assign identity and scopes to each agent workflow
+- enforce tool-level RBAC deterministically
+- place semantic policy checks before privileged execution
+- preserve approval artifacts in the trace
+- fuzz enabled-tool graphs for unauthorized state transitions
+
+The gateway is becoming the runtime governance choke point. It should expose not just what the agent did, but what it could have done under the enabled tool set and policy configuration.
+
+Sources:
+- [From CRUD to Autonomous Agents](https://arxiv.org/abs/2604.25555v1)
+- [Jarvis Registry](https://github.com/ascending-llc/jarvis-registry)
+
+
 ## Working conclusion
 
 Runtime governance is not a niche enterprise concern. It is the natural consequence of giving agents durable memory, tool access, and delegated authority. The category is early, but the direction is settled. The control plane has to move into runtime.

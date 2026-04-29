@@ -6,22 +6,24 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 ## Latest update
 
-- Daily scan 2026-04-28: [daily synthesis](roundups/2026-04-28.md)
-- AgenticAI analysis: [2026-04-28](AgenticAI/2026-04-28/reasoning.md)
-- Strategy analysis: [2026-04-28](Strategy/2026-04-28/sovereignty.md)
+- Daily scan 2026-04-29: [daily synthesis](roundups/2026-04-29.md)
+- AgenticAI analysis: [2026-04-29](AgenticAI/2026-04-29/reasoning.md)
+- Strategy analysis: [2026-04-29](Strategy/2026-04-29/sovereignty.md)
 - Fresh AgenticAI index: [AgenticAI README](AgenticAI/README.md)
 - Fresh Strategy index: [Strategy README](Strategy/README.md)
 - Prior Friday synthesis: [week ending 2026-04-24](roundups/2026-04-24.md)
 
 ## Current thesis
 
+- Coding-agent harnesses are becoming observable optimization targets: versioned scaffold components, trace distillation, predicted edit effects, replay suites, and rollback matter as much as prompt wording.
+- Long-horizon agents need explicit knowledge-state orchestration: claims, evidence, assumptions, contradictions, artifacts, checkpoints, and final validity should be state, not transcript residue.
 - Coding-agent orchestration is moving from interactive sessions to ticket-native control planes: issue trackers, isolated workspaces, workflow contracts, and proof-of-work artifacts.
 - Agent selection is becoming a retrieval-and-evaluation problem: descriptions are weak signals, while execution traces, probes, and task-level outcomes are stronger routing evidence.
 - Agent memory is moving away from vector-only transcript recall toward typed, versioned, conflict-aware state that can be audited and updated.
 - Agent runtimes are becoming replayable systems: checkpoints, forks, resumable sessions, lifecycle events, sandbox substrates, and stream-preserving traces are now core primitives.
 - Skills and grounding documents are becoming installable control packages, but large skill libraries need retrieval gates and machine-readable execution/risk structure.
 - Boundary safety must live below the prompt: lifecycle governance, semantic tool-call mediation, local PII filtering, portable permissions, sandboxed execution, and evidence traces.
-- The agent stack is moving from context maximalism to context operations: tool schemas, code, memory, traces, KV cache, skills, and recursive inspection all need admission control.
+- Enterprise agent access is becoming an MCP/semantic-gateway governance problem: identity, tool-level RBAC, approvals, fuzzing, tracing, and audit belong on the tool path.
 - Sovereignty is becoming local context infrastructure plus router governance: what stays on-device, what escalates, what is indexed locally, and what passes through provider gateways all need explicit policy.
 
 ## Browse by category
@@ -31,12 +33,15 @@ The primary lens is the agentic stack itself, not generic AI news. The repo trac
 
 ## Durable topics
 
+- [Agent Harness Architecture](AgenticAI/agent-harness-architecture/agent-harness-architecture.md)
+- [Knowledge-State Orchestration](AgenticAI/knowledge-state-orchestration/knowledge-state-orchestration.md)
 - [Ticket-Native Agent Orchestration](AgenticAI/ticket-native-agent-orchestration/ticket-native-agent-orchestration.md)
 - [Agent Discovery](AgenticAI/agent-discovery/agent-discovery.md)
 - [Skills as Control](AgenticAI/skills-as-control/skills-as-control.md)
 - [Trajectory-Aware Evaluation](AgenticAI/trajectory-aware-evaluation/trajectory-aware-evaluation.md)
 - [Context Economy for Agents](AgenticAI/context-economy/context-economy.md)
 - [Memory Systems](AgenticAI/memory-systems/memory-systems.md)
+- [Agent Gateway Governance](Strategy/agent-gateway-governance/agent-gateway-governance.md)
 - [Local-First Agents](Strategy/local-first-agents/local-first-agents.md)
 - [Agent Sandboxing](Strategy/agent-sandboxing/agent-sandboxing.md)
 - [Runtime Governance](Strategy/runtime-governance/runtime-governance.md)

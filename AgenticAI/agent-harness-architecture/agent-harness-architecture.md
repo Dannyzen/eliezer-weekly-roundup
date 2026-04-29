@@ -162,6 +162,22 @@ Practical lesson:
 Source:
 - [CADMAS-CTX](https://arxiv.org/abs/2604.17950)
 
+### Observability-driven harness evolution turns edits into falsifiable contracts
+AHE adds the missing improvement loop for this topic. Harnesses should be represented as editable, file-level components; long trajectories should be distilled into layered evidence; and every harness edit should carry a predicted effect that is checked after the next run.
+
+The practical lesson is blunt:
+- store harness components as versioned files
+- log the component version set with every agent run
+- summarize trajectories into evidence that preserves tool calls, failures, patches, and tests
+- require harness-edit PRs to declare predicted effects
+- replay task suites before adopting scaffold changes
+
+This makes harness engineering falsifiable instead of anecdotal. The exact AHE benchmark numbers will need independent replication, but the control pattern is immediately useful.
+
+Source:
+- [Agentic Harness Engineering](https://arxiv.org/abs/2604.25850v1)
+
+
 ## Working conclusion
 
 Agent harness architecture is becoming one of the clearest ways to tell whether a team is building a toy, a developer tool, or a real operating substrate. The winning systems will make context explicit, tool boundaries governable, restore paths safe, orchestration legible, and evidence easy to inspect.

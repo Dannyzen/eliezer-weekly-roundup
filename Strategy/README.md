@@ -2,29 +2,48 @@
 
 This index tracks the most recent structured update. Each finding includes a short summary, a link into the detailed analysis, a core source, practical ways to explore it now, and an implementability score from 0 to 1.
 
-## Most Recent Structured Update: 2026-04-28
+## Most Recent Structured Update: 2026-04-29
 
-### Agent security is becoming lifecycle governance plus semantic privilege separation
-Summary: AgentWard, AgentVisor, RiskGate, and OpenAI Privacy Filter all point to the same strategic move: security for agents has to sit in the runtime path. The stack needs lifecycle controls across startup, input, memory, decision, and execution; a trusted mediator for tool calls; adaptive monitoring for drift; and local PII filtering before sensitive context reaches a model or tool.
+### MCP semantic gateways are becoming the enterprise agent control plane
+Summary: The Semantic Gateway paper reframes enterprise APIs as governed semantic tool surfaces for autonomous agents. The key pattern is MCP discovery behind identity, semantic firewalls, deterministic tool-level RBAC, cryptographic human approval, enabled-tool graph fuzzing, tracing, and audit. Jarvis Registry is a practical open-source signal in the same direction.
 
-Analysis: [sovereignty analysis](2026-04-28/sovereignty.md#agent-security-is-becoming-lifecycle-governance-plus-semantic-privilege-separation)
-Durable topic: [Runtime Governance](runtime-governance/runtime-governance.md)
-Core source: [AgentWard](https://arxiv.org/abs/2604.24657)
-Supporting sources:
-- [FIND-Lab/AgentWard](https://github.com/FIND-Lab/AgentWard)
-- [AgentVisor](https://arxiv.org/abs/2604.24118)
-- [Governing What You Cannot Observe](https://arxiv.org/abs/2604.24686)
-- [OpenAI Privacy Filter](https://openai.com/index/introducing-openai-privacy-filter/)
-- [openai/privacy-filter](https://github.com/openai/privacy-filter)
+Analysis: [sovereignty analysis](2026-04-29/sovereignty.md#mcp-semantic-gateways-are-becoming-the-enterprise-agent-control-plane)
+Durable topic: [Agent Gateway Governance](agent-gateway-governance/agent-gateway-governance.md)
+Core source: [From CRUD to Autonomous Agents](https://arxiv.org/abs/2604.25555v1)
+Supporting source:
+- [Jarvis Registry](https://github.com/ascending-llc/jarvis-registry)
 Implementable now:
-- add a policy mediator in front of privileged tool calls
-- separate foundation scan, input sanitization, memory protection, decision alignment, and execution control
-- run local PII filtering/redaction before agent context is stored, retrieved, or sent upstream
-- track drift and anomaly signals as runtime governance evidence, not only postmortem analytics
+- put a gateway in front of internal MCP servers and privileged tool APIs
+- assign identities and scopes to each agent workflow
+- enforce tool-level RBAC before execution
+- record policy decisions and approval artifacts in the trace
+- fuzz multi-turn trajectories against unauthorized-state goals
 Tools, repos, and methodologies worth exploring:
-- AgentWard's OpenClaw plugin architecture
-- AgentVisor-style semantic privilege separation
-- RiskGate-style monotonic restriction and viability indices
-- OpenAI Privacy Filter for local redaction and context minimization
-- OPA/Cedar policies and trace-linked evidence capture
-Implementability score: 0.64
+- Jarvis Registry or equivalent MCP/A2A gateway patterns
+- Keycloak, Cognito, or Entra ID
+- Open Policy Agent or Cedar
+- OpenTelemetry and Prometheus
+- enabled-tool graph fuzzing
+Implementability score: 0.76
+
+### Managed cloud agents and open omni models create a routing-governance split
+Summary: OpenAI on AWS and NVIDIA Nemotron 3 Nano Omni point to a strategic fork: enterprises can buy managed OpenAI models/Codex/agents inside AWS controls, while open multimodal checkpoints make private document/audio/video/screen reasoning more feasible. The router now has to govern modality, sensitivity, residency, cost, and tool authority.
+
+Analysis: [sovereignty analysis](2026-04-29/sovereignty.md#managed-cloud-agents-and-open-omni-models-create-a-routing-governance-split)
+Durable topic: [Model Router Governance](model-router-governance/model-router-governance.md)
+Core sources:
+- [OpenAI models, Codex, and Managed Agents come to AWS](https://openai.com/index/openai-on-aws)
+- [NVIDIA Nemotron 3 Nano Omni](https://huggingface.co/blog/nvidia/nemotron-3-nano-omni-multimodal-intelligence)
+Implementable now:
+- classify tasks by sensitivity and modality before model selection
+- route sensitive document/audio/video preprocessing to private or local paths where feasible
+- use managed cloud agents where procurement, identity, and compliance fit
+- log effective provider, model, modality path, and routing reason
+- test fallback behavior against privacy and residency policy
+Tools, repos, and methodologies worth exploring:
+- Amazon Bedrock and Codex on AWS
+- Hugging Face checkpoints for Nemotron 3 Nano Omni
+- LiteLLM-style policy-aware routing
+- vLLM, TensorRT-LLM, and NVIDIA inference tooling
+- routing traces and fallback-policy tests
+Implementability score: 0.63

@@ -1,6 +1,6 @@
 # Model Router Governance
 
-Last updated: 2026-04-26
+Last updated: 2026-04-29
 
 Core sources:
 - LiteLLM v1.83.13-nightly: https://github.com/BerriAI/litellm/releases/tag/v1.83.13-nightly
@@ -31,6 +31,22 @@ LiteLLM v1.83.13-nightly is a compact map of the governance surface:
 LangChain’s GPT-5.5 compatibility release shows the client-side version of the same problem: model profiles and Responses API support have to keep up with new frontier models. The OpenAI GPT-5.5 article shows why that matters: these models are being used for long-running coding, research, and computer-use workflows across tools. A router mistake can therefore become an action-boundary mistake.
 
 GitHub Trending also showed strong demand for protocol shims such as `free-claude-code`, which routes Anthropic-shaped Claude Code calls to NVIDIA NIM, OpenRouter, DeepSeek, LM Studio, llama.cpp, or Ollama. That demand signal is real. The governance lesson is not to trust every shim. It is to treat compatibility layers as security-sensitive infrastructure.
+
+## New April 29 additions
+
+### Managed cloud agents and open omni models widen the router surface
+OpenAI’s AWS announcement and NVIDIA’s Nemotron 3 Nano Omni release make router governance more strategic. Managed cloud agents fit enterprise procurement, identity, compliance, and security workflows. Open multimodal checkpoints make private document/audio/video/screen processing more plausible. A useful router must decide between those paths with explicit policy, not only provider availability or price.
+
+Practical lesson:
+- classify tasks by sensitivity, modality, residency, and tool authority before dispatch
+- log requested model, effective model, provider, modality path, and routing reason
+- test fallbacks so unavailable preferred models do not bypass privacy policy
+- use open/local multimodal models for sensitive preprocessing when feasible
+- use managed cloud agents when existing enterprise controls and procurement matter more than locality
+
+Sources:
+- [OpenAI models, Codex, and Managed Agents come to AWS](https://openai.com/index/openai-on-aws)
+- [NVIDIA Nemotron 3 Nano Omni](https://huggingface.co/blog/nvidia/nemotron-3-nano-omni-multimodal-intelligence)
 
 ## Minimum governance checklist
 

@@ -2,69 +2,49 @@
 
 This index tracks the most recent structured update. Each finding includes a short summary, a link into the detailed analysis, a core source, practical ways to explore it now, and an implementability score from 0 to 1.
 
-## Most Recent Structured Update: 2026-04-28
+## Most Recent Structured Update: 2026-04-29
 
-### Symphony turns issue trackers into agent control planes
-Summary: OpenAI's Symphony release is the clearest current example of ticket-native coding-agent orchestration. The useful pattern is not the Elixir implementation; it is the spec: poll an issue tracker, create an isolated workspace per issue, run a coding-agent session continuously, keep workflow policy in-repo, and expose enough logs/status for a human to manage work instead of sessions.
+### Observability-driven harness evolution is the next coding-agent loop
+Summary: AHE treats the coding-agent harness as an observable, editable, replayable artifact. The reusable pattern is to version harness components, distill long trajectories into usable evidence, pair each harness edit with a predicted effect, and verify that prediction against later task outcomes. GitHub Trending reinforced the demand signal with Warp, jcode, GitNexus, and skills repos all pointing toward agentic terminals, harnesses, skills, and code-graph context tools.
 
-Analysis: [reasoning analysis](2026-04-28/reasoning.md#symphony-turns-issue-trackers-into-agent-control-planes)
-Durable topic: [Ticket-Native Agent Orchestration](ticket-native-agent-orchestration/ticket-native-agent-orchestration.md)
-Core source: [OpenAI Symphony announcement](https://openai.com/index/open-source-codex-orchestration-symphony)
+Analysis: [reasoning analysis](2026-04-29/reasoning.md#observability-driven-harness-evolution-is-the-next-coding-agent-loop)
+Durable topic: [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md)
+Core source: [Agentic Harness Engineering](https://arxiv.org/abs/2604.25850v1)
 Supporting sources:
-- [openai/symphony](https://github.com/openai/symphony)
-- [Symphony SPEC.md](https://github.com/openai/symphony/blob/main/SPEC.md)
-- [Codex App Server](https://developers.openai.com/codex/app-server/)
+- [jcode](https://github.com/1jehuang/jcode)
+- [Warp](https://github.com/warpdotdev/warp)
+- [GitNexus](https://github.com/abhigyanpatwari/GitNexus)
+- [Matt Pocock Skills](https://github.com/mattpocock/skills)
+- [Awesome Codex Skills](https://github.com/ComposioHQ/awesome-codex-skills)
 Implementable now:
-- use Linear, GitHub Issues, or another tracker as the durable task queue
-- create per-ticket workspaces with explicit cleanup and stop semantics
-- put workflow rules in `WORKFLOW.md` or an equivalent repo-owned contract
-- attach CI status, PR links, review packets, and proof-of-work artifacts to the ticket
-- start with trusted environments and add sandbox/approval posture explicitly
+- put harness instructions, tool schemas, retry policy, and workflow contracts in versioned files
+- log harness component versions with each run
+- distill long traces into layered evidence with drill-down paths
+- require harness changes to declare predicted effects before evaluation
+- replay task suites before rolling scaffold changes into daily use
 Tools, repos, and methodologies worth exploring:
-- OpenAI Symphony spec and reference implementation
-- Codex App Server or another programmatic agent runner
-- Linear/GitHub Issues as state machines
-- structured logs, OpenTelemetry spans, and workspace lifecycle hooks
-Implementability score: 0.88
+- OpenTelemetry or LangSmith-style trace capture
+- Terminal-Bench, SWE-bench-verified, and internal replay suites
+- git-backed harness component directories
+- jcode, Warp, GitNexus, and skills repos as product-shape references
+Implementability score: 0.72
 
-### Agent evaluation is moving to DAGs, deployment signals, and OS-agent stress tests
-Summary: Three fresh papers point in the same direction: agent eval is becoming operational observability. AgentEval models workflows as DAGs for root-cause attribution, AgentPulse scores deployed agents across benchmark/adoption/sentiment/ecosystem signals, and OS-SPEAR evaluates OS agents across safety, performance, efficiency, and robustness.
+### Knowledge-state orchestration is the missing layer for long-horizon synthesis
+Summary: ADEMA argues that long-horizon agents fail because knowledge state drifts, intermediate commitments stay implicit, and interruptions break the evidence chain. The actionable pattern is to represent claims, evidence, assumptions, open questions, contradictions, artifacts, and checkpoints as explicit state rather than letting them live only in a transcript.
 
-Analysis: [reasoning analysis](2026-04-28/reasoning.md#agent-evaluation-is-moving-to-dags-deployment-signals-and-os-agent-stress-tests)
-Durable topic: [Trajectory-Aware Evaluation](trajectory-aware-evaluation/trajectory-aware-evaluation.md)
-Core source: [AgentEval](https://arxiv.org/abs/2604.23581)
-Supporting sources:
-- [AgentPulse](https://arxiv.org/abs/2604.24038)
-- [OS-SPEAR](https://arxiv.org/abs/2604.24348)
-- [Wuzheng02/OS-SPEAR](https://github.com/Wuzheng02/OS-SPEAR)
+Analysis: [reasoning analysis](2026-04-29/reasoning.md#knowledge-state-orchestration-is-the-missing-layer-for-long-horizon-synthesis)
+Durable topic: [Knowledge-State Orchestration](knowledge-state-orchestration/knowledge-state-orchestration.md)
+Core source: [ADEMA](https://arxiv.org/abs/2604.25849v1)
 Implementable now:
-- represent workflow traces as DAGs with typed node metrics and dependency edges
-- score intermediate failures, not only final outputs
-- collect deployment health signals such as issue velocity, package usage, sentiment, and ecosystem activity
-- separate OS-agent safety, latency/token cost, performance, and robustness perturbation tests
+- store claim/evidence/assumption/question records as typed state
+- checkpoint after each meaningful source-gathering, synthesis, or artifact phase
+- keep source-backed notes separate from final prose
+- run transition checks before accepting durable conclusions
+- require final reports to link claims back to evidence artifacts
 Tools, repos, and methodologies worth exploring:
-- AgentEval-style hierarchical failure taxonomies
-- AgentPulse-style multi-signal dashboards
-- OS-SPEAR safety/performance/efficiency/robustness subsets
-- CI/CD regression gates over replayable traces
-Implementability score: 0.76
-
-### Skill repositories need retrieval gates and machine-readable structure
-Summary: Skill Retrieval Augmentation and SSL skill representation both attack the same failure mode: dumping every skill into context does not scale. Agents need a skill registry that retrieves candidates, decides whether loading is actually necessary, and exposes scheduling, structural, logical, and risk evidence in a machine-readable form.
-
-Analysis: [reasoning analysis](2026-04-28/reasoning.md#skill-repositories-need-retrieval-gates-and-machine-readable-structure)
-Durable topic: [Skills as Control](skills-as-control/skills-as-control.md)
-Core source: [Skill Retrieval Augmentation for Agentic AI](https://arxiv.org/abs/2604.24594)
-Supporting sources:
-- [From Skill Text to Skill Structure](https://arxiv.org/abs/2604.24026)
-Implementable now:
-- store skill metadata separately from full skill bodies
-- retrieve a small candidate set, then gate loading on task fit and external-capability need
-- normalize skill artifacts into invocation interfaces, execution structure, side effects, and risk tags
-- log which retrieved skills were loaded and whether they improved task outcomes
-Tools, repos, and methodologies worth exploring:
-- embedding plus lexical retrieval over skills
-- rerankers and applicability classifiers
-- structured skill schemas inspired by SSL
-- regression tests that compare text-only skill lookup against structured lookup
-Implementability score: 0.70
+- SQLite/Postgres typed state stores
+- LangGraph or Temporal-style resumable workflows
+- repo-backed research artifacts
+- source-grounded claim/evidence tables
+- final-validity checklists over stored state
+Implementability score: 0.58
