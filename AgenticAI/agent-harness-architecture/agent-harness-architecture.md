@@ -1,5 +1,7 @@
 # Agent Harness Architecture
 
+Last updated: 2026-04-29
+
 Agent harness architecture is becoming the part of the agent stack that teams can actually standardize.
 
 The durable pattern across recent work is simple: the interesting engineering differences are no longer only inside the model. They sit in the non-LLM infrastructure around it — context services, tool mediation, delegation, isolation, orchestration, and safety controls. Once those choices become explicit, agent systems stop looking like prompt tricks and start looking like software architecture.
@@ -10,12 +12,87 @@ The April 2026 signal is unusually clear:
 - **Architectural Design Decisions in AI Agent Harnesses** studies 70 public projects and shows that recurrent design dimensions are now visible enough to classify.
 - **Microsoft Agent Framework 1.1.0** turns several of those dimensions into concrete runtime knobs: file history providers, checkpoint allowlists, hosted workflow support, and stronger execution/runtime surfaces.
 - **Claude Context** shows another important trend: context handling is externalizing into installable services instead of staying buried inside one agent loop.
+- **Agentic Harness Engineering (AHE)** makes the next jump: the harness is not only an architecture to inspect, it is an editable control surface that can be evolved, attributed, rolled back, and tested.
 
 Core sources:
 - Architectural Design Decisions in AI Agent Harnesses: https://arxiv.org/abs/2604.18071v1
 - Microsoft Agent Framework python-1.1.0: https://github.com/microsoft/agent-framework/releases/tag/python-1.1.0
 - Microsoft Agent Framework repo: https://github.com/microsoft/agent-framework
 - Claude Context: https://github.com/zilliztech/claude-context
+- Agentic Harness Engineering paper: https://arxiv.org/abs/2604.25850v1
+- Agentic Harness Engineering repo: https://github.com/china-qijizhifeng/agentic-harness-engineering
+
+## Deep Dive Wednesday 2026-04-29: AHE turns harness work into a falsifiable engineering loop
+
+### Overview
+
+Agentic Harness Engineering is the strongest agentic-stack finding this week because it moves coding-agent improvement out of prompt folklore and into an observable engineering loop. AHE keeps the base model fixed and evolves the surrounding harness: system prompt, tool descriptions, tool implementations, middleware, skills, sub-agent configuration, and long-term memory. The important claim is not merely that a benchmark score improved. The important claim is that the harness can become a versioned, inspectable, rollbackable artifact with evidence attached to every change.
+
+AHE belongs in the harness and evaluation layer of the stack. It is about how an agent sees a repository, calls tools, preserves state, verifies work, uses middleware, and turns run history into future control-surface changes.
+
+### Core innovation
+
+AHE combines three observability surfaces into one loop:
+
+1. **Component observability.** The harness is decomposed into file-level components at fixed mount points. The paper's NexAU substrate exposes seven component types: system prompt, tool description, tool implementation, middleware, skill, sub-agent configuration, and long-term memory. This gives the optimizer an explicit action space and gives operators file-level diffs and rollback.
+2. **Experience observability.** Multi-million-token trajectories are distilled into layered, drill-down evidence. The optimizer reads overview reports first, then per-task details, and can still inspect raw traces when needed.
+3. **Decision observability.** Every harness edit ships with a change manifest naming the failure evidence, root cause, targeted fix, expected fixes, and at-risk regressions. The next evaluation round checks those predictions against task-level deltas.
+
+That last piece is the architectural breakthrough. A harness edit is treated as a falsifiable contract, not a clever explanation after the fact.
+
+### Why it matters
+
+The current coding-agent market talks as if better models, longer context, or a nicer terminal are the whole story. AHE says the operational substrate around the model is itself a learnable artifact. That matters because serious agent platforms need to know which component caused a performance change, which traces justified it, which tasks it helped, which tasks it broke, and how to revert it.
+
+The paper reports a ten-iteration run on Terminal-Bench 2 where pass@1 rises from 69.7% to 77.0%, above the reported human-designed Codex-CLI harness at 71.9% and above prompt/playbook-style self-evolution baselines. It also reports transfer to SWE-bench-verified with the highest aggregate success and 12% fewer tokens than the seed harness. Treat those numbers as early evidence, not settled law. The durable insight is the loop shape.
+
+### How it fits into the agentic stack
+
+- **Harness layer:** prompts, tools, middleware, skills, sub-agents, and memory become versioned components.
+- **Trace layer:** raw runs become drill-down evidence rather than transcript sludge.
+- **Evaluation layer:** task outcomes are compared against predicted fixes and regressions.
+- **Governance layer:** bounded write scopes, manifests, git history, rollback, and read-only verifier/model configuration constrain self-modification.
+- **Developer-experience layer:** terminal agents, skills repos, and code-graph tools become useful only when their control surfaces are observable enough to improve.
+
+### Practical tools, repos, and methodologies worth trying now
+
+- Git-backed harness directories with component ownership for prompts, tool schemas, middleware, skills, sub-agents, and memory.
+- OpenTelemetry, Langfuse, or LangSmith-style traces that record harness component versions with each run.
+- A small internal replay suite modeled on Terminal-Bench or SWE-bench-verified, even if it starts with only 20 recurring tasks.
+- Change manifests for harness PRs: failure evidence, root cause, targeted fix, predicted fixes, at-risk regressions, and post-run verdict.
+- E2B, local containers, or other sandbox substrates so rollouts do not leak state across tasks.
+- Product-shape references: Warp for terminal-native agent UX, jcode for a coding-agent harness, GitNexus for repo knowledge graphs, and skills repos for procedural control packages.
+
+### Implementation complexity
+
+The first 60% is very implementable. A team can version harness files, log versions per run, keep traces, write change manifests, and replay a small task set without inventing new research. The next 40% is architecture-heavy: faithful trace distillation, regression prediction, benchmark-overfit control, sandbox cost, and attribution across interacting components are all hard.
+
+AHE's own limitations matter. The public repo notes that Agent Debugger is only partially open-sourced, the quick-start depends on private NexAU/harbor repositories, and the paper says the system is a controlled research prototype rather than a complete guardrail stack. This is a pattern to copy, not a drop-in production system.
+
+### Implementability score
+
+0.72
+
+The pattern can be implemented now with ordinary engineering discipline and existing tracing, git, sandboxing, and evaluation tools. Full autonomous harness evolution is less mature because it needs robust attribution, faithful trajectory distillation, and regression-aware governance.
+
+### Strategic implications for Danny's worldview and product thinking
+
+The agent platform moat is shifting from model access to harness operations. A product that can observe, version, replay, and improve its agent harness will learn faster than a product that only swaps frontier models. This also changes how to evaluate vendors: ask for harness diffs, trace evidence, rollback mechanics, replay suites, and predicted-effect records. If they cannot show those, they are selling agent vibes, not an operating substrate.
+
+For Danny's product thinking, the near-term opportunity is a lightweight "agent harness control plane": versioned skills and tools, run traces tied to harness commits, replay packs, and a manifest-based review loop for every scaffold change.
+
+### Core source links
+
+- Agentic Harness Engineering paper: https://arxiv.org/abs/2604.25850v1
+- Agentic Harness Engineering repo: https://github.com/china-qijizhifeng/agentic-harness-engineering
+
+### Useful supporting sources
+
+- Warp: https://github.com/warpdotdev/warp
+- jcode: https://github.com/1jehuang/jcode
+- GitNexus: https://github.com/abhigyanpatwari/GitNexus
+- Matt Pocock Skills: https://github.com/mattpocock/skills
+- Awesome Codex Skills: https://github.com/ComposioHQ/awesome-codex-skills
 
 ## Core thesis
 

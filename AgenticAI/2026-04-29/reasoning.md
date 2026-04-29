@@ -10,12 +10,17 @@ Managed `web_search` and `web_extract` returned authentication/rate-limit errors
 
 Core source: https://arxiv.org/abs/2604.25850v1
 Supporting sources:
+- https://github.com/china-qijizhifeng/agentic-harness-engineering
 - https://github.com/1jehuang/jcode
 - https://github.com/warpdotdev/warp
 - https://github.com/abhigyanpatwari/GitNexus
 - https://github.com/mattpocock/skills
 - https://github.com/ComposioHQ/awesome-codex-skills
-Durable topic: [Agent Harness Architecture](../agent-harness-architecture/agent-harness-architecture.md)
+Durable topic: [Agent Harness Architecture](../agent-harness-architecture/agent-harness-architecture.md#deep-dive-wednesday-2026-04-29-ahe-turns-harness-work-into-a-falsifiable-engineering-loop)
+
+Deep Dive Wednesday decision: this is the single strongest finding from the last seven days. DeepSeek-V4, Nemotron 3 Nano Omni, ADEMA, and semantic gateways are all useful signals, but AHE changes the engineering loop itself. It says the scaffold around the model can be componentized, observed, edited, predicted against, evaluated, and rolled back. That is a deeper stack-level shift than a model release or a governance proposal because it gives agent builders a repeatable way to improve the operating substrate.
+
+Implementation complexity: the basic discipline is usable now: git-backed harness components, trace capture, change manifests, and replay suites. Full autonomous evolution is still architecture-heavy because trace distillation, regression prediction, and benchmark-overfit control are hard. The public AHE repo also notes partial Agent Debugger availability and private dependencies, so treat it as a reference architecture rather than a turnkey package.
 
 The new AHE paper, *Agentic Harness Engineering*, is useful because it treats the coding-agent harness as an evolving software artifact rather than a hand-written prompt wrapper. The authors argue that harnesses determine how models see repositories, tools, execution environments, and traces. They then make harness evolution observable across three stages: component editing, trajectory inspection, and decision-making.
 

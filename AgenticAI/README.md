@@ -4,28 +4,30 @@ This index tracks the most recent structured update. Each finding includes a sho
 
 ## Most Recent Structured Update: 2026-04-29
 
-### Observability-driven harness evolution is the next coding-agent loop
-Summary: AHE treats the coding-agent harness as an observable, editable, replayable artifact. The reusable pattern is to version harness components, distill long trajectories into usable evidence, pair each harness edit with a predicted effect, and verify that prediction against later task outcomes. GitHub Trending reinforced the demand signal with Warp, jcode, GitNexus, and skills repos all pointing toward agentic terminals, harnesses, skills, and code-graph context tools.
+### Deep Dive Wednesday: observability-driven harness evolution is the next coding-agent loop
+Summary: Agentic Harness Engineering (AHE) was the strongest finding of the week because it turns the coding-agent harness into a versioned, observable, replayable optimization target. The winning pattern is componentized harness files, layered trace evidence, and change manifests that state predicted fixes and regressions before the next evaluation round. That is more architecturally important than another model or leaderboard bump: it gives builders a way to improve the operating substrate around the model.
 
 Analysis: [reasoning analysis](2026-04-29/reasoning.md#observability-driven-harness-evolution-is-the-next-coding-agent-loop)
-Durable topic: [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md)
+Durable topic: [Agent Harness Architecture](agent-harness-architecture/agent-harness-architecture.md#deep-dive-wednesday-2026-04-29-ahe-turns-harness-work-into-a-falsifiable-engineering-loop)
 Core source: [Agentic Harness Engineering](https://arxiv.org/abs/2604.25850v1)
 Supporting sources:
+- [Agentic Harness Engineering repo](https://github.com/china-qijizhifeng/agentic-harness-engineering)
 - [jcode](https://github.com/1jehuang/jcode)
 - [Warp](https://github.com/warpdotdev/warp)
 - [GitNexus](https://github.com/abhigyanpatwari/GitNexus)
 - [Matt Pocock Skills](https://github.com/mattpocock/skills)
 - [Awesome Codex Skills](https://github.com/ComposioHQ/awesome-codex-skills)
 Implementable now:
-- put harness instructions, tool schemas, retry policy, and workflow contracts in versioned files
-- log harness component versions with each run
+- put harness instructions, tool schemas, middleware, skills, sub-agents, and long-term memory in versioned component files
+- log the exact harness component version set with each run
 - distill long traces into layered evidence with drill-down paths
-- require harness changes to declare predicted effects before evaluation
-- replay task suites before rolling scaffold changes into daily use
+- require each harness change to declare failure evidence, root cause, predicted fixes, and at-risk regressions
+- replay a small task suite before rolling scaffold changes into daily use
 Tools, repos, and methodologies worth exploring:
-- OpenTelemetry or LangSmith-style trace capture
+- the AHE repo as a reference architecture, even though its current release is not fully drop-in
+- OpenTelemetry, Langfuse, or LangSmith-style trace capture
 - Terminal-Bench, SWE-bench-verified, and internal replay suites
-- git-backed harness component directories
+- E2B, containers, or local sandboxes for isolated rollouts
 - jcode, Warp, GitNexus, and skills repos as product-shape references
 Implementability score: 0.72
 
